@@ -131,8 +131,20 @@ public class SelectionActivity extends AppCompatActivity
 
     public void signOut(View v)
     {
-        mAuth.signOut();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        try
+        {
+            mAuth.signOut();
+            Toast.makeText(SelectionActivity.this, "Successfully signed out",
+                    Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        catch (Exception err)
+        {
+            Toast messageToUser = Toast.makeText(this, err.toString(), Toast.LENGTH_LONG);
+            messageToUser.show();
+        }
     }
+
 }
