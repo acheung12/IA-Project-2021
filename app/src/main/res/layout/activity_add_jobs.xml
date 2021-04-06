@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:ems="10"
+        android:hint="e.g English"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView29"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
+        android:hint="e.g Room 301"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -32,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
+        android:hint="e.g March 31st 2021"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName6"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -42,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
+        android:hint="e.g 10:00 - 12:00"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName5"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
