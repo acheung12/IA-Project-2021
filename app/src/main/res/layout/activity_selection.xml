@@ -6,4 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".SignInThings.SelectionActivity">
 
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="270dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="148dp"
+        android:onClick="toRequestedJobs"
+        android:text="Requested Jobs"
+        app:backgroundTint="#ffa834"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="270dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="36dp"
+        android:onClick="toAddJobs"
+        android:text="Add Jobs"
+        app:backgroundTint="#ffa834"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:onClick="signOut"
+        android:text="Sign Out "
+        app:backgroundTint="#ffa834"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="270dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="36dp"
+        android:onClick="toAcceptedJobs"
+        android:text="Accepted Jobs"
+        app:backgroundTint="#ffa834"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="270dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
+        android:onClick="toOpenJobs"
+        android:text="Open Jobs"
+        app:backgroundTint="#ffa834"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
