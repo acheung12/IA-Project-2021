@@ -22,8 +22,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
 
     private EditText emailField;
-    private EditText newPassword;
-    private EditText reenterPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,37 +33,31 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
 
         emailField = findViewById(R.id.editTextEmail3);
-        newPassword = findViewById(R.id.editTextNewPassword);
-        reenterPassword = findViewById(R.id.editTextReEnterPassword);
     }
 
     public void changePassword(View v)
     {
-        String newPasswordString = newPassword.getText().toString();
-        String reenterPasswordString = reenterPassword.getText().toString();
+        String emailString = emailField.getText().toString();
 
         FirebaseUser user = mAuth.getCurrentUser();
 
-        if (newPasswordString.equals(reenterPasswordString))
-        {
-            user.updatePassword(newPasswordString).addOnCompleteListener(this, new
-                    OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful())
-                            {
-                                updateUI(user);
-                                Toast.makeText(ForgotPasswordActivity.this,
-                                "Password successfully changed", Toast.LENGTH_SHORT).show();
-                            }
+        mAuth.sendPasswordResetEmail(emailString).addOnCompleteListener(this, new
+                OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            updateUI(user);
+                            Toast.makeText(ForgotPasswordActivity.this,
+                                    "Email successfully sent", Toast.LENGTH_SHORT).show();
                         }
-                    });
-        }
-        else
-        {
-            Toast.makeText(ForgotPasswordActivity.this, "Please check all fields",
-                    Toast.LENGTH_SHORT).show();
-        }
+                        else
+                        {
+                            Toast.makeText(ForgotPasswordActivity.this, "Password " +
+                                    "reset email is unsuccessful", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     public void updateUI(FirebaseUser currentUser)
