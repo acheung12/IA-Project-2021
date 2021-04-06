@@ -56,7 +56,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             {
                                 updateUI(user);
                                 Toast.makeText(ForgotPasswordActivity.this,
-                                "Password succesfully changed", Toast.LENGTH_SHORT).show();
+                                "Password successfully changed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
