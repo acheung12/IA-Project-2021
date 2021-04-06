@@ -18,6 +18,10 @@ public class User
         this.acceptedJobs = acceptedJobs;
     }
 
+    public User()
+    {
+    }
+
     public String getUid() {
         return uid;
     }

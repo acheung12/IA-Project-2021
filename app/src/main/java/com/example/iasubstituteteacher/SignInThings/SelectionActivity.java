@@ -41,6 +41,12 @@ public class SelectionActivity extends AppCompatActivity
         selected = "";
     }
 
+    public void RequestedJobs()
+    {
+        Intent intent = new Intent(this, RequestedJobsActivity.class);
+        startActivity(intent);
+    }
+
     public void toRequestedJobs(View v)
     {
         FirebaseUser user = mAuth.getCurrentUser();
@@ -57,23 +63,27 @@ public class SelectionActivity extends AppCompatActivity
 
                             String userType = theUser.getUserType();
                             selected = userType;
+
+                            if (selected.equals("Admin"))
+                            {
+                                RequestedJobs();
+                            }
+                            else
+                            {
+                                Toast.makeText(SelectionActivity.this, "You need to" +
+                                        " be an Admin to access this", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
-
-        if (selected.equals("Admin"))
-        {
-            Intent intent = new Intent(this, RequestedJobsActivity.class);
-            startActivity(intent);
-        }
-        else
-        {
-            Toast.makeText(SelectionActivity.this, "You need to be an Admin to " +
-                    "access this", Toast.LENGTH_SHORT).show();
-        }
-
-
     }
+
+    public void AddJobs()
+    {
+        Intent intent = new Intent(this, AddJobsActivity.class);
+        startActivity(intent);
+    }
+
 
     public void toAddJobs(View v)
     {
@@ -91,20 +101,20 @@ public class SelectionActivity extends AppCompatActivity
 
                             String userType = theUser.getUserType();
                             selected = userType;
+
+                            if ((selected.equals("Admin")) || (selected.equals("Teacher")))
+                            {
+                                AddJobs();
+                            }
+                            else
+                            {
+                                Toast.makeText(SelectionActivity.this, "You need " +
+                                        "to be an Admin or a Teacher to access this",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
-
-        if (selected.equals("Admin") || selected.equals("Teacher"))
-        {
-            Intent intent = new Intent(this, AddJobsActivity.class);
-            startActivity(intent);
-        }
-        else
-        {
-            Toast.makeText(SelectionActivity.this, "You need to be an Admin or a" +
-                    "Teacher to access this", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void toOpenJobs(View v)

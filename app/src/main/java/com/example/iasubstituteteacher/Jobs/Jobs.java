@@ -27,6 +27,11 @@ public class Jobs
         this.usersEmail = usersEmail;
     }
 
+    public Jobs()
+    {
+
+    }
+
     public String getJobsId() {
         return jobsId;
     }
