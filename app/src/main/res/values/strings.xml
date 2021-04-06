@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IASubstitute Teacher</string>
+
+    <string-array name="userType">
+        <item>Admin</item>
+        <item>Teacher</item>
+        <item>Substitute Teacher</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.iasubstituteteacher">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Substitute Teacher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.IASubstituteTeacher">
+        <activity android:name=".SignInThings.ForgotPasswordActivity"></activity>
+        <activity android:name=".JobsThing.AcceptedJobsInfoActivity" />
+        <activity android:name=".JobsThing.AcceptedJobsActivity" />
+        <activity android:name=".JobsThing.OpenJobsInfoActivity" />
+        <activity android:name=".JobsThing.OpenJobsActivity" />
+        <activity android:name=".JobsThing.RequestedJobsInfoActivity" />
+        <activity android:name=".JobsThing.RequestedJobsActivity" />
+        <activity android:name=".JobsThing.AddJobsActivity" />
+        <activity android:name=".SignInThings.SelectionActivity" />
+        <activity android:name=".SignInThings.SignUpActivity" />
+        <activity android:name=".SignInThings.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
