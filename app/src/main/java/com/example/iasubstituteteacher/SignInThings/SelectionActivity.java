@@ -12,6 +12,7 @@ import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.JobsThing.AcceptedJobsActivity;
 import com.example.iasubstituteteacher.JobsThing.AddJobsActivity;
 import com.example.iasubstituteteacher.JobsThing.OpenJobsActivity;
+import com.example.iasubstituteteacher.JobsThing.RequestedJobsActivity;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,7 +63,7 @@ public class SelectionActivity extends AppCompatActivity
 
         if (selected.equals("Admin"))
         {
-            Intent intent = new Intent(this, RequestedJobs.class);
+            Intent intent = new Intent(this, RequestedJobsActivity.class);
             startActivity(intent);
         }
         else
