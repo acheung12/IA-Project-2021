@@ -67,27 +67,26 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         final String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener(
-            this, new OnCompleteListener<AuthResult>()
+        if (emailString.contains("@"))
+        {
+            mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener
+                    (this, new OnCompleteListener<AuthResult>()
             {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task)
-            {
-                if (task.isSuccessful() && !usernameString.equals(""))
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task)
                 {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("SIGN UP", "Successfully signed up for the user");
+                    if (task.isSuccessful() && !usernameString.equals(""))
+                    {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
 
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    updateUI(user);
+                        String userUID = user.getUid();
+                        ArrayList<String> acceptedJobs = new ArrayList<>();
 
-                    String userUID = user.getUid();
-                    ArrayList<String> acceptedJobs = new ArrayList<>();
-
-                    User currentUser = new User(userUID,usernameString,emailString, selected,
-                            acceptedJobs);
-                    firestore.collection("Users").document(userUID).
-                                    set(currentUser);
+                        User currentUser = new User(userUID, usernameString, emailString, selected,
+                                acceptedJobs);
+                        firestore.collection("Users").document(userUID).
+                                set(currentUser);
                     }
                     else if (task.isSuccessful() && usernameString.equals(""))
                     {
@@ -104,8 +103,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                 Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
-            }
+                }
             });
+        }
+        else
+        {
+            Toast.makeText(SignUpActivity.this, "Please check that your email is " +
+                            "right", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void backToSignIn(View v)

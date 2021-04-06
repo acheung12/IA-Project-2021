@@ -68,4 +68,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void toSignIn(View v)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
