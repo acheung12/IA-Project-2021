@@ -26,7 +26,6 @@ public class Jobs
         this.userId = userId;
         this.usersEmail = usersEmail;
     }
-
     public Jobs()
     {
 
