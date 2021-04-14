@@ -55,7 +55,7 @@ public class AddJobsActivity extends AppCompatActivity {
         date = findViewById(R.id.addJobsDate);
         time = findViewById(R.id.addJobsTime);
         location = findViewById(R.id.addJobsLocation);
-        lessonPlan = findViewById(R.id.addJobsLessonPlan);
+        lessonPlan = findViewById(R.id.addJobsLessonPlan);//haha
     }
 
     public boolean validInfo()
