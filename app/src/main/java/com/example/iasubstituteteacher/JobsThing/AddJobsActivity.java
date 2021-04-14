@@ -159,7 +159,6 @@ public class AddJobsActivity extends AppCompatActivity {
                             {
                                 teacher();
                             }
-
                             if(selected.equals("Admin"))
                             {
                                 admin();
@@ -167,18 +166,6 @@ public class AddJobsActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-//        if (selected.equals("Teacher"))
-//        {
-//            Intent intent = new Intent(this, SelectionActivity.class);
-//            startActivity(intent);
-//        }
-//        else if (selected.equals("Admin"))
-//        {
-//            Intent intent = new Intent(this, OpenJobsActivity.class);
-//            startActivity(intent);
-//        }
     }
 
     public void backButton(View v)
