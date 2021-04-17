@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.iasubstituteteacher.Jobs.Jobs;
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
+import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.SignInThings.ForgotPasswordActivity;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
@@ -41,8 +42,7 @@ public class AddJobsActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_jobs);
 
@@ -55,7 +55,7 @@ public class AddJobsActivity extends AppCompatActivity {
         date = findViewById(R.id.addJobsDate);
         time = findViewById(R.id.addJobsTime);
         location = findViewById(R.id.addJobsLocation);
-        lessonPlan = findViewById(R.id.addJobsLessonPlan);//haha
+        lessonPlan = findViewById(R.id.addJobsLessonPlan);
     }
 
     public boolean validInfo()
@@ -78,7 +78,6 @@ public class AddJobsActivity extends AppCompatActivity {
     {
         if (validInfo())
         {
-
             String subjectString = subject.getText().toString();
             String dateString = date.getText().toString();
             String timeString = time.getText().toString();
@@ -89,11 +88,11 @@ public class AddJobsActivity extends AppCompatActivity {
             String usersUID = user.getUid();
             String usersEmail = user.getEmail();
 
-            Jobs addedJob = new Jobs(JobsId, subjectString, dateString, timeString, locationString,
-                    true, lessonPlanString, usersUID, usersEmail);
+            RequestedJobs addedJob = new RequestedJobs(JobsId, subjectString, dateString,
+                    timeString, locationString, true, lessonPlanString, usersUID, usersEmail);
 
             firestore.collection("Jobs").document("Jobs").collection(
-                    "Requested Jobs").document(dateString).set(addedJob);
+                    "Requested Jobs").document(JobsId).set(addedJob);
 
             Toast.makeText(AddJobsActivity.this, "Job successfully requested",
                     Toast.LENGTH_SHORT).show();
@@ -121,11 +120,11 @@ public class AddJobsActivity extends AppCompatActivity {
             String usersUID = user.getUid();
             String usersEmail = user.getEmail();
 
-            Jobs addedJob = new Jobs(JobsId, subjectString, dateString, timeString, locationString,
-                    true, lessonPlanString, usersUID, usersEmail);
+            OpenJobs addedJob = new OpenJobs(JobsId, subjectString, dateString, timeString,
+                    locationString, true, lessonPlanString, usersUID, usersEmail);
 
             firestore.collection("Jobs").document("Jobs").collection(
-                    "Open Jobs").document(dateString).set(addedJob);
+                    "Open Jobs").document(JobsId).set(addedJob);
 
             Toast.makeText(AddJobsActivity.this, "Job successfully added",
                     Toast.LENGTH_SHORT).show();
