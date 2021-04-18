@@ -1,15 +1,23 @@
 package com.example.iasubstituteteacher.JobsThing;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.R;
+import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class OpenJobsInfoActivity extends AppCompatActivity {
 
@@ -72,7 +80,23 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
     public void acceptButton(View v)
     {
-
+        firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful())
+                        {
+                            for (DocumentSnapshot document : task.getResult().getDocuments())
+                            {
+                                OpenJobs theOpenJobs = document.toObject(OpenJobs.class);
+                                theOpenJobs.setActive(false);
+                                firestore.collection("Jobs/Jobs/Open Jobs").document(
+                                        theJobsId).set(theOpenJobs);
+                            }
+                        }
+                    }
+                });
+        //don't forget the accepting things
     }
 
     public void declineButton(View v)
@@ -82,7 +106,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
     public void backButton(View v)
     {
-
+        Intent intent = new Intent(this, OpenJobsActivity.class);
+        startActivity(intent);
     }
 
 

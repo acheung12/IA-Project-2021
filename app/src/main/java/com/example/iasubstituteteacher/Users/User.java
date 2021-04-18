@@ -9,17 +9,21 @@ public class User
     String email;
     String userType;
     ArrayList<String> acceptedJobs;
+    ArrayList<String> declinedJobs;
 
-    public User(String uid, String username, String email, String userType, ArrayList<String> acceptedJobs) {
+    public User(String uid, String username, String email, String userType, ArrayList<String>
+            acceptedJobs, ArrayList<String> declinedJobs) {
         this.uid = uid;
         this.username = username;
         this.email = email;
         this.userType = userType;
         this.acceptedJobs = acceptedJobs;
+        this.declinedJobs = declinedJobs;
     }
 
     public User()
     {
+
     }
 
     public String getUid() {
@@ -61,4 +65,13 @@ public class User
     public void setAcceptedJobs(ArrayList<String> acceptedJobs) {
         this.acceptedJobs = acceptedJobs;
     }
+
+    public ArrayList<String> getDeclinedJobs() {
+        return declinedJobs;
+    }
+
+    public void setDeclinedJobs(ArrayList<String> declinedJobs) {
+        this.declinedJobs = declinedJobs;
+    }
+
 }

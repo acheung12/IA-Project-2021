@@ -13,6 +13,7 @@ import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.RecyclerView.OpenJobsAdapter;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
+import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,23 +51,48 @@ public class OpenJobsActivity extends AppCompatActivity {
 
     public void getAndPopulateData()
     {
-        firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener
-                (new OnCompleteListener<QuerySnapshot>() {
+        firestore.collection("Users").document(user.getUid()).get().
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful())
-                    {
-                        for (DocumentSnapshot document : task.getResult().getDocuments())
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful())
                         {
-                            OpenJobs theOpenJobs = document.toObject(OpenJobs.class);
-                            if (theOpenJobs.isActive())
-                            {
-                                openJobsList.add(theOpenJobs);
-                            }
+                            DocumentSnapshot ds = task.getResult();
+                            User theUser = ds.toObject(User.class);
+                            firestore.collection("Jobs/Jobs/Open Jobs").get().
+                                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful())
+                                    {
+                                        for (DocumentSnapshot document : task.getResult().
+                                                getDocuments())
+                                        {
+                                            OpenJobs theOpenJobs = document.toObject
+                                                    (OpenJobs.class);
+                                            for (int i = 0; i < theUser.getDeclinedJobs().size();
+                                                 i++)
+                                            {
+                                                String declinedJob = theUser.getDeclinedJobs().
+                                                        get(i);
+                                                if (theOpenJobs.isActive() && !theOpenJobs.
+                                                        getJobsId().equals(declinedJob))
+                                                {
+                                                    openJobsList.add(theOpenJobs);
+                                                }
+                                            }
+                                            if (theOpenJobs.isActive() && theUser.getDeclinedJobs()
+                                                    .isEmpty())
+                                            {
+                                                openJobsList.add(theOpenJobs);
+                                            }
+                                        }
+                                        helperMethod(openJobsList);
+                                    }
+                                }
+                            });
                         }
-                        helperMethod(openJobsList);
                     }
-                }
         });
     }
 

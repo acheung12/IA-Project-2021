@@ -82,9 +82,10 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
                         String userUID = user.getUid();
                         ArrayList<String> acceptedJobs = new ArrayList<>();
+                        ArrayList<String> declinedJobs = new ArrayList<>();
 
                         User currentUser = new User(userUID, usernameString, emailString, selected,
-                                acceptedJobs);
+                                acceptedJobs, declinedJobs);
                         firestore.collection("Users").document(userUID).
                                 set(currentUser);
                     }
