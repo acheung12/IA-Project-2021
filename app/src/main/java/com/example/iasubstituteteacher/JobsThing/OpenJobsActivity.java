@@ -110,8 +110,5 @@ public class OpenJobsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);
     }
-
-
-
-
+    
 }

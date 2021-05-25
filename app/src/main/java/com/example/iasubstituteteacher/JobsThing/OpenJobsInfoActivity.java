@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
+import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class OpenJobsInfoActivity extends AppCompatActivity {
 
@@ -97,11 +101,57 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                     }
                 });
         //don't forget the accepting things
+        firestore.collection("Users").document(user.getUid()).get().
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful())
+                        {
+                            DocumentSnapshot ds = task.getResult();
+                            User theUser = ds.toObject(User.class);
+                            ArrayList<String> acceptedList = theUser.getAcceptedJobs();
+                            acceptedList.add(theJobsId);
+                            theUser.setAcceptedJobs(acceptedList);
+
+                            firestore.collection("Users").document(theUserUid).
+                                    set(theUser);
+                        }
+                    }
+                });
+        AcceptedJobs acceptedJob = new AcceptedJobs(theJobsId, theSubject, theDate, theTime,
+                theLocation, true, theLessonPlan, theUserUid, theUserEmail);
+
+        firestore.collection("Jobs").document("Jobs").collection(
+                "Accepted Jobs").document(theJobsId).set(acceptedJob);
+
+        Intent intent = new Intent(this, OpenJobsActivity.class);
+        startActivity(intent);
     }
 
     public void declineButton(View v)
     {
+        firestore.collection("Users").document(user.getUid()).get().
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                  @Override
+                  public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                      if (task.isSuccessful())
+                      {
+                          DocumentSnapshot ds = task.getResult();
+                          User theUser = ds.toObject(User.class);
+                          ArrayList<String> declinedList = theUser.getDeclinedJobs();
+                          declinedList.add(theJobsId);
+                          theUser.setDeclinedJobs(declinedList);
 
+                          firestore.collection("Users").document(theUserUid).
+                                  set(theUser);
+                      }
+                  }
+              });
+
+
+
+        Intent intent = new Intent(this, OpenJobsActivity.class);
+        startActivity(intent);
     }
 
     public void backButton(View v)
@@ -109,6 +159,4 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
     }
-
-
 }

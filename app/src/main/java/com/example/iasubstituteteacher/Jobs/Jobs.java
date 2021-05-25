@@ -1,7 +1,8 @@
 package com.example.iasubstituteteacher.Jobs;
 
-public class Jobs
-{
+import java.util.ArrayList;
+
+public class Jobs {
     String jobsId;
     String subject;
     String date;
@@ -11,11 +12,11 @@ public class Jobs
     String lessonPlan;
     String userId;
     String usersEmail;
+    ArrayList<String> declineList;
 
 
     public Jobs(String jobsId, String subject, String date, String time, String location,
-                boolean active, String lessonPlan, String userId, String usersEmail)
-    {
+                boolean active, String lessonPlan, String userId, String usersEmail) {
         this.jobsId = jobsId;
         this.subject = subject;
         this.date = date;
@@ -26,8 +27,8 @@ public class Jobs
         this.userId = userId;
         this.usersEmail = usersEmail;
     }
-    public Jobs()
-    {
+
+    public Jobs() {
 
     }
 
@@ -102,4 +103,5 @@ public class Jobs
     public void setUsersEmail(String usersEmail) {
         this.usersEmail = usersEmail;
     }
+
 }

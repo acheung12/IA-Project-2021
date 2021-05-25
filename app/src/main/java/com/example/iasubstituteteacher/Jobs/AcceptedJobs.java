@@ -1,5 +1,7 @@
 package com.example.iasubstituteteacher.Jobs;
 
+import java.util.ArrayList;
+
 public class AcceptedJobs extends Jobs
 {
 
