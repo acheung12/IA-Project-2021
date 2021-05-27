@@ -14,7 +14,6 @@ public class AcceptedJobsViewHolder extends RecyclerView.ViewHolder
     protected TextView subjectText;
     protected TextView dateText;
     protected TextView timeText;
-
     protected ConstraintLayout acceptedJobLayout;
 
     public AcceptedJobsViewHolder(@NonNull View itemView) {

@@ -13,6 +13,7 @@ import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.JobsThing.OpenJobsInfoActivity;
 import com.example.iasubstituteteacher.JobsThing.RequestedJobsActivity;
+import com.example.iasubstituteteacher.JobsThing.RequestedJobsInfoActivity;
 import com.example.iasubstituteteacher.R;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, OpenJobsInfoActivity.class);
+                Intent intent = new Intent(context, RequestedJobsInfoActivity.class);
                 intent.putExtra("subject", mData.get(position).getSubject());
                 intent.putExtra("jobsID", mData.get(position).getJobsId());
                 intent.putExtra("date", mData.get(position).getDate());

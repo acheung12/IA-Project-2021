@@ -12,9 +12,6 @@ public class AcceptedJobs extends Jobs
                         String acceptorsEmail)
     {
         super(jobsId, subject, date, time, location, active, lessonPlan, userId, usersEmail);
-    }
-
-    public AcceptedJobs(String acceptorsEmail) {
         this.acceptorsEmail = acceptorsEmail;
     }
 

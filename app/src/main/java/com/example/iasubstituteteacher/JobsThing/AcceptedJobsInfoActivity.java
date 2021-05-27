@@ -76,11 +76,6 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity {
         lessonPlan.setText("Lesson Plan: " + theLessonPlan);
     }
 
-    public void notifications()
-    {
-
-    }
-
 
     public void backAcceptInfo(View v)
     {

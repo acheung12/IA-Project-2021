@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
+import com.example.iasubstituteteacher.JobsThing.AcceptedJobsInfoActivity;
 import com.example.iasubstituteteacher.JobsThing.OpenJobsInfoActivity;
 import com.example.iasubstituteteacher.R;
 
@@ -52,7 +53,7 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, OpenJobsInfoActivity.class);
+                Intent intent = new Intent(context, AcceptedJobsInfoActivity.class);
                 intent.putExtra("subject", mData.get(position).getSubject());
                 intent.putExtra("jobsID", mData.get(position).getJobsId());
                 intent.putExtra("date", mData.get(position).getDate());
