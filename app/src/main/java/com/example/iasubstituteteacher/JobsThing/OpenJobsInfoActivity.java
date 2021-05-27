@@ -131,7 +131,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
     public void declineOpenJob(View v)
     {
-        firestore.collection("Users").document(user.getUid()).get().
+        firestore.collection("Users").document(theUserUid).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                   @Override
                   public void onComplete(@NonNull Task<DocumentSnapshot> task) {

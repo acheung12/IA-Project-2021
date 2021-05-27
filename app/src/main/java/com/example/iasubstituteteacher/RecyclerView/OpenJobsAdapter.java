@@ -49,7 +49,7 @@ public class OpenJobsAdapter extends RecyclerView.Adapter<OpenJobsViewHolder>
         holder.dateText.setText("Date: " + mData.get(position).getDate());
         holder.timeText.setText("Time: "+ mData.get(position).getTime());
 
-        holder.getLayout().setOnClickListener(new View.OnClickListener() {
+        holder.getOpenJobLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

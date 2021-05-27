@@ -72,18 +72,24 @@ public class AcceptedJobsActivity extends AppCompatActivity {
                                         {
                                             AcceptedJobs theAcceptedJobs = document.toObject
                                                     (AcceptedJobs.class);
+                                            int occurance = 1;
 
                                             for (int i = 0; i < theUser.getAcceptedJobs().size();
                                                  i++)
                                             {
                                                 String acceptedJob = theUser.getAcceptedJobs().
                                                         get(i);
-                                                if (!theAcceptedJobs.isActive() && theAcceptedJobs.
+                                                if (theAcceptedJobs.isActive() && !theAcceptedJobs.
                                                         getJobsId().equals(acceptedJob))
                                                 {
-                                                    acceptedJobsList.add(theAcceptedJobs);
+                                                   occurance = 0;
                                                 }
                                             }
+                                            if (occurance == 1 && !theAcceptedJobs.isActive())
+                                            {
+                                                acceptedJobsList.add(theAcceptedJobs);
+                                            }
+                                            occurance = 1;
                                         }
                                         helperMethod(acceptedJobsList);
                                     }

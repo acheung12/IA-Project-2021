@@ -70,22 +70,29 @@ public class OpenJobsActivity extends AppCompatActivity {
                                         {
                                             OpenJobs theOpenJobs = document.toObject
                                                     (OpenJobs.class);
+                                            int occurance = 1;
+
                                             for (int i = 0; i < theUser.getDeclinedJobs().size();
                                                  i++)
                                             {
                                                 String declinedJob = theUser.getDeclinedJobs().
                                                         get(i);
-                                                if (theOpenJobs.isActive() && !theOpenJobs.
+                                                if (theOpenJobs.isActive() && theOpenJobs.
                                                         getJobsId().equals(declinedJob))
                                                 {
-                                                    openJobsList.add(theOpenJobs);
+                                                    occurance = 0;
                                                 }
                                             }
                                             if (theOpenJobs.isActive() && theUser.getDeclinedJobs()
                                                     .isEmpty())
                                             {
+                                                occurance = 1;
+                                            }
+                                            if (occurance == 1 && theOpenJobs.isActive())
+                                            {
                                                 openJobsList.add(theOpenJobs);
                                             }
+                                            occurance = 1;
                                         }
                                         helperMethod(openJobsList);
                                     }

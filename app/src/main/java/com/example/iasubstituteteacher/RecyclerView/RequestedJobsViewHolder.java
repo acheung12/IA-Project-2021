@@ -15,7 +15,7 @@ public class RequestedJobsViewHolder extends RecyclerView.ViewHolder
     protected TextView dateText;
     protected TextView timeText;
 
-    protected ConstraintLayout layout;
+    protected ConstraintLayout requestedJobLayout;
 
     public RequestedJobsViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,7 +24,7 @@ public class RequestedJobsViewHolder extends RecyclerView.ViewHolder
         dateText = itemView.findViewById(R.id.dateRowView);
         timeText = itemView.findViewById(R.id.timeRowView);
 
-        this.layout = itemView.findViewById(R.id.requestedJob_parent_layout);
+        this.requestedJobLayout = itemView.findViewById(R.id.requestedJob_parent_layout);
     }
 
     public TextView getSubjectText() {
@@ -39,7 +39,7 @@ public class RequestedJobsViewHolder extends RecyclerView.ViewHolder
         return timeText;
     }
 
-    public ConstraintLayout getLayout() {
-        return layout;
+    public ConstraintLayout getRequestedJobLayout() {
+        return requestedJobLayout;
     }
 }

@@ -15,16 +15,16 @@ public class AcceptedJobsViewHolder extends RecyclerView.ViewHolder
     protected TextView dateText;
     protected TextView timeText;
 
-    protected ConstraintLayout layout;
+    protected ConstraintLayout acceptedJobLayout;
 
     public AcceptedJobsViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        subjectText = itemView.findViewById(R.id.subjectedRowText);
-        dateText = itemView.findViewById(R.id.dateRowView);
+        subjectText = itemView.findViewById(R.id.subjectRowText);
+        dateText = itemView.findViewById(R.id.dateRowText);
         timeText = itemView.findViewById(R.id.timeRowText);
 
-        this.layout = itemView.findViewById(R.id.acceptedJob_parent_layout);
+        this.acceptedJobLayout = itemView.findViewById(R.id.acceptedJob_parent_layout);
     }
 
     public TextView getSubjectText() {
@@ -39,7 +39,7 @@ public class AcceptedJobsViewHolder extends RecyclerView.ViewHolder
         return timeText;
     }
 
-    public ConstraintLayout getLayout() {
-        return layout;
+    public ConstraintLayout getAcceptedJobLayout() {
+        return acceptedJobLayout;
     }
 }

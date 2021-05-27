@@ -46,9 +46,9 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
 
         holder.subjectText.setText(mData.get(position).getSubject());
         holder.dateText.setText("Date: " + mData.get(position).getDate());
-        holder.timeText.setText("Time: " +mData.get(position).getTime());
+        holder.timeText.setText("Time: " + mData.get(position).getTime());
 
-        holder.getLayout().setOnClickListener(new View.OnClickListener() {
+        holder.getAcceptedJobLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

@@ -53,7 +53,7 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
         holder.dateText.setText("Date: " + mData.get(position).getDate());
         holder.timeText.setText("Time: " +mData.get(position).getTime());
 
-        holder.getLayout().setOnClickListener(new View.OnClickListener() {
+        holder.getRequestedJobLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
