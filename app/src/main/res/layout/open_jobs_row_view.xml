@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/parent_layout"
+            android:id="@+id/openJob_parent_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

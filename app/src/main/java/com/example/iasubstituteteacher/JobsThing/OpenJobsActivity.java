@@ -42,7 +42,7 @@ public class OpenJobsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
-        recView = findViewById(R.id.recView);
+        recView = findViewById(R.id.requestedJobRecView);
 
         openJobsList = new ArrayList<OpenJobs>();
 

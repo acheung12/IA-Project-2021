@@ -24,7 +24,7 @@ public class OpenJobsViewHolder extends RecyclerView.ViewHolder
         dateText = itemView.findViewById(R.id.dateText);
         timeText = itemView.findViewById(R.id.timeText);
 
-        this.layout = itemView.findViewById(R.id.parent_layout);
+        this.layout = itemView.findViewById(R.id.openJob_parent_layout);
     }
 
     public TextView getSubjectText() {

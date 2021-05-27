@@ -6,4 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".JobsThing.AcceptedJobsActivity">
 
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="272dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
+        android:onClick="backButton"
+        android:text="Back"
+        app:backgroundTint="#f85f6a"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/acceptedJobRecView" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accepted Jobs"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/acceptedJobRecView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/acceptedJobRecView"
+        android:layout_width="384dp"
+        android:layout_height="397dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

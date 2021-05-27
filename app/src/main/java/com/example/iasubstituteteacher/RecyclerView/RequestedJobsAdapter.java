@@ -32,8 +32,8 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
     @Override
     public RequestedJobsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.requested_jobs_row_view,
-                parent, false);
+        View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.
+                        requested_jobs_row_view, parent, false);
 
         RequestedJobsViewHolder holder = new RequestedJobsViewHolder(myView);
 

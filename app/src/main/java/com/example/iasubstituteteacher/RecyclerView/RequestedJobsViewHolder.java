@@ -23,6 +23,8 @@ public class RequestedJobsViewHolder extends RecyclerView.ViewHolder
         subjectText = itemView.findViewById(R.id.subjectRowView);
         dateText = itemView.findViewById(R.id.dateRowView);
         timeText = itemView.findViewById(R.id.timeRowView);
+
+        this.layout = itemView.findViewById(R.id.requestedJob_parent_layout);
     }
 
     public TextView getSubjectText() {

@@ -9,10 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
-import com.example.iasubstituteteacher.RecyclerView.OpenJobsAdapter;
 import com.example.iasubstituteteacher.RecyclerView.RequestedJobsAdapter;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
 import com.example.iasubstituteteacher.Users.User;
@@ -44,7 +42,7 @@ public class RequestedJobsActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
-        recView = findViewById(R.id.recView);
+        recView = findViewById(R.id.requestedJobRecView);
 
         requestedJobsList = new ArrayList<RequestedJobs>();
 
@@ -53,36 +51,22 @@ public class RequestedJobsActivity extends AppCompatActivity {
 
     public void getAndPopulateData()
     {
-        firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firestore.collection("Jobs/Jobs/Requested Jobs").get().
+                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful())
                         {
-                            DocumentSnapshot ds = task.getResult();
-                            User theUser = ds.toObject(User.class);
-
-                            firestore.collection("Jobs/Jobs/Requested Jobs").get().
-                                    addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                            if (task.isSuccessful())
-                                            {
-                                                for (DocumentSnapshot document : task.getResult().
-                                                        getDocuments())
-                                                {
-                                                    RequestedJobs theRequestedJobs = document.
-                                                            toObject(RequestedJobs.class);
-                                                    if (!theRequestedJobs.isActive() &&
-                                                            !theRequestedJobs.isChoice())
-                                                    {
-                                                        requestedJobsList.add(theRequestedJobs);
-                                                    }
-                                                }
-                                                helperMethod(requestedJobsList);
-                                            }
-                                        }
-                                    });
+                            for (DocumentSnapshot document : task.getResult().getDocuments())
+                            {
+                                RequestedJobs theRequestedJobs = document.
+                                        toObject(RequestedJobs.class);
+                                if (!theRequestedJobs.isActive() && !theRequestedJobs.isChoice())
+                                {
+                                    requestedJobsList.add(theRequestedJobs);
+                                }
+                            }
+                            helperMethod(requestedJobsList);
                         }
                     }
                 });

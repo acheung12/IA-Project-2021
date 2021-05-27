@@ -14,7 +14,7 @@
         android:text="Requested Jobs"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recView"
+        app:layout_constraintBottom_toTopOf="@+id/requestedJobRecView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,19 +31,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recView" />
+        app:layout_constraintTop_toBottomOf="@+id/requestedJobRecView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recView"
+        android:id="@+id/requestedJobRecView"
         android:layout_width="384dp"
         android:layout_height="397dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="152dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
