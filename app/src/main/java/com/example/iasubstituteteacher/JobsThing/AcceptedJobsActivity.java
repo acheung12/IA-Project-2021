@@ -103,7 +103,7 @@ public class AcceptedJobsActivity extends AppCompatActivity {
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void backButton(View v)
+    public void backAcceptActivity(View v)
     {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);

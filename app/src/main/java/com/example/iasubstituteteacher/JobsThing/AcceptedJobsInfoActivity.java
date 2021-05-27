@@ -82,7 +82,7 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity {
     }
 
 
-    public void backButton(View v)
+    public void backAcceptInfo(View v)
     {
         Intent intent = new Intent(this, AcceptedJobsActivity.class);
         startActivity(intent);

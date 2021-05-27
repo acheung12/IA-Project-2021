@@ -105,7 +105,7 @@ public class OpenJobsActivity extends AppCompatActivity {
     }
 
 
-    public void backButton(View v)
+    public void backOpenActivity(View v)
     {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);

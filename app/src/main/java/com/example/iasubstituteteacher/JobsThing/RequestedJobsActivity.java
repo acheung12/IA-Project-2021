@@ -61,7 +61,8 @@ public class RequestedJobsActivity extends AppCompatActivity {
                             {
                                 RequestedJobs theRequestedJobs = document.
                                         toObject(RequestedJobs.class);
-                                if (!theRequestedJobs.isActive() && !theRequestedJobs.isChoice())
+                                if (theRequestedJobs.isActive() == false &&
+                                        theRequestedJobs.isChoice() == false)
                                 {
                                     requestedJobsList.add(theRequestedJobs);
                                 }
@@ -80,7 +81,7 @@ public class RequestedJobsActivity extends AppCompatActivity {
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    public void backButton(View v)
+    public void backRequestActivity(View v)
     {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);

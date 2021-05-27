@@ -80,7 +80,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         lessonPlan.setText("Lesson Plan: " + theLessonPlan);
     }
 
-    public void acceptButton(View v)
+    public void acceptRequest(View v)
     {
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
@@ -110,7 +110,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void declineButton(View v)
+    public void declineRequest(View v)
     {
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
@@ -133,7 +133,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void backButton(View v)
+    public void backRequestInfo(View v)
     {
         Intent intent = new Intent(this, RequestedJobsActivity.class);
         startActivity(intent);

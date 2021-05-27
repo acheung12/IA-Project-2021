@@ -169,7 +169,7 @@ public class AddJobsActivity extends AppCompatActivity {
                 });
     }
 
-    public void backButton(View v)
+    public void backAddJob(View v)
     {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);

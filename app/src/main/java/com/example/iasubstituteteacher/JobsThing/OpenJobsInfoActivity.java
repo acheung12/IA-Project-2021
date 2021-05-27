@@ -82,7 +82,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         lessonPlan.setText("Lesson Plan: " + theLessonPlan);
     }
 
-    public void acceptButton(View v)
+    public void acceptOpenJob(View v)
     {
         firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
@@ -100,7 +100,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                         }
                     }
                 });
-        //don't forget the accepting things
+
         firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -118,6 +118,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                         }
                     }
                 });
+
         AcceptedJobs acceptedJob = new AcceptedJobs(theJobsId, theSubject, theDate, theTime,
                 theLocation, false, theLessonPlan, theUserUid, theUserEmail, user.getUid());
 
@@ -128,7 +129,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void declineButton(View v)
+    public void declineOpenJob(View v)
     {
         firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -152,7 +153,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void backButton(View v)
+    public void backOpenInfo(View v)
     {
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
