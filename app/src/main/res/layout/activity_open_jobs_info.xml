@@ -14,6 +14,7 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="72dp"
         android:layout_marginRight="72dp"
+        android:onClick="acceptButton"
         android:text="Accept"
         app:backgroundTint="#f85f6a"
         app:layout_constraintEnd_toEndOf="@+id/button16"
@@ -49,22 +50,26 @@
         android:id="@+id/openJobLocationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
         android:layout_marginTop="32dp"
         android:text="Location"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/openJobTimeText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openJobTimeText" />
 
     <TextView
         android:id="@+id/openJobTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginLeft="84dp"
         android:layout_marginTop="32dp"
         android:text="Time"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/openJobDateText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openJobDateText" />
 
     <TextView
@@ -74,9 +79,12 @@
         android:layout_marginStart="86dp"
         android:layout_marginLeft="86dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="Date"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/openJobSubjectText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openJobSubjectText" />
 
@@ -97,11 +105,13 @@
         android:id="@+id/openJobLessonPlanText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:text="Lesson Plan"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/openJobLocationText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openJobLocationText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

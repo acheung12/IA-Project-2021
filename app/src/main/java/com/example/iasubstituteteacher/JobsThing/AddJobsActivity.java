@@ -90,7 +90,8 @@ public class AddJobsActivity extends AppCompatActivity {
             String usersEmail = user.getEmail();
 
             RequestedJobs addedJob = new RequestedJobs(JobsId, subjectString, dateString,
-                    timeString, locationString, true, lessonPlanString, usersUID, usersEmail);
+                    timeString, locationString, false, lessonPlanString, usersUID,
+                    usersEmail, false);
 
             firestore.collection("Jobs").document("Jobs").collection(
                     "Requested Jobs").document(JobsId).set(addedJob);

@@ -148,8 +148,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                   }
               });
 
-
-
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
     }
