@@ -119,7 +119,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                     }
                 });
         AcceptedJobs acceptedJob = new AcceptedJobs(theJobsId, theSubject, theDate, theTime,
-                theLocation, true, theLessonPlan, theUserUid, theUserEmail, user.getUid());
+                theLocation, false, theLessonPlan, theUserUid, theUserEmail, user.getUid());
 
         firestore.collection("Jobs").document("Jobs").collection(
                 "Accepted Jobs").document(theJobsId).set(acceptedJob);

@@ -101,7 +101,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                     }
                 });
         OpenJobs openJob = new OpenJobs(theJobsId, theSubject, theDate, theTime,
-                theLocation, false, theLessonPlan, theUserUid, theUserEmail);
+                theLocation, true, theLessonPlan, theUserUid, theUserEmail);
 
         firestore.collection("Jobs").document("Jobs").collection(
                 "Open Jobs").document(theJobsId).set(openJob);
