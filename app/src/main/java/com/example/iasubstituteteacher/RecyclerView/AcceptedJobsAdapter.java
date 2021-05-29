@@ -54,16 +54,16 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, AcceptedJobsInfoActivity.class);
-                intent.putExtra("subject", mData.get(position).getSubject());
-                intent.putExtra("jobsID", mData.get(position).getJobsId());
-                intent.putExtra("date", mData.get(position).getDate());
-                intent.putExtra("time", mData.get(position).getTime());
-                intent.putExtra("location", mData.get(position).getLocation());
-                intent.putExtra("active", stringActive);
-                intent.putExtra("lessonPlan", mData.get(position).getLessonPlan());
-                intent.putExtra("usersEmail", mData.get(position).getUsersEmail());
-                intent.putExtra("usersID", mData.get(position).getUserId());
-                intent.putExtra("acceptorsEmail", mData.get(position).getAcceptorsEmail());
+                intent.putExtra("acceptSubject", mData.get(position).getSubject());
+                intent.putExtra("acceptJobsID", mData.get(position).getJobsId());
+                intent.putExtra("acceptDate", mData.get(position).getDate());
+                intent.putExtra("acceptTime", mData.get(position).getTime());
+                intent.putExtra("acceptLocation", mData.get(position).getLocation());
+                intent.putExtra("acceptActive", stringActive);
+                intent.putExtra("acceptLessonPlan", mData.get(position).getLessonPlan());
+                intent.putExtra("acceptUsersEmail", mData.get(position).getUsersEmail());
+                intent.putExtra("acceptUsersID", mData.get(position).getUserId());
+                intent.putExtra("acceptAcceptorsEmail", mData.get(position).getAcceptorsEmail());
 
                 context.startActivity(intent);
             }

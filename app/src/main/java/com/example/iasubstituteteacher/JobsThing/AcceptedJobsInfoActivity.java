@@ -47,22 +47,22 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity {
         user = auth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
 
-        subject = findViewById(R.id.openJobSubjectText);
-        date = findViewById(R.id.openJobDateText);
-        time = findViewById(R.id.openJobTimeText);
-        location = findViewById(R.id.openJobLocationText);
-        lessonPlan = findViewById(R.id.openJobLessonPlanText);
+        subject = findViewById(R.id.acceptedJobSubjectText);
+        date = findViewById(R.id.acceptedJobDateText);
+        time = findViewById(R.id.acceptedJobTimeText);
+        location = findViewById(R.id.acceptedJobLocationText);
+        lessonPlan = findViewById(R.id.acceptedJobLessonPlanText);
 
-        theActive = getIntent().getStringExtra("active");
-        theSubject = getIntent().getStringExtra("subject");
-        theDate = getIntent().getStringExtra("date");
-        theTime = getIntent().getStringExtra("time");
-        theLocation = getIntent().getStringExtra("location");
-        theLessonPlan = getIntent().getStringExtra("lessonPlan");
-        theUserEmail = getIntent().getStringExtra("usersEmail");
-        theUserUid = getIntent().getStringExtra("usersID");
-        theJobsId = getIntent().getStringExtra("jobsID");
-        theAcceptorsEmail = getIntent().getStringExtra("acceptorsEmail");
+        theActive = getIntent().getStringExtra("acceptActive");
+        theSubject = getIntent().getStringExtra("acceptSubject");
+        theDate = getIntent().getStringExtra("acceptDate");
+        theTime = getIntent().getStringExtra("acceptTime");
+        theLocation = getIntent().getStringExtra("acceptLocation");
+        theLessonPlan = getIntent().getStringExtra("acceptLessonPlan");
+        theUserEmail = getIntent().getStringExtra("acceptUsersEmail");
+        theUserUid = getIntent().getStringExtra("acceptUsersID");
+        theJobsId = getIntent().getStringExtra("acceptJobsID");
+        theAcceptorsEmail = getIntent().getStringExtra("acceptAcceptorsEmail");
 
         setUpButtons();
     }

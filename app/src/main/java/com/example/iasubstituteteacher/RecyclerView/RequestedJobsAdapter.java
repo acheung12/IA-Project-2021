@@ -59,16 +59,16 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, RequestedJobsInfoActivity.class);
-                intent.putExtra("subject", mData.get(position).getSubject());
-                intent.putExtra("jobsID", mData.get(position).getJobsId());
-                intent.putExtra("date", mData.get(position).getDate());
-                intent.putExtra("time", mData.get(position).getTime());
-                intent.putExtra("location", mData.get(position).getLocation());
-                intent.putExtra("active", stringActive);
-                intent.putExtra("lessonPlan", mData.get(position).getLessonPlan());
-                intent.putExtra("usersEmail", mData.get(position).getUsersEmail());
-                intent.putExtra("usersID", mData.get(position).getUserId());
-                intent.putExtra("choice", stringChoice);
+                intent.putExtra("requestSubject", mData.get(position).getSubject());
+                intent.putExtra("requestJobsID", mData.get(position).getJobsId());
+                intent.putExtra("requestDate", mData.get(position).getDate());
+                intent.putExtra("requestTime", mData.get(position).getTime());
+                intent.putExtra("requestLocation", mData.get(position).getLocation());
+                intent.putExtra("requestActive", stringActive);
+                intent.putExtra("requestLessonPlan", mData.get(position).getLessonPlan());
+                intent.putExtra("requestUsersEmail", mData.get(position).getUsersEmail());
+                intent.putExtra("requestUsersID", mData.get(position).getUserId());
+                intent.putExtra("requestChoice", stringChoice);
 
                 context.startActivity(intent);
             }

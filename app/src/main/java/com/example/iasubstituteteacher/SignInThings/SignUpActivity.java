@@ -34,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     private EditText emailField;
     private EditText passwordField;
     private EditText username;
+    private EditText adminCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         emailField = findViewById(R.id.editTextEmail);
         passwordField = findViewById(R.id.editTextPassword);
         username = findViewById(R.id.editTextUsername);
+        adminCode = findViewById(R.id.adminCode);
 
         Spinner spinner = findViewById(R.id.userSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -66,8 +68,9 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         final String usernameString = username.getText().toString();
         final String emailString = emailField.getText().toString();
         String passwordString = passwordField.getText().toString();
+        String adminCodeString = adminCode.getText().toString();
 
-        if (emailString.contains("@"))
+        if (emailString.contains("@") && !selected.equals("Admin"))
         {
             mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener
                     (this, new OnCompleteListener<AuthResult>()
@@ -88,6 +91,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                 acceptedJobs, declinedJobs);
                         firestore.collection("Users").document(userUID).
                                 set(currentUser);
+                        Toast.makeText(SignUpActivity.this, "Successfully " +
+                                "signed up", Toast.LENGTH_SHORT).show();
                     }
                     else if (task.isSuccessful() && usernameString.equals(""))
                     {
@@ -106,6 +111,53 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                     }
                 }
             });
+        }
+        else if (emailString.contains("@") && selected.equals("Admin"))
+        {
+            if (adminCodeString.equals("CIS2021"))
+            {
+                mAuth.createUserWithEmailAndPassword(emailString, passwordString).
+                        addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful() && !usernameString.equals("")) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+
+                                String userUID = user.getUid();
+                                ArrayList<String> acceptedJobs = new ArrayList<>();
+                                ArrayList<String> declinedJobs = new ArrayList<>();
+
+                                User currentUser = new User(userUID, usernameString, emailString,
+                                        selected, acceptedJobs, declinedJobs);
+                                firestore.collection("Users").document(userUID).
+                                        set(currentUser);
+                                Toast.makeText(SignUpActivity.this, "Successfully " +
+                                        "signed up", Toast.LENGTH_SHORT).show();
+                            }
+                            else if (task.isSuccessful() && usernameString.equals(""))
+                            {
+                                Toast.makeText(SignUpActivity.this, "Please enter your"
+                                        + " username", Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                                task.isCanceled();
+                            }
+                            else {
+                                Log.w("SIGN UP", "Unable to sign up for the user",
+                                        task.getException());
+                                Toast.makeText(SignUpActivity.this, "Authentication" +
+                                                " failed", Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            }
+                        }
+                    });
+            }
+            else if (!adminCodeString.equals("CIS2021"))
+            {
+                Toast.makeText(SignUpActivity.this, "Please input an appropriate code",
+                        Toast.LENGTH_SHORT).show();
+                updateUI(null);
+            }
         }
         else
         {

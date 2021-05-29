@@ -56,10 +56,10 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/openJobDateText2" />
+        app:layout_constraintTop_toBottomOf="@+id/acceptedJobDateText" />
 
     <TextView
-        android:id="@+id/openJobDateText2"
+        android:id="@+id/acceptedJobDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="86dp"

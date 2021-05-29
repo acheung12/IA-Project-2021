@@ -54,15 +54,15 @@ public class OpenJobsAdapter extends RecyclerView.Adapter<OpenJobsViewHolder>
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, OpenJobsInfoActivity.class);
-                intent.putExtra("subject", mData.get(position).getSubject());
-                intent.putExtra("jobsID", mData.get(position).getJobsId());
-                intent.putExtra("date", mData.get(position).getDate());
-                intent.putExtra("time", mData.get(position).getTime());
-                intent.putExtra("location", mData.get(position).getLocation());
-                intent.putExtra("active", stringActive);
-                intent.putExtra("lessonPlan", mData.get(position).getLessonPlan());
-                intent.putExtra("usersEmail", mData.get(position).getUsersEmail());
-                intent.putExtra("usersID", mData.get(position).getUserId());
+                intent.putExtra("openSubject", mData.get(position).getSubject());
+                intent.putExtra("openJobsID", mData.get(position).getJobsId());
+                intent.putExtra("openDate", mData.get(position).getDate());
+                intent.putExtra("openTime", mData.get(position).getTime());
+                intent.putExtra("openLocation", mData.get(position).getLocation());
+                intent.putExtra("openActive", stringActive);
+                intent.putExtra("openLessonPlan", mData.get(position).getLessonPlan());
+                intent.putExtra("openUsersEmail", mData.get(position).getUsersEmail());
+                intent.putExtra("openUsersID", mData.get(position).getUserId());
 
                 context.startActivity(intent);
             }

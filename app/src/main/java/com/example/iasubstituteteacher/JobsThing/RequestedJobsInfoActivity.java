@@ -58,15 +58,15 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         location = findViewById(R.id.requestedJobLocationText);
         lessonPlan = findViewById(R.id.requestedJobLessonPlanText);
 
-        theActive = getIntent().getStringExtra("active");
-        theSubject = getIntent().getStringExtra("subject");
-        theDate = getIntent().getStringExtra("date");
-        theTime = getIntent().getStringExtra("time");
-        theLocation = getIntent().getStringExtra("location");
-        theLessonPlan = getIntent().getStringExtra("lessonPlan");
-        theUserEmail = getIntent().getStringExtra("usersEmail");
-        theUserUid = getIntent().getStringExtra("usersID");
-        theJobsId = getIntent().getStringExtra("jobsID");
+        theActive = getIntent().getStringExtra("requestActive");
+        theSubject = getIntent().getStringExtra("requestSubject");
+        theDate = getIntent().getStringExtra("requestDate");
+        theTime = getIntent().getStringExtra("requestTime");
+        theLocation = getIntent().getStringExtra("requestLocation");
+        theLessonPlan = getIntent().getStringExtra("requestLessonPlan");
+        theUserEmail = getIntent().getStringExtra("requestUsersEmail");
+        theUserUid = getIntent().getStringExtra("requestUsersID");
+        theJobsId = getIntent().getStringExtra("requestJobsID");
 
         setUpButtons();
     }
