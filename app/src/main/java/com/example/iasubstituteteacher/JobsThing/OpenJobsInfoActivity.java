@@ -1,17 +1,23 @@
 package com.example.iasubstituteteacher.JobsThing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
+import com.example.iasubstituteteacher.Notifications;
 import com.example.iasubstituteteacher.R;
-import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
 import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +28,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 
 public class OpenJobsInfoActivity extends AppCompatActivity {
 
@@ -34,6 +51,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
     private TextView time;
     private TextView location;
     private TextView lessonPlan;
+    private Button acceptButton;
 
     private String theActive;
     private String theSubject;
@@ -44,6 +62,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
     private String theUserEmail;
     private String theUserUid;
     private String theJobsId;
+
+    private NotificationManagerCompat notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +90,14 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         theUserUid = getIntent().getStringExtra("openUsersID");
         theJobsId = getIntent().getStringExtra("openJobsID");
 
+        acceptButton = findViewById(R.id.openJobInfoAcceptButton);
+        notificationManager = NotificationManagerCompat.from(this);
+
         setUpButtons();
+        sendEmailNotification();
     }
+
+
 
     public void setUpButtons()
     {
@@ -126,8 +152,13 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         firestore.collection("Jobs").document("Jobs").collection(
                 "Accepted Jobs").document(theJobsId).set(acceptedJob);
 
+        //sendEmailNotification();
+
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
+
+        Toast.makeText(OpenJobsInfoActivity.this, "Job has successfully been accepted",
+                Toast.LENGTH_SHORT).show();
     }
 
     public void declineOpenJob(View v)
@@ -153,6 +184,91 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
     }
+
+    public void sendEmailNotification()
+    {
+        firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful())
+                        {
+                            for (DocumentSnapshot document : task.getResult().getDocuments())
+                            {
+                                OpenJobs theOpenJobs = document.toObject(OpenJobs.class);
+                            }
+                        }
+                    }
+                });
+
+        acceptButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String username = "substituteTeacherApp@gmail.com";
+                final String password = "CISsubstitute123";
+                String emailSubject = "Accepted Open Job";
+                String messageToSend = "Your following submitted job has been accepted: \n" +
+                        "Subject: " + theSubject + "\n" +
+                        "Date: " + theDate + "\n" +
+                        "Time: " + theTime + "\n" +
+                        "Location: " + theLocation + "\n" +
+                        "Lesson Plan: " + theLessonPlan + "\n";
+
+                Properties props = new Properties();
+                props.put("mail.smtp.auth","true");
+                props.put("mail.smtp.starttls.enable","true");
+                props.put("mail.smtp.host","smtp@gmail.com");
+                props.put("mail.smtp.port","587");
+
+                Session session = Session.getInstance(props, new javax.mail.Authenticator(){
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+                try{
+                    String OpenJobsEmail = "substituteteacherapp@gmail.com";
+
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(username));
+                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(OpenJobsEmail));
+                    message.setSubject(emailSubject);
+                    message.setText(messageToSend);
+
+                    Transport.send(message);
+                }
+                catch(MessagingException e){
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+
+    public void sendingNotifications()
+    {
+        String title = "Accepted Job";
+        String text = "";
+
+        Notification notification =  new NotificationCompat.Builder(this,
+                Notifications.CHANNEL_ID)
+                .setSmallIcon(R.drawable.notification_app_icon)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+
+        Random rand = new Random();
+        int max = 2147483647;
+        int id = rand.nextInt(max);
+
+        notificationManager.notify(id, notification);
+    }
+
 
     public void backOpenInfo(View v)
     {
