@@ -1,20 +1,19 @@
 package com.example.iasubstituteteacher.JobsThing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Selection;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.iasubstituteteacher.Jobs.Jobs;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
-import com.example.iasubstituteteacher.SignInThings.ForgotPasswordActivity;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
 import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,10 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 
-public class AddJobsActivity extends AppCompatActivity {
+public class AddJobsActivity extends AppCompatActivity implements
+        DatePickerDialog.OnDateSetListener{
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -57,12 +57,20 @@ public class AddJobsActivity extends AppCompatActivity {
         time = findViewById(R.id.addJobsTime);
         location = findViewById(R.id.addJobsLocation);
         lessonPlan = findViewById(R.id.addJobsLessonPlan);
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
     }
 
     public boolean validInfo()
     {
         String subjectString = subject.getText().toString();
         String dateString = date.getText().toString();
+
         String timeString = time.getText().toString();
         String locationString = location.getText().toString();
         String lessonPlanString = lessonPlan.getText().toString();
@@ -73,6 +81,15 @@ public class AddJobsActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private void showDatePickerDialog()
+    {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
     }
 
     public void teacher()
@@ -176,4 +193,9 @@ public class AddJobsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        String dateSet = dayOfMonth + "/" + month + "/" + year;
+        date.setText(dateSet);
+    }
 }

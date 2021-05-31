@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
-        android:hint="e.g March 31st 2021"
+        android:hint="e.g DD/MM/YEAR"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/addJobsSubject"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />

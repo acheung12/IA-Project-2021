@@ -94,7 +94,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
 
         setUpButtons();
-        sendEmailNotification();
+        //sendEmailNotification();
     }
 
 
@@ -204,7 +204,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String username = "substituteTeacherApp@gmail.com";
+                final String username = "substituteteacherapp@gmail.com";
                 final String password = "CISsubstitute123";
                 String emailSubject = "Accepted Open Job";
                 String messageToSend = "Your following submitted job has been accepted: \n" +
@@ -218,7 +218,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                 props.put("mail.smtp.auth","true");
                 props.put("mail.smtp.starttls.enable","true");
                 props.put("mail.smtp.host","smtp@gmail.com");
-                props.put("mail.smtp.port","587");
+                props.put("mail.smtp.port","465");
 
                 Session session = Session.getInstance(props, new javax.mail.Authenticator(){
                     @Override
@@ -238,6 +238,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
                     Transport.send(message);
                 }
+
                 catch(MessagingException e){
                     throw new RuntimeException(e);
                 }
