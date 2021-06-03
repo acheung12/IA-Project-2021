@@ -1,20 +1,24 @@
 package com.example.iasubstituteteacher.JobsThing;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
+import com.example.iasubstituteteacher.Users.TimePickerFragment;
 import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,8 +30,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Calendar;
 import java.util.UUID;
 
-public class AddJobsActivity extends AppCompatActivity implements
-        DatePickerDialog.OnDateSetListener{
+public class AddJobsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener
+        , DatePickerDialog.OnDateSetListener{
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -62,6 +66,14 @@ public class AddJobsActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
+            }
+        });
+
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment initialTimePicker = new TimePickerFragment();
+                initialTimePicker.show(getSupportFragmentManager(),  "time picker");
             }
         });
     }
@@ -197,5 +209,12 @@ public class AddJobsActivity extends AppCompatActivity implements
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
         String dateSet = dayOfMonth + "/" + month + "/" + year;
         date.setText(dateSet);
+    }
+
+    @Override
+    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
+        String initialTimeSet = hourOfDay + ":" + minute;
+        time.setText(initialTimeSet);
+
     }
 }
