@@ -1,19 +1,18 @@
 package com.example.iasubstituteteacher.JobsThing;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.RecyclerView.RequestedJobsAdapter;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
-import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,8 +60,8 @@ public class RequestedJobsActivity extends AppCompatActivity {
                             {
                                 RequestedJobs theRequestedJobs = document.
                                         toObject(RequestedJobs.class);
-                                if (theRequestedJobs.isActive() == false &&
-                                        theRequestedJobs.isChoice() == false)
+                                if (!theRequestedJobs.isActive() &&
+                                        !theRequestedJobs.isChoice())
                                 {
                                     requestedJobsList.add(theRequestedJobs);
                                 }
@@ -76,6 +75,16 @@ public class RequestedJobsActivity extends AppCompatActivity {
     public void helperMethod(ArrayList<RequestedJobs> r)
     {
         requestedJobsList = r;
+        RequestedJobsAdapter myAdapter = new RequestedJobsAdapter (requestedJobsList, this);
+        recView.setAdapter(myAdapter);
+        recView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void refreshRequestedActivity(View v)
+    {
+        requestedJobsList.clear();
+        getAndPopulateData();
+
         RequestedJobsAdapter myAdapter = new RequestedJobsAdapter (requestedJobsList, this);
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));

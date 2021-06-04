@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="backButton"
     tools:context=".JobsThing.RequestedJobsActivity">
 
     <TextView
@@ -22,16 +21,29 @@
 
     <Button
         android:id="@+id/button13"
-        android:layout_width="272dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="32dp"
-        android:onClick="backRequestActivity"
-        android:text="Back"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:onClick="refreshRequestedActivity"
+        android:text="Refresh"
         app:backgroundTint="#f85f6a"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/requestedJobRecView" />
+
+    <Button
+        android:id="@+id/button18"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:onClick="backRequestActivity"
+        android:text="Back"
+        app:backgroundTint="#f85f6a"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button13" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requestedJobRecView"
