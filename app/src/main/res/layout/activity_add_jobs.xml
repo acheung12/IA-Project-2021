@@ -7,10 +7,21 @@
     tools:context=".JobsThing.AddJobsActivity">
 
     <EditText
+        android:id="@+id/addJobsTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="12:00"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/addJobsTime"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <EditText
         android:id="@+id/addJobsSubject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="98dp"
         android:ems="10"
         android:hint="e.g English"
         android:inputType="textPersonName"
@@ -25,8 +36,8 @@
         android:ems="10"
         android:hint="e.g Room 301"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/addJobsTime"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintEnd_toEndOf="@+id/addJobsTime2"
+        app:layout_constraintTop_toBottomOf="@+id/TextView80" />
 
     <EditText
         android:id="@+id/addJobsDate"
@@ -45,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:ems="10"
-        android:hint="e.g 10:00 - 12:00"
+        android:hint="10:00"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/addJobsDate"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -55,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Time:"
+        android:text="Start:"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/addJobsDate"
@@ -91,8 +102,8 @@
         android:text="Location:"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/addJobsTime"
-        app:layout_constraintTop_toBottomOf="@+id/addJobsTime" />
+        app:layout_constraintEnd_toStartOf="@+id/addJobsTime2"
+        app:layout_constraintTop_toBottomOf="@+id/addJobsTime2" />
 
     <EditText
         android:id="@+id/addJobsLessonPlan"
@@ -148,5 +159,16 @@
         app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addJobsLessonPlan" />
+
+    <TextView
+        android:id="@+id/TextView80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Finish: "
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/addJobsTime"
+        app:layout_constraintTop_toBottomOf="@+id/addJobsTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

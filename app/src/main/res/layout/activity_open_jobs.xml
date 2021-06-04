@@ -7,17 +7,30 @@
     tools:context=".JobsThing.OpenJobsActivity">
 
     <Button
+        android:id="@+id/button15"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:onClick="refreshOpenActivity"
+        android:text="Refresh"
+        app:backgroundTint="#f85f6a"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestedJobRecView" />
+
+    <Button
         android:id="@+id/button12"
-        android:layout_width="272dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
         android:onClick="backOpenActivity"
         android:text="Back"
         app:backgroundTint="#f85f6a"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/requestedJobRecView" />
+        app:layout_constraintTop_toBottomOf="@+id/button15" />
 
     <TextView
         android:id="@+id/textView18"
@@ -36,9 +49,9 @@
         android:id="@+id/requestedJobRecView"
         android:layout_width="384dp"
         android:layout_height="397dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="108dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

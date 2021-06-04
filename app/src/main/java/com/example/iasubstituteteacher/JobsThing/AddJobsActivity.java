@@ -18,7 +18,7 @@ import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
-import com.example.iasubstituteteacher.Users.TimePickerFragment;
+import com.example.iasubstituteteacher.TimePickerFragment;
 import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,9 +41,15 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
 
     private EditText subject;
     private EditText date;
-    private EditText time;
+    private EditText startTime;
+    private EditText endTime;
     private EditText location;
     private EditText lessonPlan;
+
+    public final String[] tag = {""};
+
+    public static final String TIME_PICKER = "initial time picker";
+    public static final String TIME_PICKER_2 = "end time picker";
 
 
     @Override
@@ -58,9 +64,11 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
 
         subject = findViewById(R.id.addJobsSubject);
         date = findViewById(R.id.addJobsDate);
-        time = findViewById(R.id.addJobsTime);
+        startTime = findViewById(R.id.addJobsTime);
+        endTime = findViewById(R.id.addJobsTime2);
         location = findViewById(R.id.addJobsLocation);
         lessonPlan = findViewById(R.id.addJobsLessonPlan);
+
 
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +76,21 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                 showDatePickerDialog();
             }
         });
-
-        time.setOnClickListener(new View.OnClickListener() {
+        startTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment initialTimePicker = new TimePickerFragment();
-                initialTimePicker.show(getSupportFragmentManager(),  "time picker");
+                DialogFragment initialTimePicker = TimePickerFragment.instance(TIME_PICKER);
+                initialTimePicker.show(getSupportFragmentManager(), "initial time picker");
+                tag[0] = initialTimePicker.getTag();
+            }
+        });
+
+        endTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment endTimePicker = TimePickerFragment.instance(TIME_PICKER_2);
+                endTimePicker.show(getSupportFragmentManager(), "end time picker");
+                tag[0] = endTimePicker.getTag();
             }
         });
     }
@@ -83,12 +100,13 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         String subjectString = subject.getText().toString();
         String dateString = date.getText().toString();
 
-        String timeString = time.getText().toString();
+        String startTimeString = startTime.getText().toString();
+        String endTimeString = endTime.getText().toString();
         String locationString = location.getText().toString();
         String lessonPlanString = lessonPlan.getText().toString();
 
-        if (!subjectString.equals("") && !dateString.equals("") && !timeString.equals("") &&
-                !locationString.equals("") && !lessonPlanString.equals(""))
+        if (!subjectString.equals("") && !dateString.equals("") && !startTimeString.equals("") &&
+            !endTimeString.equals("") &&!locationString.equals("") && !lessonPlanString.equals(""))
         {
             return true;
         }
@@ -110,9 +128,12 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         {
             String subjectString = subject.getText().toString();
             String dateString = date.getText().toString();
-            String timeString = time.getText().toString();
+            String startTimeString = startTime.getText().toString();
+            String endTimeString = endTime.getText().toString();
             String locationString = location.getText().toString();
             String lessonPlanString = lessonPlan.getText().toString();
+
+            String timeString = startTimeString + " - " + endTimeString;
 
             String JobsId = UUID.randomUUID().toString();
             String usersUID = user.getUid();
@@ -143,10 +164,12 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         if (validInfo()) {
             String subjectString = subject.getText().toString();
             String dateString = date.getText().toString();
-            String timeString = time.getText().toString();
+            String startTimeString = startTime.getText().toString();
+            String endTimeString = endTime.getText().toString();
             String locationString = location.getText().toString();
             String lessonPlanString = lessonPlan.getText().toString();
 
+            String timeString = startTimeString + " - " + endTimeString;
             String JobsId = UUID.randomUUID().toString();
             String usersUID = user.getUid();
             String usersEmail = user.getEmail();
@@ -212,9 +235,38 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     @Override
-    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-        String initialTimeSet = hourOfDay + ":" + minute;
-        time.setText(initialTimeSet);
+    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute)
+    {
+        String timeSet = "";
+        String minuteString = String.valueOf(minute);
+        String hourString = String.valueOf(hourOfDay);
 
+        if (minute / 10 < 1)
+        {
+           minuteString = "0" + minute;
+           if (minute / 10 == 0)
+           {
+                minuteString = "00";
+           }
+
+        }
+        if (hourOfDay / 10 < 1)
+        {
+            hourString = "0" + hourOfDay;
+            if (hourOfDay / 10 == 0)
+            {
+                hourString = "00";
+            }
+        }
+            timeSet = hourString + ":" + minuteString;
+
+        if (tag[0].equals("initial time picker"))
+        {
+            startTime.setText(timeSet);
+        }
+        else
+        {
+            endTime.setText(timeSet);
+        }
     }
 }

@@ -1,13 +1,13 @@
 package com.example.iasubstituteteacher.JobsThing;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.R;
@@ -111,6 +111,15 @@ public class OpenJobsActivity extends AppCompatActivity {
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    public void refreshOpenActivity(View v)
+    {
+        openJobsList.clear();
+        getAndPopulateData();
+
+        OpenJobsAdapter myAdapter = new OpenJobsAdapter (openJobsList, this);
+        recView.setAdapter(myAdapter);
+        recView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
     public void backOpenActivity(View v)
     {
