@@ -238,27 +238,40 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute)
     {
         String timeSet = "";
+        String dayOrNight = "";
+
+        if (hourOfDay > 12)
+        {
+            hourOfDay = hourOfDay - 12;
+            dayOrNight = "PM";
+        }
+        else if (hourOfDay == 0)
+        {
+            hourOfDay = hourOfDay + 12;
+            dayOrNight = "AM";
+        }
+        else if (hourOfDay == 12)
+        {
+            dayOrNight = "PM";
+        }
+        else
+        {
+            dayOrNight = "AM";
+        }
+
         String minuteString = String.valueOf(minute);
         String hourString = String.valueOf(hourOfDay);
 
         if (minute / 10 < 1)
         {
            minuteString = "0" + minute;
-           if (minute / 10 == 0)
-           {
-                minuteString = "00";
-           }
-
         }
         if (hourOfDay / 10 < 1)
         {
             hourString = "0" + hourOfDay;
-            if (hourOfDay / 10 == 0)
-            {
-                hourString = "00";
-            }
         }
-            timeSet = hourString + ":" + minuteString;
+
+        timeSet = hourString + ":" + minuteString + " " + dayOrNight;
 
         if (tag[0].equals("initial time picker"))
         {

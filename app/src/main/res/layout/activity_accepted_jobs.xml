@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/button17"
-        android:layout_width="272dp"
-        android:layout_height="51dp"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
         android:layout_marginTop="32dp"
         android:onClick="backAcceptActivity"
         android:text="Back"

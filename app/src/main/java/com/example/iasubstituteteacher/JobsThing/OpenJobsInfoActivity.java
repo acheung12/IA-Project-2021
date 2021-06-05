@@ -94,7 +94,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         notificationManager = NotificationManagerCompat.from(this);
 
         setUpButtons();
-        //sendEmailNotification();
     }
 
 
@@ -152,7 +151,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         firestore.collection("Jobs").document("Jobs").collection(
                 "Accepted Jobs").document(theJobsId).set(acceptedJob);
 
-        //sendEmailNotification();
+        sendingNotifications();
 
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
@@ -251,12 +250,16 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
     public void sendingNotifications()
     {
-        String title = "Accepted Job";
-        String text = "";
+        String title = "Accepted Open Job";
+        String text = "Subject: " + theSubject + "\n" +
+                "Date: " + theDate + "\n" +
+                "Time: " + theTime + "\n" +
+                "Location: " + theLocation + "\n" +
+                "Lesson Plan: " + theLessonPlan;
 
         Notification notification =  new NotificationCompat.Builder(this,
                 Notifications.CHANNEL_ID)
-                .setSmallIcon(R.drawable.notification_app_icon)
+                .setSmallIcon(R.drawable.cis_logo)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
