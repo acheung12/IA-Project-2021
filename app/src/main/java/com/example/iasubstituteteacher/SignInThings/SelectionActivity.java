@@ -1,14 +1,13 @@
 package com.example.iasubstituteteacher.SignInThings;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.iasubstituteteacher.Jobs.RequestedJobs;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iasubstituteteacher.JobsThing.AcceptedJobsActivity;
 import com.example.iasubstituteteacher.JobsThing.AddJobsActivity;
 import com.example.iasubstituteteacher.JobsThing.OpenJobsActivity;
@@ -21,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class SelectionActivity extends AppCompatActivity
 {

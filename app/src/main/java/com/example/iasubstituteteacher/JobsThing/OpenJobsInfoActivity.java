@@ -1,6 +1,9 @@
 package com.example.iasubstituteteacher.JobsThing;
 
+import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -27,7 +30,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Properties;
 import java.util.Random;
 
@@ -121,6 +126,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                                 theOpenJobs.setActive(false);
                                 firestore.collection("Jobs/Jobs/Open Jobs").document(
                                         theJobsId).set(theOpenJobs);
+
                             }
                         }
                     }
@@ -271,6 +277,42 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         int id = rand.nextInt(max);
 
         notificationManager.notify(id, notification);
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("d/M/yyyy");
+        String date = dateFormatter.format(c.getTime());
+        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm a");
+        String time = timeFormatter.format(c.getTime());
+
+        String ampm = time.substring(Math.max(time.length() - 2, 0));
+
+        if (ampm.equals("am"))
+        {
+            ampm = "AM";
+        }
+        else if (ampm.equals("pm"))
+        {
+            ampm = "PM";
+        }
+        time = time.substring(0, time.length() - 2);
+        time += ampm;
+
+        String[] startTime = theTime.split(" - ");
+        if (theDate.equals(date))
+        {
+            if (startTime[0].equals(time))
+            {
+                notificationManager.notify(id, notification);
+            }
+        }
+
+    }
+
+    private void startAlarm(Calendar c)
+    {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, OpenJobsActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
     }
 
 

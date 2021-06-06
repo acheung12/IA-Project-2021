@@ -3,16 +3,20 @@
     package="com.example.iasubstituteteacher">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name = ".Notifications"
+        android:name=".Notifications"
         android:allowBackup="true"
         android:icon="@mipmap/ic_notification"
         android:label="Substitute Teacher"
         android:roundIcon="@mipmap/ic_notification"
         android:supportsRtl="true"
         android:theme="@style/Theme.IASubstituteTeacher">
-        <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_notification" />
+
         <activity android:name=".SignInThings.ForgotPasswordActivity" />
         <activity android:name=".JobsThing.AcceptedJobsInfoActivity" />
         <activity android:name=".JobsThing.AcceptedJobsActivity" />

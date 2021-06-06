@@ -1,20 +1,17 @@
 package com.example.iasubstituteteacher.JobsThing;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
 import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
-import com.example.iasubstituteteacher.Jobs.OpenJobs;
-import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.RecyclerView.AcceptedJobsAdapter;
-import com.example.iasubstituteteacher.RecyclerView.RequestedJobsAdapter;
 import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
 import com.example.iasubstituteteacher.Users.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,35 +59,31 @@ public class AcceptedJobsActivity extends AppCompatActivity {
                     {
                         DocumentSnapshot ds = task.getResult();
                         User theUser = ds.toObject(User.class);
+
                         firestore.collection("Jobs/Jobs/Accepted Jobs").get().
                             addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        for (DocumentSnapshot document : task.getResult().
-                                                getDocuments())
+                                    if (task.isSuccessful())
+                                    {
+                                        for (int i = 0; i < theUser.getAcceptedJobs().size();
+                                             i++)
                                         {
-                                            AcceptedJobs theAcceptedJobs = document.toObject
-                                                    (AcceptedJobs.class);
-                                            int occurance = 1;
-
-                                            for (int i = 0; i < theUser.getAcceptedJobs().size();
-                                                 i++)
+                                            String acceptedJob = theUser.getAcceptedJobs().
+                                                    get(i);
+                                            for (DocumentSnapshot document : task.getResult().
+                                                getDocuments())
                                             {
-                                                String acceptedJob = theUser.getAcceptedJobs().
-                                                        get(i);
-                                                if (theAcceptedJobs.isActive() && !theAcceptedJobs.
-                                                        getJobsId().equals(acceptedJob))
+                                                AcceptedJobs theAcceptedJobs = document.toObject
+                                                    (AcceptedJobs.class);
+
+                                                if (theAcceptedJobs.getJobsId().equals(acceptedJob))
                                                 {
-                                                   occurance = 0;
+                                                    acceptedJobsList.add(theAcceptedJobs);
                                                 }
                                             }
-                                            if (occurance == 1 && !theAcceptedJobs.isActive())
-                                            {
-                                                acceptedJobsList.add(theAcceptedJobs);
-                                            }
-                                            occurance = 1;
                                         }
+                                        uniquefy(acceptedJobsList);
                                         helperMethod(acceptedJobsList);
                                     }
                                 }
@@ -100,6 +93,21 @@ public class AcceptedJobsActivity extends AppCompatActivity {
             });
     }
 
+
+
+    public static <T> ArrayList<T> uniquefy(ArrayList<T> myList) {
+
+        ArrayList <T> uniqueArrayList = new ArrayList<T>();
+        for (int i = 0; i < myList.size(); i++)
+        {
+            if (!uniqueArrayList.contains(myList.get(i)))
+            {
+                uniqueArrayList.add(myList.get(i));
+            }
+        }
+
+        return uniqueArrayList;
+    }
 
     public void helperMethod(ArrayList<AcceptedJobs> a)
     {
