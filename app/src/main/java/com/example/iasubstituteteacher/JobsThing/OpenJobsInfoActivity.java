@@ -30,9 +30,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
@@ -123,10 +125,11 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                             for (DocumentSnapshot document : task.getResult().getDocuments())
                             {
                                 OpenJobs theOpenJobs = document.toObject(OpenJobs.class);
-                                theOpenJobs.setActive(false);
+//                                theOpenJobs.setActive(false);
+//                                firestore.collection("Jobs/Jobs/Open Jobs").document(
+//                                        theJobsId).set(theOpenJobs);
                                 firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                        theJobsId).set(theOpenJobs);
-
+                                        theJobsId).delete();
                             }
                         }
                     }
@@ -278,34 +281,27 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
         notificationManager.notify(id, notification);
 
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("d/M/yyyy");
-        String date = dateFormatter.format(c.getTime());
-        SimpleDateFormat timeFormatter = new SimpleDateFormat("hh:mm a");
-        String time = timeFormatter.format(c.getTime());
-
-        String ampm = time.substring(Math.max(time.length() - 2, 0));
-
-        if (ampm.equals("am"))
-        {
-            ampm = "AM";
-        }
-        else if (ampm.equals("pm"))
-        {
-            ampm = "PM";
-        }
-        time = time.substring(0, time.length() - 2);
-        time += ampm;
-
+        DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
+        String dateString = dateFormat.format(new Date());
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String timeString = timeFormat.format(new Date());
         String[] startTime = theTime.split(" - ");
-        if (theDate.equals(date))
-        {
-            if (startTime[0].equals(time))
-            {
-                notificationManager.notify(id, notification);
-            }
-        }
 
+        System.out.println("Current date: " + dateString);
+        System.out.println("Start date: " +theDate);
+        System.out.println("Current time: " + timeString);
+        System.out.println("Start time: " + startTime[0]);
+
+        title = "Your Job has started";
+        Notification notification2 =  new NotificationCompat.Builder(this,
+                Notifications.CHANNEL_ID)
+                .setSmallIcon(R.drawable.cis_logo)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        notificationManager.notify(id, notification2);
     }
 
     private void startAlarm(Calendar c)

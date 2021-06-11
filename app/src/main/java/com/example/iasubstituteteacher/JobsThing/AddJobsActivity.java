@@ -230,6 +230,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        month++;
         String dateSet = dayOfMonth + "/" + month + "/" + year;
         date.setText(dateSet);
     }

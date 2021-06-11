@@ -21,7 +21,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 
 public class RequestedJobsActivity extends AppCompatActivity {
 
@@ -50,6 +54,24 @@ public class RequestedJobsActivity extends AppCompatActivity {
 
     public void getAndPopulateData()
     {
+        DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
+        String dateString = dateFormat.format(new Date());
+        String[] calendarDateString = dateString.split("/");
+        String currentDay = calendarDateString[0];
+        String currentMonth = calendarDateString[1];
+        String currentYear = calendarDateString[2];
+
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String timeString = timeFormat.format(new Date());
+        String[] calendarTimeString = timeString.split(":");
+        String currentHour = calendarTimeString[0];
+        String[] afterHour = calendarTimeString[1].split(" ");
+        String currentMinute = afterHour[0];
+        String currentAmPm = afterHour[1];
+
+        final String[] theDate = {""};
+        final String[] theTime = {""};
+
         firestore.collection("Jobs/Jobs/Requested Jobs").get().
                 addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -65,11 +87,157 @@ public class RequestedJobsActivity extends AppCompatActivity {
                                 {
                                     requestedJobsList.add(theRequestedJobs);
                                 }
+
+                                theDate[0] = theRequestedJobs.getDate();
+                                String[] splittingDay = theDate[0].split("/");
+
+                                String openDay = splittingDay[0];
+                                String openMonth = splittingDay[1];
+                                String openYear = splittingDay[2];
+
+                                theTime[0] = theRequestedJobs.getTime();
+
+                                String[] split = theTime[0].split(" - ");
+                                String[] timeSplit = split[0].split(":");
+                                String[] afterSplit = timeSplit[1].split(" ");
+
+                                String openHour = timeSplit[0];
+                                String openMinute = afterSplit[0];
+                                String openAMPM = afterSplit[1];
+
+                                if (Integer.parseInt(openYear) == Integer.parseInt(currentYear))
+                                {
+                                    if (Integer.parseInt(openMonth) == Integer.parseInt(currentMonth))
+                                    {
+                                        if (Integer.parseInt(openDay) == Integer.parseInt(currentDay))
+                                        {
+                                            if (openAMPM.equals(currentAmPm))
+                                            {
+                                                if (Integer.parseInt(openHour) == Integer.parseInt(currentHour))
+                                                {
+                                                    if (Integer.parseInt(openMinute) <= Integer.parseInt(currentMinute))
+                                                    {
+                                                        requestedJobsList.remove(theRequestedJobs);
+                                                    }
+                                                }
+                                                else if (Integer.parseInt(openHour) < Integer.parseInt(currentHour))
+                                                {
+                                                    requestedJobsList.remove(theRequestedJobs);
+                                                }
+                                            }
+                                            else if (openAMPM.equals("AM") && currentAmPm.equals("PM"))
+                                            {
+                                                requestedJobsList.remove(theRequestedJobs);
+                                            }
+                                        }
+                                        else if (Integer.parseInt(openDay) < Integer.parseInt(currentDay))
+                                        {
+                                            requestedJobsList.remove(theRequestedJobs);
+                                        }
+                                    }
+                                    else if (Integer.parseInt(openMonth) < Integer.parseInt(currentMonth))
+                                    {
+                                        requestedJobsList.remove(theRequestedJobs);
+                                    }
+                                }
+                                else if (Integer.parseInt(openYear) < Integer.parseInt(currentYear))
+                                {
+                                    requestedJobsList.remove(theRequestedJobs);
+                                }
                             }
+                            dateAscend();
                             helperMethod(requestedJobsList);
                         }
                     }
                 });
+    }
+
+    public void dateAscend()
+    {
+        String theDate = "";
+        String theTime = "";
+        String theDate2 = "";
+        String theTime2 = "";
+
+        for (int i = 0; i < requestedJobsList.size(); i++)
+        {
+            theDate = requestedJobsList.get(i).getDate();
+            String[] splittingDay = theDate.split("/");
+
+            String openDay = splittingDay[0];
+            String openMonth = splittingDay[1];
+            String openYear = splittingDay[2];
+
+            theTime = requestedJobsList.get(i).getTime();
+
+            String[] split = theTime.split(" - ");
+            String[] timeSplit = split[0].split(":");
+            String[] afterSplit = timeSplit[1].split(" ");
+
+            String openHour = timeSplit[0];
+            String openMinute = afterSplit[0];
+            String openAMPM = afterSplit[1];
+
+            for (int j = 0; j < requestedJobsList.size(); j++)
+            {
+                theDate2 = requestedJobsList.get(j).getDate();
+                String[] splittingDay2 = theDate2.split("/");
+
+                String openDay2 = splittingDay2[0];
+                String openMonth2 = splittingDay2[1];
+                String openYear2 = splittingDay2[2];
+
+                theTime2 = requestedJobsList.get(j).getTime();
+
+                String[] split2 = theTime2.split(" - ");
+                String[] timeSplit2 = split2[0].split(":");
+                String[] afterSplit2 = timeSplit2[1].split(" ");
+
+                String openHour2 = timeSplit2[0];
+                String openMinute2 = afterSplit2[0];
+                String openAMPM2 = afterSplit2[1];
+
+                if (Integer.parseInt(openYear2) == Integer.parseInt(openYear))
+                {
+                    if (Integer.parseInt(openMonth2) == Integer.parseInt(openMonth))
+                    {
+                        if (Integer.parseInt(openDay2) == Integer.parseInt(openDay))
+                        {
+                            if (openAMPM2.equals(openAMPM))
+                            {
+                                if (Integer.parseInt(openHour2) == Integer.parseInt(openHour))
+                                {
+                                    if (Integer.parseInt(openMinute2) < Integer.parseInt(openMinute))
+                                    {
+                                        Collections.swap(requestedJobsList, i, j);
+                                    }
+                                }
+                                else if (Integer.parseInt(openHour2) > Integer.parseInt(openHour))
+                                {
+                                    Collections.swap(requestedJobsList, i, j);
+                                }
+                            }
+                            else if (openAMPM2.equals("PM") && openAMPM.equals("AM"))
+                            {
+                                Collections.swap(requestedJobsList, i, j);
+                            }
+                        }
+                        else if (Integer.parseInt(openDay2) > Integer.parseInt(openDay))
+                        {
+                            Collections.swap(requestedJobsList, i, j);
+                        }
+                    }
+                    else if (Integer.parseInt(openMonth2) > Integer.parseInt(openMonth))
+                    {
+                        Collections.swap(requestedJobsList, i, j);
+                    }
+                }
+                else if (Integer.parseInt(openYear2) > Integer.parseInt(openYear))
+                {
+                    Collections.swap(requestedJobsList, i, j);
+                }
+            }
+        }
     }
 
     public void helperMethod(ArrayList<RequestedJobs> r)

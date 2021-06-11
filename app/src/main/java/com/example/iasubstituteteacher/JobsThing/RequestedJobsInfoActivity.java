@@ -1,14 +1,13 @@
 package com.example.iasubstituteteacher.JobsThing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.R;
@@ -92,10 +91,12 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                             {
                                 RequestedJobs theRequestedJobs = document.toObject
                                         (RequestedJobs.class);
-                                theRequestedJobs.setChoice(true);
-                                theRequestedJobs.setActive(true);
+//                                theRequestedJobs.setChoice(true);
+//                                theRequestedJobs.setActive(true);
+//                                firestore.collection("Jobs/Jobs/Requested Jobs").
+//                                        document(theJobsId).set(theRequestedJobs);
                                 firestore.collection("Jobs/Jobs/Requested Jobs").
-                                        document(theJobsId).set(theRequestedJobs);
+                                        document(theJobsId).delete();
                             }
                         }
                     }
@@ -125,6 +126,11 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                                 theRequestedJobs.setChoice(true);
                                 firestore.collection("Jobs/Jobs/Requested Jobs").
                                         document(theJobsId).set(theRequestedJobs);
+                                //Make a new activity with the email intent thing where I would
+                                //ask the admin ho rejected this to send an email.
+                                // Where the fields are filled in already for the most part
+                                // and the admin can write some stuff too as to why it got rejected
+                                //etc
                             }
                         }
                     }

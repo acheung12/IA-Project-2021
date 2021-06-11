@@ -54,4 +54,28 @@
         app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button19"
+        android:layout_width="103dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:onClick="dateArrangementAscending"
+        android:text="Ascend"
+        app:backgroundTint="#f85f6a"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/requestedJobRecView"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+    <Button
+        android:id="@+id/button24"
+        android:layout_width="103dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:onClick="dateArrangementDescending"
+        android:text="Descend"
+        app:backgroundTint="#f85f6a"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="@+id/requestedJobRecView"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
 </androidx.constraintlayout.widget.ConstraintLayout>
