@@ -1,9 +1,6 @@
 package com.example.iasubstituteteacher.JobsThing;
 
-import android.app.AlarmManager;
 import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -33,7 +30,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -125,9 +121,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                             for (DocumentSnapshot document : task.getResult().getDocuments())
                             {
                                 OpenJobs theOpenJobs = document.toObject(OpenJobs.class);
-//                                theOpenJobs.setActive(false);
-//                                firestore.collection("Jobs/Jobs/Open Jobs").document(
-//                                        theJobsId).set(theOpenJobs);
                                 firestore.collection("Jobs/Jobs/Open Jobs").document(
                                         theJobsId).delete();
                             }
@@ -303,14 +296,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                 .build();
         notificationManager.notify(id, notification2);
     }
-
-    private void startAlarm(Calendar c)
-    {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, OpenJobsActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-    }
-
 
     public void backOpenInfo(View v)
     {

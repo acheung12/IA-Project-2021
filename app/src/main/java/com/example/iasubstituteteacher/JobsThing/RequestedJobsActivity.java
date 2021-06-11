@@ -118,31 +118,43 @@ public class RequestedJobsActivity extends AppCompatActivity {
                                                     if (Integer.parseInt(openMinute) <= Integer.parseInt(currentMinute))
                                                     {
                                                         requestedJobsList.remove(theRequestedJobs);
+                                                        firestore.collection("Jobs/Jobs/Requested Jobs").document(
+                                                                theRequestedJobs.getJobsId()).delete();
                                                     }
                                                 }
                                                 else if (Integer.parseInt(openHour) < Integer.parseInt(currentHour))
                                                 {
                                                     requestedJobsList.remove(theRequestedJobs);
+                                                    firestore.collection("Jobs/Jobs/Requested Jobs").document(
+                                                            theRequestedJobs.getJobsId()).delete();
                                                 }
                                             }
                                             else if (openAMPM.equals("AM") && currentAmPm.equals("PM"))
                                             {
                                                 requestedJobsList.remove(theRequestedJobs);
+                                                firestore.collection("Jobs/Jobs/Requested Jobs").document(
+                                                        theRequestedJobs.getJobsId()).delete();
                                             }
                                         }
                                         else if (Integer.parseInt(openDay) < Integer.parseInt(currentDay))
                                         {
                                             requestedJobsList.remove(theRequestedJobs);
+                                            firestore.collection("Jobs/Jobs/Requested Jobs").document(
+                                                    theRequestedJobs.getJobsId()).delete();
                                         }
                                     }
                                     else if (Integer.parseInt(openMonth) < Integer.parseInt(currentMonth))
                                     {
                                         requestedJobsList.remove(theRequestedJobs);
+                                        firestore.collection("Jobs/Jobs/Requested Jobs").document(
+                                                theRequestedJobs.getJobsId()).delete();
                                     }
                                 }
                                 else if (Integer.parseInt(openYear) < Integer.parseInt(currentYear))
                                 {
                                     requestedJobsList.remove(theRequestedJobs);
+                                    firestore.collection("Jobs/Jobs/Requested Jobs").document(
+                                            theRequestedJobs.getJobsId()).delete();
                                 }
                             }
                             dateAscend();
