@@ -101,14 +101,41 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         String dateString = date.getText().toString();
 
         String startTimeString = startTime.getText().toString();
+        String[] splitStartTime = startTimeString.split(":");
+        String[] afterHourStart = splitStartTime[1].split(" ");
+
         String endTimeString = endTime.getText().toString();
+        String[] splitEndTime = startTimeString.split(":");
+        String[] afterHourEnd = splitEndTime[1].split(" ");
+
         String locationString = location.getText().toString();
         String lessonPlanString = lessonPlan.getText().toString();
 
         if (!subjectString.equals("") && !dateString.equals("") && !startTimeString.equals("") &&
             !endTimeString.equals("") &&!locationString.equals("") && !lessonPlanString.equals(""))
         {
-            return true;
+            if (Integer.parseInt(splitStartTime[0]) > Integer.parseInt(splitEndTime[0]) &&
+                    afterHourStart[1].equals(afterHourEnd[1]))
+            {
+                return true;
+            }
+            if (Integer.parseInt(splitStartTime[0]) < Integer.parseInt(splitEndTime[0]) &&
+                    afterHourStart[1].equals("PM") && afterHourEnd[1].equals("AM"))
+            {
+                return true;
+            }
+            if (Integer.parseInt(splitStartTime[1]) > Integer.parseInt(splitEndTime[1]) &&
+                    Integer.parseInt(splitStartTime[0]) == Integer.parseInt(splitEndTime[0]) &&
+                    afterHourStart[1].equals(afterHourEnd[1]))
+            {
+                return true;
+            }
+            if (Integer.parseInt(splitStartTime[1]) < Integer.parseInt(splitEndTime[1]) &&
+                    Integer.parseInt(splitStartTime[0]) == Integer.parseInt(splitEndTime[0])
+                    && afterHourStart[1].equals("PM") && afterHourEnd[1].equals("AM"))
+            {
+                return true;
+            }
         }
         return false;
     }
