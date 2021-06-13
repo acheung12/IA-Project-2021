@@ -99,44 +99,40 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     {
         String subjectString = subject.getText().toString();
         String dateString = date.getText().toString();
+        String locationString = location.getText().toString();
+        String lessonPlanString = lessonPlan.getText().toString();
 
         String startTimeString = startTime.getText().toString();
         String[] splitStartTime = startTimeString.split(":");
         String[] afterHourStart = splitStartTime[1].split(" ");
 
         String endTimeString = endTime.getText().toString();
-        String[] splitEndTime = startTimeString.split(":");
+        String[] splitEndTime = endTimeString.split(":");
         String[] afterHourEnd = splitEndTime[1].split(" ");
 
-        String locationString = location.getText().toString();
-        String lessonPlanString = lessonPlan.getText().toString();
+        int totalEndTime = Integer.parseInt(splitEndTime[0]) * 60 +
+                Integer.parseInt(afterHourEnd[0]);
+        int totalStartTime = Integer.parseInt(splitStartTime[0]) * 60 +
+                Integer.parseInt(afterHourStart[0]);
+        if (afterHourStart[1].equals("PM"))
+        {
+            totalStartTime += 60 * 12;
+        }
+        if (afterHourEnd[1].equals("PM"))
+        {
+            totalEndTime += 60 * 12;
+        }
 
         if (!subjectString.equals("") && !dateString.equals("") && !startTimeString.equals("") &&
             !endTimeString.equals("") &&!locationString.equals("") && !lessonPlanString.equals(""))
         {
-            if (Integer.parseInt(splitStartTime[0]) > Integer.parseInt(splitEndTime[0]) &&
-                    afterHourStart[1].equals(afterHourEnd[1]))
+            if (totalStartTime < totalEndTime)
             {
                 return true;
             }
-            if (Integer.parseInt(splitStartTime[0]) < Integer.parseInt(splitEndTime[0]) &&
-                    afterHourStart[1].equals("PM") && afterHourEnd[1].equals("AM"))
-            {
-                return true;
-            }
-            if (Integer.parseInt(splitStartTime[1]) > Integer.parseInt(splitEndTime[1]) &&
-                    Integer.parseInt(splitStartTime[0]) == Integer.parseInt(splitEndTime[0]) &&
-                    afterHourStart[1].equals(afterHourEnd[1]))
-            {
-                return true;
-            }
-            if (Integer.parseInt(splitStartTime[1]) < Integer.parseInt(splitEndTime[1]) &&
-                    Integer.parseInt(splitStartTime[0]) == Integer.parseInt(splitEndTime[0])
-                    && afterHourStart[1].equals("PM") && afterHourEnd[1].equals("AM"))
-            {
-                return true;
-            }
+
         }
+        System.out.println("5");
         return false;
     }
 
@@ -181,8 +177,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         }
         else if (!validInfo())
         {
-            Toast.makeText(AddJobsActivity.this, "Make sure all information is filled",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddJobsActivity.this, "Make sure all information is filled"
+                            + "in correctly", Toast.LENGTH_SHORT).show();
         }
     }
 
