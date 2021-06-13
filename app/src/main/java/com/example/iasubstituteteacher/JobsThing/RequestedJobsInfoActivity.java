@@ -40,7 +40,6 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
     private String theUserEmail;
     private String theUserUid;
     private String theJobsId;
-    private String theChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,12 +90,10 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                             {
                                 RequestedJobs theRequestedJobs = document.toObject
                                         (RequestedJobs.class);
-//                                theRequestedJobs.setChoice(true);
-//                                theRequestedJobs.setActive(true);
-//                                firestore.collection("Jobs/Jobs/Requested Jobs").
-//                                        document(theJobsId).set(theRequestedJobs);
+                                theRequestedJobs.setChoice(true);
+                                theRequestedJobs.setActive(true);
                                 firestore.collection("Jobs/Jobs/Requested Jobs").
-                                        document(theJobsId).delete();
+                                        document(theJobsId).set(theRequestedJobs);
                             }
                         }
                     }
@@ -107,7 +104,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         firestore.collection("Jobs").document("Jobs").collection(
                 "Open Jobs").document(theJobsId).set(openJob);
 
-        Intent intent = new Intent(this, RequestedJobsActivity.class);
+        Intent intent = new Intent(this, RequestedJobsEmail.class);
         startActivity(intent);
     }
 
@@ -126,16 +123,11 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                                 theRequestedJobs.setChoice(true);
                                 firestore.collection("Jobs/Jobs/Requested Jobs").
                                         document(theJobsId).set(theRequestedJobs);
-                                //Make a new activity with the email intent thing where I would
-                                //ask the admin ho rejected this to send an email.
-                                // Where the fields are filled in already for the most part
-                                // and the admin can write some stuff too as to why it got rejected
-                                //etc
                             }
                         }
                     }
                 });
-        Intent intent = new Intent(this, RequestedJobsActivity.class);
+        Intent intent = new Intent(this, RequestedJobsEmail.class);
         startActivity(intent);
     }
 
