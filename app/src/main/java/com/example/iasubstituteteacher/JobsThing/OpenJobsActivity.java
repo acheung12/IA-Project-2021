@@ -81,6 +81,7 @@ public class OpenJobsActivity extends AppCompatActivity {
                         {
                             DocumentSnapshot ds = task.getResult();
                             User theUser = ds.toObject(User.class);
+
                             firestore.collection("Jobs/Jobs/Open Jobs").get().
                                 addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
@@ -92,27 +93,20 @@ public class OpenJobsActivity extends AppCompatActivity {
                                         {
                                             OpenJobs theOpenJobs = document.toObject
                                                     (OpenJobs.class);
-                                            int occurrence = 1;
 
+                                            if (theOpenJobs.isActive())
+                                            {
+                                                openJobsList.add(theOpenJobs);
+                                            }
                                             for (int i = 0; i < theUser.getDeclinedJobs().size();
                                                  i++)
                                             {
                                                 String declinedJob = theUser.getDeclinedJobs().
                                                         get(i);
-                                                if (theOpenJobs.isActive() && theOpenJobs.
-                                                        getJobsId().equals(declinedJob))
+                                                if (theOpenJobs.getJobsId().equals(declinedJob))
                                                 {
-                                                    occurrence = 0;
+                                                    openJobsList.remove(theOpenJobs);
                                                 }
-                                            }
-                                            if (theOpenJobs.isActive() && theUser.getDeclinedJobs()
-                                                    .isEmpty())
-                                            {
-                                                occurrence = 1;
-                                            }
-                                            if (occurrence == 1 && theOpenJobs.isActive())
-                                            {
-                                                openJobsList.add(theOpenJobs);
                                             }
 
                                             theDate[0] = theOpenJobs.getDate();

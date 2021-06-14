@@ -3,7 +3,6 @@ package com.example.iasubstituteteacher.JobsThing;
 import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,16 +30,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Properties;
 import java.util.Random;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 
 public class OpenJobsInfoActivity extends AppCompatActivity {
@@ -146,7 +136,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                             acceptedList.add(theJobsId);
                             theUser.setAcceptedJobs(acceptedList);
 
-                            firestore.collection("Users").document(theUserUid).
+                            firestore.collection("Users").document(user.getUid()).
                                     set(theUser);
                         }
                     }
@@ -170,7 +160,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
     public void declineOpenJob(View v)
     {
-        firestore.collection("Users").document(theUserUid).get().
+        firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                   @Override
                   public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -188,7 +178,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                           declinedList.add(theJobsId);
                           theUser.setDeclinedJobs(declinedList);
 
-                          firestore.collection("Users").document(theUserUid).
+                          firestore.collection("Users").document(user.getUid()).
                                   set(theUser);
                       }
                   }
@@ -196,70 +186,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
-    }
-
-    public void sendEmailNotification()
-    {
-        firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
-                new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful())
-                        {
-                            for (DocumentSnapshot document : task.getResult().getDocuments())
-                            {
-                                OpenJobs theOpenJobs = document.toObject(OpenJobs.class);
-                            }
-                        }
-                    }
-                });
-
-        acceptButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final String username = "substituteteacherapp@gmail.com";
-                final String password = "CISsubstitute123";
-                String emailSubject = "Accepted Open Job";
-                String messageToSend = "Your following submitted job has been accepted: \n" +
-                        "Subject: " + theSubject + "\n" +
-                        "Date: " + theDate + "\n" +
-                        "Time: " + theTime + "\n" +
-                        "Location: " + theLocation + "\n" +
-                        "Lesson Plan: " + theLessonPlan + "\n";
-
-                Properties props = new Properties();
-                props.put("mail.smtp.auth","true");
-                props.put("mail.smtp.starttls.enable","true");
-                props.put("mail.smtp.host","smtp@gmail.com");
-                props.put("mail.smtp.port","465");
-
-                Session session = Session.getInstance(props, new javax.mail.Authenticator(){
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
-
-                try{
-                    String OpenJobsEmail = "substituteteacherapp@gmail.com";
-
-                    Message message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress(username));
-                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(OpenJobsEmail));
-                    message.setSubject(emailSubject);
-                    message.setText(messageToSend);
-
-                    Transport.send(message);
-                }
-
-                catch(MessagingException e){
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
     }
 
     public void sendingNotifications()
