@@ -23,7 +23,6 @@ public class TimePickerFragment extends DialogFragment {
         return fragment;
     }
 
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -37,6 +36,4 @@ public class TimePickerFragment extends DialogFragment {
                 getActivity(), hour, minute, android.text.format.DateFormat.is24HourFormat
                 (getActivity()));
     }
-
-
 }
