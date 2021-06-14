@@ -172,7 +172,7 @@ public class AcceptedJobsActivity extends AppCompatActivity {
                                                 }
                                             }
                                         }
-                                        uniquify(acceptedJobsList);
+                                        noRepeats(acceptedJobsList);
                                         dateAscend();
                                         helperMethod(acceptedJobsList);
                                     }
@@ -183,18 +183,17 @@ public class AcceptedJobsActivity extends AppCompatActivity {
             });
     }
 
-    public static <T> ArrayList<T> uniquify(ArrayList<T> myList) {
-
-        ArrayList <T> uniqueArrayList = new ArrayList<T>();
+    public static <AcceptedJobs> ArrayList<AcceptedJobs> noRepeats(ArrayList<AcceptedJobs> myList)
+    {
+        ArrayList <AcceptedJobs> noRepeatsArrayList = new ArrayList<AcceptedJobs>();
         for (int i = 0; i < myList.size(); i++)
         {
-            if (!uniqueArrayList.contains(myList.get(i)))
+            if (!noRepeatsArrayList.contains(myList.get(i)))
             {
-                uniqueArrayList.add(myList.get(i));
+                noRepeatsArrayList.add(myList.get(i));
             }
         }
-
-        return uniqueArrayList;
+        return noRepeatsArrayList;
     }
 
     public void dateAscend()
@@ -252,7 +251,7 @@ public class AcceptedJobsActivity extends AppCompatActivity {
                             {
                                 if (Integer.parseInt(openHour2) == Integer.parseInt(openHour))
                                 {
-                                    if (Integer.parseInt(openMinute2) < Integer.parseInt(openMinute))
+                                    if (Integer.parseInt(openMinute2) > Integer.parseInt(openMinute))
                                     {
                                         Collections.swap(acceptedJobsList, i, j);
                                     }

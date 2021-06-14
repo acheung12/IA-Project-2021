@@ -136,7 +136,13 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                         {
                             DocumentSnapshot ds = task.getResult();
                             User theUser = ds.toObject(User.class);
-                            ArrayList<String> acceptedList = theUser.getAcceptedJobs();
+                            ArrayList<String> acceptedList = new ArrayList<>();
+
+                            if (!theUser.getAcceptedJobs().isEmpty())
+                            {
+                                acceptedList = theUser.getAcceptedJobs();
+                            }
+
                             acceptedList.add(theJobsId);
                             theUser.setAcceptedJobs(acceptedList);
 
@@ -172,7 +178,13 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                       {
                           DocumentSnapshot ds = task.getResult();
                           User theUser = ds.toObject(User.class);
-                          ArrayList<String> declinedList = theUser.getDeclinedJobs();
+                          ArrayList<String> declinedList = new ArrayList<>();
+
+                          if (!theUser.getDeclinedJobs().isEmpty())
+                          {
+                              declinedList = theUser.getDeclinedJobs();
+                          }
+
                           declinedList.add(theJobsId);
                           theUser.setDeclinedJobs(declinedList);
 

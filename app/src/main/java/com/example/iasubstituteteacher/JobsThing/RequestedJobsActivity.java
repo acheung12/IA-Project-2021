@@ -219,7 +219,7 @@ public class RequestedJobsActivity extends AppCompatActivity {
                             {
                                 if (Integer.parseInt(openHour2) == Integer.parseInt(openHour))
                                 {
-                                    if (Integer.parseInt(openMinute2) < Integer.parseInt(openMinute))
+                                    if (Integer.parseInt(openMinute2) > Integer.parseInt(openMinute))
                                     {
                                         Collections.swap(requestedJobsList, i, j);
                                     }
