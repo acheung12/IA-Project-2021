@@ -77,10 +77,14 @@ public class RequestedJobsEmail extends AppCompatActivity {
 
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent, "Please choose an email client"));
+    }
 
+    public void backToRequest(View v)
+    {
         Intent goingBack = new Intent(this, RequestedJobsActivity.class);
         startActivity(goingBack);
     }
+
 
     public void settingInformation()
     {
@@ -90,24 +94,28 @@ public class RequestedJobsEmail extends AppCompatActivity {
 
         if (theActive.equals("true"))
         {
-            message = "Hey user,\n" +
-                    "Great news your following requested job has been accepted: \n\n" +
-                    "Subject: " + theSubject + "\n" +
-                    "Date: " + theDate + "\n" +
-                    "Time: " + theTime + "\n" +
-                    "Location: " + theLocation + "\n" +
-                    "Lesson Plan: " + theLessonPlan + "\n\n" +
+            message = "Hey User,\n\n" +
+                    "Great news your following requested job has been accepted. Below is the " +
+                    "substitute job you requested: \n" +
+                    "   Subject: " + theSubject + "\n" +
+                    "   Date: " + theDate + "\n" +
+                    "   Time: " + theTime + "\n" +
+                    "   Location: " + theLocation + "\n" +
+                    "   Lesson Plan: " + theLessonPlan + "\n\n" +
+                    "Kind regards, \n" +
                     "The Admin Team";
         }
         else if (theActive.equals("false"))
         {
-            message = "Hey user,\n" +
-                    "Unfortunately your following requested job has been declined: \n" + "\n" +
-                    "Subject: " + theSubject + "\n" +
-                    "Date: " + theDate + "\n" +
-                    "Time: " + theTime + "\n" +
-                    "Location: " + theLocation + "\n" +
-                    "Lesson Plan: " + theLessonPlan + "\n\n" +
+            message = "Hey User,\n" +
+                    "Unfortunately your following requested job has been declined: Below is the " +
+                    "substitute job you requested: \n" +
+                    "   Subject: " + theSubject + "\n" +
+                    "   Date: " + theDate + "\n" +
+                    "   Time: " + theTime + "\n" +
+                    "   Location: " + theLocation + "\n" +
+                    "   Lesson Plan: " + theLessonPlan + "\n\n" +
+                    "Kind regards, \n" +
                     "The Admin Team";
         }
 

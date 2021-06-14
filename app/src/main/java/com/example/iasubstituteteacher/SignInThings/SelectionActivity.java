@@ -131,11 +131,11 @@ public class SelectionActivity extends AppCompatActivity
     {
         try
         {
-            mAuth.signOut();
             Toast.makeText(SelectionActivity.this, "Successfully signed out",
                     Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            mAuth.signOut();
             finish();
         }
         catch (Exception err)

@@ -241,7 +241,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                             String userType = theUser.getUserType();
                             selected = userType;
 
-                            if (selected.equals("Teacher") || selected.equals("Substitute Teacher"))
+                            if (selected.equals("Teacher"))
                             {
                                 teacher();
                             }

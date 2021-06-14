@@ -70,52 +70,16 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         String passwordString = passwordField.getText().toString();
         String adminCodeString = adminCode.getText().toString();
 
-        if (emailString.contains("@") && !selected.equals("Admin"))
-        {
-            mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener
-                    (this, new OnCompleteListener<AuthResult>()
-            {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task)
-                {
-                    if (task.isSuccessful() && !usernameString.equals(""))
-                    {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        updateUI(user);
+        String[] email = emailString.split("@");
+        String rightEmail = email[1];
 
-                        String userUID = user.getUid();
-                        ArrayList<String> acceptedJobs = new ArrayList<>();
-                        ArrayList<String> declinedJobs = new ArrayList<>();
-
-                        User currentUser = new User(userUID, usernameString, emailString, selected,
-                                acceptedJobs, declinedJobs);
-                        firestore.collection("Users").document(userUID).
-                                set(currentUser);
-                        Toast.makeText(SignUpActivity.this, "Successfully " +
-                                "signed up", Toast.LENGTH_SHORT).show();
-                    }
-                    else if (task.isSuccessful() && usernameString.equals(""))
-                    {
-                        Toast.makeText(SignUpActivity.this, "Please enter your"
-                                + " username", Toast.LENGTH_SHORT).show();
-                        updateUI(null);
-                        task.isCanceled();
-                    }
-                    else
-                    {
-                        Toast.makeText(SignUpActivity.this, "Authentication failed",
-                                Toast.LENGTH_SHORT).show();
-                        updateUI(null);
-                    }
-                }
-            });
-        }
-        else if (emailString.contains("@") && selected.equals("Admin"))
+        if (rightEmail.equals("student.cis.edu.hk") || rightEmail.equals("cis.edu.hk") ||
+                rightEmail.equals("gmail.com") || rightEmail.equals("hotmail.com") ||
+                rightEmail.equals("alumni.cis.edu.hk"))
         {
-            if (adminCodeString.equals("CIS2021"))
-            {
-                mAuth.createUserWithEmailAndPassword(emailString, passwordString).
-                        addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            if (emailString.contains("@") && !selected.equals("Admin")) {
+                mAuth.createUserWithEmailAndPassword(emailString, passwordString).addOnCompleteListener
+                    (this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful() && !usernameString.equals("")) {
@@ -126,35 +90,66 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                 ArrayList<String> acceptedJobs = new ArrayList<>();
                                 ArrayList<String> declinedJobs = new ArrayList<>();
 
-                                User currentUser = new User(userUID, usernameString, emailString,
-                                        selected, acceptedJobs, declinedJobs);
+                                User currentUser = new User(userUID, usernameString, emailString, selected,
+                                        acceptedJobs, declinedJobs);
                                 firestore.collection("Users").document(userUID).
                                         set(currentUser);
                                 Toast.makeText(SignUpActivity.this, "Successfully " +
                                         "signed up", Toast.LENGTH_SHORT).show();
-                            }
-                            else if (task.isSuccessful() && usernameString.equals(""))
-                            {
+                            } else if (task.isSuccessful() && usernameString.equals("")) {
                                 Toast.makeText(SignUpActivity.this, "Please enter your"
                                         + " username", Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                                 task.isCanceled();
-                            }
-                            else {
-                                Log.w("SIGN UP", "Unable to sign up for the user",
-                                        task.getException());
-                                Toast.makeText(SignUpActivity.this, "Authentication" +
-                                                " failed", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(SignUpActivity.this, "Authentication failed",
+                                        Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }
                         }
                     });
             }
-            else
+            else if (emailString.contains("@") && selected.equals("Admin"))
             {
-                Toast.makeText(SignUpActivity.this, "Please input an appropriate code",
-                        Toast.LENGTH_SHORT).show();
-                updateUI(null);
+                if (adminCodeString.equals("CIS2021"))
+                {
+                    mAuth.createUserWithEmailAndPassword(emailString, passwordString).
+                            addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful() && !usernameString.equals("")) {
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        updateUI(user);
+
+                                        String userUID = user.getUid();
+                                        ArrayList<String> acceptedJobs = new ArrayList<>();
+                                        ArrayList<String> declinedJobs = new ArrayList<>();
+
+                                        User currentUser = new User(userUID, usernameString, emailString,
+                                                selected, acceptedJobs, declinedJobs);
+                                        firestore.collection("Users").document(userUID).
+                                                set(currentUser);
+                                        Toast.makeText(SignUpActivity.this, "Successfully " +
+                                                "signed up", Toast.LENGTH_SHORT).show();
+                                    } else if (task.isSuccessful() && usernameString.equals("")) {
+                                        Toast.makeText(SignUpActivity.this, "Please enter your"
+                                                + " username", Toast.LENGTH_SHORT).show();
+                                        updateUI(null);
+                                        task.isCanceled();
+                                    } else {
+                                        Log.w("SIGN UP", "Unable to sign up for the user",
+                                                task.getException());
+                                        Toast.makeText(SignUpActivity.this, "Authentication" +
+                                                " failed", Toast.LENGTH_SHORT).show();
+                                        updateUI(null);
+                                    }
+                                }
+                            });
+                } else {
+                    Toast.makeText(SignUpActivity.this, "Please input an appropriate code",
+                            Toast.LENGTH_SHORT).show();
+                    updateUI(null);
+                }
             }
         }
         else

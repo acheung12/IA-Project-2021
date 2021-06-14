@@ -8,6 +8,22 @@
     tools:context=".JobsThing.RequestedJobsEmail">
 
 
+    <Button
+        android:id="@+id/button26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:onClick="sendingAnEmail"
+        android:text="Send"
+        app:backgroundTint="#f85f6a"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMessage" />
+
     <TextView
         android:id="@+id/textView32"
         android:layout_width="match_parent"
@@ -83,15 +99,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:onClick="sendingAnEmail"
-        android:text="Send"
+        android:onClick="backToRequest"
+        android:text="Back to request"
         app:backgroundTint="#f85f6a"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/button26" />
 
     <EditText
         android:id="@+id/editTextMessage"
