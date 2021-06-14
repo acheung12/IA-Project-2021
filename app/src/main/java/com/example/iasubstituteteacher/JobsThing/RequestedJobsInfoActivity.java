@@ -65,7 +65,6 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         theUserEmail = getIntent().getStringExtra("requestUsersEmail");
         theUserUid = getIntent().getStringExtra("requestUsersID");
         theJobsId = getIntent().getStringExtra("requestJobsID");
-
         setUpButtons();
     }
 
@@ -105,6 +104,15 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                 "Open Jobs").document(theJobsId).set(openJob);
 
         Intent intent = new Intent(this, RequestedJobsEmail.class);
+        intent.putExtra("requestSubject", theSubject);
+        intent.putExtra("requestJobsID", theJobsId);
+        intent.putExtra("requestDate", theDate);
+        intent.putExtra("requestTime", theTime);
+        intent.putExtra("requestLocation", theLocation);
+        intent.putExtra("requestActive", theActive);
+        intent.putExtra("requestLessonPlan", theLessonPlan);
+        intent.putExtra("requestUsersEmail", theUserEmail);
+        intent.putExtra("requestUsersID", theUserUid);
         startActivity(intent);
     }
 
@@ -128,6 +136,15 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                     }
                 });
         Intent intent = new Intent(this, RequestedJobsEmail.class);
+        intent.putExtra("requestSubject", theSubject);
+        intent.putExtra("requestJobsID", theJobsId);
+        intent.putExtra("requestDate", theDate);
+        intent.putExtra("requestTime", theTime);
+        intent.putExtra("requestLocation", theLocation);
+        intent.putExtra("requestActive", theActive);
+        intent.putExtra("requestLessonPlan", theLessonPlan);
+        intent.putExtra("requestUsersEmail", theUserEmail);
+        intent.putExtra("requestUsersID", theUserUid);
         startActivity(intent);
     }
 

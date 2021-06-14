@@ -1,7 +1,5 @@
 package com.example.iasubstituteteacher.Jobs;
 
-import java.util.ArrayList;
-
 public class Jobs {
     String jobsId;
     String subject;
@@ -12,7 +10,6 @@ public class Jobs {
     String lessonPlan;
     String userId;
     String usersEmail;
-    ArrayList<String> declineList;
 
 
     public Jobs(String jobsId, String subject, String date, String time, String location,

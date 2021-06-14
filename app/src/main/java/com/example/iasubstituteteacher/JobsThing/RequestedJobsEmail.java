@@ -31,6 +31,8 @@ public class RequestedJobsEmail extends AppCompatActivity {
     private String theUserEmail;
     private String theUserUid;
     private String theJobsId;
+    private String theChoice;
+    private String theUserUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class RequestedJobsEmail extends AppCompatActivity {
         theUserEmail = getIntent().getStringExtra("requestUsersEmail");
         theUserUid = getIntent().getStringExtra("requestUsersID");
         theJobsId = getIntent().getStringExtra("requestJobsID");
+        theChoice = getIntent().getStringExtra("requestChoice");
+        theUserUsername = getIntent().getStringExtra("requestUsersUsername");
 
         editTextTo = findViewById(R.id.editTextTo);
         editTextSubject = findViewById(R.id.editTextSubject);
@@ -68,11 +72,14 @@ public class RequestedJobsEmail extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_EMAIL, people);
-        intent.putExtra(Intent.EXTRA_SUBJECT, people);
-        intent.putExtra(Intent.EXTRA_TEXT, people);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
 
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent, "Please choose an email client"));
+
+        Intent goingBack = new Intent(this, RequestedJobsActivity.class);
+        startActivity(goingBack);
     }
 
     public void settingInformation()
@@ -83,21 +90,25 @@ public class RequestedJobsEmail extends AppCompatActivity {
 
         if (theActive.equals("true"))
         {
-            message = "Your following requested job has been accepted: \n" +
+            message = "Hey user,\n" +
+                    "Great news your following requested job has been accepted: \n\n" +
                     "Subject: " + theSubject + "\n" +
                     "Date: " + theDate + "\n" +
                     "Time: " + theTime + "\n" +
                     "Location: " + theLocation + "\n" +
-                    "Lesson Plan: " + theLessonPlan;
+                    "Lesson Plan: " + theLessonPlan + "\n\n" +
+                    "The Admin Team";
         }
         else if (theActive.equals("false"))
         {
-            message = "Your following requested job has been declined: \n" +
+            message = "Hey user,\n" +
+                    "Unfortunately your following requested job has been declined: \n" + "\n" +
                     "Subject: " + theSubject + "\n" +
                     "Date: " + theDate + "\n" +
                     "Time: " + theTime + "\n" +
                     "Location: " + theLocation + "\n" +
-                    "Lesson Plan: " + theLessonPlan;
+                    "Lesson Plan: " + theLessonPlan + "\n\n" +
+                    "The Admin Team";
         }
 
         editTextTo.setText(to);

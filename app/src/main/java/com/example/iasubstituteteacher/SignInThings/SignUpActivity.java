@@ -1,8 +1,5 @@
 package com.example.iasubstituteteacher.SignInThings;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iasubstituteteacher.R;
 import com.example.iasubstituteteacher.Users.User;
@@ -103,8 +103,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                     }
                     else
                     {
-                        Log.w("SIGN UP", "Unable to sign up for the user",
-                                task.getException());
                         Toast.makeText(SignUpActivity.this, "Authentication failed",
                                 Toast.LENGTH_SHORT).show();
                         updateUI(null);
@@ -152,7 +150,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                     });
             }
-            else if (!adminCodeString.equals("CIS2021"))
+            else
             {
                 Toast.makeText(SignUpActivity.this, "Please input an appropriate code",
                         Toast.LENGTH_SHORT).show();

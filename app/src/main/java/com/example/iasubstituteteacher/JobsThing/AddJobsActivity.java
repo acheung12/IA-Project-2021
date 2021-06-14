@@ -38,6 +38,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     private FirebaseUser user;
 
     private String selected;
+    private String usersUsername;
 
     private EditText subject;
     private EditText date;
@@ -114,6 +115,15 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                 Integer.parseInt(afterHourEnd[0]);
         int totalStartTime = Integer.parseInt(splitStartTime[0]) * 60 +
                 Integer.parseInt(afterHourStart[0]);
+        if (Integer.parseInt(splitStartTime[0]) == 12)
+        {
+            totalStartTime -= 60 * 12;
+        }
+        if (Integer.parseInt(splitEndTime[0]) == 12)
+        {
+            totalEndTime -= 60 * 12;
+        }
+
         if (afterHourStart[1].equals("PM"))
         {
             totalStartTime += 60 * 12;
@@ -166,8 +176,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                     timeString, locationString, false, lessonPlanString, usersUID,
                     usersEmail, false);
 
-            firestore.collection("Jobs").document("Jobs").collection(
-                    "Requested Jobs").document(JobsId).set(addedJob);
+            firestore.collection("Jobs").document("Jobs").collection
+                    ("Requested Jobs").document(JobsId).set(addedJob);
 
             Toast.makeText(AddJobsActivity.this, "Job successfully requested",
                     Toast.LENGTH_SHORT).show();
@@ -212,7 +222,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         else if (!validInfo())
         {
             Toast.makeText(AddJobsActivity.this, "Make sure all information is" +
-                            " filled in", Toast.LENGTH_SHORT).show();
+                            " filled in correctly", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -231,7 +241,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                             String userType = theUser.getUserType();
                             selected = userType;
 
-                            if (selected.equals("Teacher"))
+                            if (selected.equals("Teacher") || selected.equals("Substitute Teacher"))
                             {
                                 teacher();
                             }

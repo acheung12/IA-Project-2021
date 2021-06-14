@@ -1,7 +1,5 @@
 package com.example.iasubstituteteacher.Jobs;
 
-import java.util.ArrayList;
-
 public class RequestedJobs extends Jobs
 {
     boolean choice;
@@ -27,5 +25,4 @@ public class RequestedJobs extends Jobs
     public void setChoice(boolean choice) {
         this.choice = choice;
     }
-
 }
