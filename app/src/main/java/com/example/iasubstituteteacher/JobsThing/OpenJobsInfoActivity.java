@@ -26,10 +26,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 
 
@@ -211,28 +208,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         int id = rand.nextInt(max);
 
         notificationManager.notify(id, notification);
-
-        DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy");
-        String dateString = dateFormat.format(new Date());
-        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
-        String timeString = timeFormat.format(new Date());
-        String[] startTime = theTime.split(" - ");
-
-        System.out.println("Current date: " + dateString);
-        System.out.println("Start date: " +theDate);
-        System.out.println("Current time: " + timeString);
-        System.out.println("Start time: " + startTime[0]);
-
-        title = "Your Job has started";
-        Notification notification2 =  new NotificationCompat.Builder(this,
-                Notifications.CHANNEL_ID)
-                .setSmallIcon(R.drawable.cis_logo)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .build();
-        notificationManager.notify(id, notification2);
     }
 
     public void backOpenInfo(View v)

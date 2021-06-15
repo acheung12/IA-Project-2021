@@ -140,9 +140,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
             {
                 return true;
             }
-
         }
-        System.out.println("5");
         return false;
     }
 

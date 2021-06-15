@@ -135,6 +135,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
                         }
                     }
                 });
+
         Intent intent = new Intent(this, RequestedJobsEmail.class);
         intent.putExtra("requestSubject", theSubject);
         intent.putExtra("requestJobsID", theJobsId);

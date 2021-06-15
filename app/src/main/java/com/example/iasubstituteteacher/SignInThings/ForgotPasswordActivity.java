@@ -54,8 +54,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             }
                             else
                             {
-                                Toast.makeText(ForgotPasswordActivity.this, "Password " +
-                                        "reset email is unsuccessful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ForgotPasswordActivity.this, "Password "
+                                        + "reset email is unsuccessful", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
