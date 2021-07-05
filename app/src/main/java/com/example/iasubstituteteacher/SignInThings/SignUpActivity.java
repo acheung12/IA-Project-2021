@@ -23,6 +23,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+/**
+ * SignUpActivity is for the authentication of the user to allow them to create an account for
+ * themselves to allow easy access to their information in the future.
+ */
+
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private FirebaseAuth mAuth;
@@ -61,6 +66,17 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     {
         super.onStart();
     }
+
+    /**
+     * This method is used to create an account for the current user when using the app, where once
+     * the sign up button is clicked it retrieves their email and password with it, but also their
+     * username so it can be used later on. Also checking to see if the right email address is used,
+     * as only CIS community members may use this part of the app. Also if all necessary information
+     * is there. In addition, this method also checks to see which user is selected, and if an
+     * "Admin" is selected whether the correct Admin code is inputted.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "CONTINUE".
+     */
 
     public void signUp(View v)
     {
@@ -170,11 +186,23 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
+    /**
+     * This method is an intent that is created to move the user to MainActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "Sign In" works in accordance to this method.
+     */
+
     public void backToSignIn(View v)
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * This method is used to check whether the current users information is valid or not (null),
+     * and it creates an intent to move to SelectionActivity if the information is valid.
+     * @param currentUser this param is used to get the current user that is using the app.
+     */
 
     public void updateUI(FirebaseUser currentUser)
     {

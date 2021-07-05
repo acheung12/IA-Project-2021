@@ -2,6 +2,10 @@ package com.example.iasubstituteteacher.Users;
 
 import java.util.ArrayList;
 
+/**
+ * A class containing the getter and setter methods and variables pertaining to the User object.
+ */
+
 public class User
 {
     String uid;
@@ -73,5 +77,4 @@ public class User
     public void setDeclinedJobs(ArrayList<String> declinedJobs) {
         this.declinedJobs = declinedJobs;
     }
-
 }

@@ -1,6 +1,9 @@
 package com.example.iasubstituteteacher.Jobs;
 
-import java.util.ArrayList;
+/**
+ * A child class of the parent class Jobs in case anything specific objects to OpenJobs will be used
+ * in future app development
+ */
 
 public class OpenJobs extends Jobs
 {

@@ -1,5 +1,10 @@
 package com.example.iasubstituteteacher.Jobs;
 
+/**
+ * A child class of the parent class Jobs, containing the extra variable choice and the
+ * associated getters and setters
+ */
+
 public class RequestedJobs extends Jobs
 {
     boolean choice;

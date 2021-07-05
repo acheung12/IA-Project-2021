@@ -16,6 +16,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * ForgotPasswordActivity is a screen to let the user send a reset password link to themselves if
+ * they forgot their password.
+ */
+
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -35,13 +40,20 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         emailField = findViewById(R.id.editTextEmail3);
     }
 
+    /**
+     * This method obtains the written text checking whether it is an email or not and sending
+     * the specified email a reset password link.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "RESET PASSWORD".
+     */
+
     public void changePassword(View v)
     {
         String emailString = emailField.getText().toString();
-
         FirebaseUser user = mAuth.getCurrentUser();
 
-        try {
+        try
+        {
             mAuth.sendPasswordResetEmail(emailString).addOnCompleteListener(this, new
                     OnCompleteListener<Void>() {
                         @Override
@@ -67,6 +79,12 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method is used to check whether the current users information is valid or not (null),
+     * and it creates an intent to move to MainActivity if the information is valid.
+     * @param currentUser this param is used to get the current user that is using the app.
+     */
+
     public void updateUI(FirebaseUser currentUser)
     {
         if (currentUser != null)
@@ -76,10 +94,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method is an intent that is created to move the user to MainActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "BACK TO SIGN IN".
+     */
+
     public void toSignIn(View v)
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
 }

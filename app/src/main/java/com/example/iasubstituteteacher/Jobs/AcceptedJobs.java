@@ -1,6 +1,9 @@
 package com.example.iasubstituteteacher.Jobs;
 
-import java.util.ArrayList;
+/**
+ * A child class of the parent class Jobs, containing the extra variable acceptorsEmail and the
+ * associated getters and setters
+ */
 
 public class AcceptedJobs extends Jobs
 {

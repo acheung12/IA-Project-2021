@@ -21,6 +21,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * SelectionActivity is a screen that lets the user pick the next screen they would like to go
+ * whether it is to see the available jobs, see their accepted jobs. Also, depending on what type of
+ * user they are they could add a job or look at the requested jobs out there. This activity
+ * functions like a home page to this app.
+ */
+
 public class SelectionActivity extends AppCompatActivity
 {
     private FirebaseAuth mAuth;
@@ -39,11 +46,22 @@ public class SelectionActivity extends AppCompatActivity
         selected = "";
     }
 
+    /**
+     * This method is an intent that is created to move the user to RequestedJobsActivity.
+     */
+
     public void RequestedJobs()
     {
         Intent intent = new Intent(this, RequestedJobsActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * This method calls the method RequestedJobs() after checking to see if the current user is of
+     * user type "Admin" or not.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is REQUESTED JOBS".
+     */
 
     public void toRequestedJobs(View v)
     {
@@ -76,12 +94,22 @@ public class SelectionActivity extends AppCompatActivity
                 });
     }
 
+    /**
+     * This method is an intent that is created to move the user to AddJobsActivity.
+     */
+
     public void AddJobs()
     {
         Intent intent = new Intent(this, AddJobsActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method calls the method AddJobs() after checking to see if the current user is of
+     * user type "Admin" or either "Teacher".
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "ADD JOBS".
+     */
 
     public void toAddJobs(View v)
     {
@@ -115,17 +143,36 @@ public class SelectionActivity extends AppCompatActivity
                 });
     }
 
+    /**
+     * This method is an intent that is created to move the user to OpenJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "OPEN JOBS".
+     */
+
     public void toOpenJobs(View v)
     {
         Intent intent = new Intent(this, OpenJobsActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * This method is an intent that is created to move the user to AcceptedJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "ACCEPTED JOBS".
+     */
+
     public void toAcceptedJobs(View v)
     {
         Intent intent = new Intent(this, AcceptedJobsActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * This method signs the user out of the app, creating an intent to return the user back to
+     * MainActivity, sending a Toast message to the user whether the operation is successful or not.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the button that works in accordance to this method is "SIGN OUT".
+     */
 
     public void signOut(View v)
     {
@@ -144,5 +191,4 @@ public class SelectionActivity extends AppCompatActivity
             messageToUser.show();
         }
     }
-
 }

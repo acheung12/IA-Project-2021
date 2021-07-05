@@ -1,6 +1,11 @@
 package com.example.iasubstituteteacher.Jobs;
 
-public class Jobs {
+/**
+ * A class containing the getter and setter methods and variables pertaining to the Jobs object.
+ */
+
+public class Jobs
+{
     String jobsId;
     String subject;
     String date;
@@ -25,7 +30,8 @@ public class Jobs {
         this.usersEmail = usersEmail;
     }
 
-    public Jobs() {
+    public Jobs()
+    {
 
     }
 
@@ -100,5 +106,4 @@ public class Jobs {
     public void setUsersEmail(String usersEmail) {
         this.usersEmail = usersEmail;
     }
-
 }
