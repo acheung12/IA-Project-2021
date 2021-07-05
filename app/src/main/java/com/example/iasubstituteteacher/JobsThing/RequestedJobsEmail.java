@@ -12,8 +12,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class RequestedJobsEmail extends AppCompatActivity {
+/**
+ *
+ */
 
+public class RequestedJobsEmail extends AppCompatActivity
+{
     private FirebaseAuth auth;
     private FirebaseUser user;
     private FirebaseFirestore firestore;
@@ -35,7 +39,8 @@ public class RequestedJobsEmail extends AppCompatActivity {
     private String theUserUsername;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requested_jobs_email);
 
@@ -62,6 +67,11 @@ public class RequestedJobsEmail extends AppCompatActivity {
         settingInformation();
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void sendingAnEmail(View v)
     {
         String mailingList = editTextTo.getText().toString();
@@ -79,12 +89,20 @@ public class RequestedJobsEmail extends AppCompatActivity {
         startActivity(Intent.createChooser(intent, "Please choose an email client"));
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void backToRequest(View v)
     {
         Intent goingBack = new Intent(this, RequestedJobsActivity.class);
         startActivity(goingBack);
     }
 
+    /**
+     *
+     */
 
     public void settingInformation()
     {

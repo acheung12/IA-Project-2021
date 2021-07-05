@@ -32,8 +32,8 @@ import java.util.Date;
  *
  */
 
-public class AcceptedJobsActivity extends AppCompatActivity {
-
+public class AcceptedJobsActivity extends AppCompatActivity
+{
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private FirebaseUser user;
@@ -42,7 +42,6 @@ public class AcceptedJobsActivity extends AppCompatActivity {
     private ArrayList<AcceptedJobs> acceptedJobsList;
     private RecyclerView recView;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accepted_jobs);
@@ -357,5 +356,4 @@ public class AcceptedJobsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);
     }
-
 }

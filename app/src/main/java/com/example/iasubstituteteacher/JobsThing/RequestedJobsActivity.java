@@ -31,8 +31,8 @@ import java.util.Date;
  *
  */
 
-public class RequestedJobsActivity extends AppCompatActivity {
-
+public class RequestedJobsActivity extends AppCompatActivity
+{
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private FirebaseUser user;
@@ -42,7 +42,8 @@ public class RequestedJobsActivity extends AppCompatActivity {
     private RecyclerView recView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requested_jobs);
 

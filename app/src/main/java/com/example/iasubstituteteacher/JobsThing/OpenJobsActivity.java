@@ -32,8 +32,8 @@ import java.util.Date;
  *
  */
 
-public class OpenJobsActivity extends AppCompatActivity {
-
+public class OpenJobsActivity extends AppCompatActivity
+{
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private FirebaseUser user;
@@ -454,5 +454,4 @@ public class OpenJobsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);
     }
-    
 }

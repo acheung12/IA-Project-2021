@@ -19,8 +19,12 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class RequestedJobsInfoActivity extends AppCompatActivity {
+/**
+ *
+ */
 
+public class RequestedJobsInfoActivity extends AppCompatActivity
+{
     private FirebaseAuth auth;
     private FirebaseUser user;
     private FirebaseFirestore firestore;
@@ -41,8 +45,8 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
     private String theUserUid;
     private String theJobsId;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requested_jobs_info);
 
@@ -68,6 +72,10 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         setUpButtons();
     }
 
+    /**
+     *
+     */
+
     public void setUpButtons()
     {
         subject.setText(theSubject);
@@ -77,12 +85,18 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         lessonPlan.setText("Lesson Plan: " + theLessonPlan);
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void acceptRequest(View v)
     {
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
                         if (task.isSuccessful())
                         {
                             for (DocumentSnapshot document : task.getResult().getDocuments())
@@ -116,12 +130,18 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void declineRequest(View v)
     {
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
                         if (task.isSuccessful())
                         {
                             for (DocumentSnapshot document : task.getResult().getDocuments())
@@ -148,6 +168,11 @@ public class RequestedJobsInfoActivity extends AppCompatActivity {
         intent.putExtra("requestUsersID", theUserUid);
         startActivity(intent);
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void backRequestInfo(View v)
     {

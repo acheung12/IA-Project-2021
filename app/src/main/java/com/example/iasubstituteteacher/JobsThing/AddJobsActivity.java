@@ -30,8 +30,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Calendar;
 import java.util.UUID;
 
+/**
+ *
+ */
+
 public class AddJobsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener
-        , DatePickerDialog.OnDateSetListener{
+        , DatePickerDialog.OnDateSetListener
+{
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -53,7 +58,6 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     public static final String TIME_PICKER_2 = "end time picker";
 
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_jobs);
@@ -71,7 +75,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         lessonPlan = findViewById(R.id.addJobsLessonPlan);
 
 
-        date.setOnClickListener(new View.OnClickListener() {
+        date.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 showDatePickerDialog();
@@ -86,15 +91,22 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
             }
         });
 
-        endTime.setOnClickListener(new View.OnClickListener() {
+        endTime.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 DialogFragment endTimePicker = TimePickerFragment.instance(TIME_PICKER_2);
                 endTimePicker.show(getSupportFragmentManager(), "end time picker");
                 tag[0] = endTimePicker.getTag();
             }
         });
     }
+
+    /**
+     *
+     * @return
+     */
 
     public boolean validInfo()
     {
@@ -144,6 +156,10 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         return false;
     }
 
+    /**
+     *
+     */
+
     private void showDatePickerDialog()
     {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, this,
@@ -152,6 +168,10 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
+
+    /**
+     *
+     */
 
     public void teacher()
     {
@@ -190,6 +210,10 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         }
     }
 
+    /**
+     *
+     */
+
     public void admin()
     {
         if (validInfo()) {
@@ -224,6 +248,11 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         }
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void addJobs(View v)
     {
         firestore.collection("Users").document(user.getUid()).get().
@@ -252,21 +281,38 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
                 });
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void backAddJob(View v)
     {
         Intent intent = new Intent(this, SelectionActivity.class);
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param datePicker
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
 
-    @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
         month++;
         String dateSet = dayOfMonth + "/" + month + "/" + year;
         date.setText(dateSet);
     }
 
-    @Override
+    /**
+     *
+     * @param timePicker
+     * @param hourOfDay
+     * @param minute
+     */
+
     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute)
     {
         String timeSet = "";

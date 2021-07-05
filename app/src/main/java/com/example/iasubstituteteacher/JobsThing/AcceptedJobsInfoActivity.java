@@ -1,20 +1,23 @@
 package com.example.iasubstituteteacher.JobsThing;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iasubstituteteacher.R;
-import com.example.iasubstituteteacher.SignInThings.SelectionActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AcceptedJobsInfoActivity extends AppCompatActivity {
+/**
+ *
+ */
 
+public class AcceptedJobsInfoActivity extends AppCompatActivity
+{
     private FirebaseAuth auth;
     private FirebaseUser user;
     private FirebaseFirestore firestore;
@@ -36,8 +39,6 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity {
     private String theJobsId;
     private String theAcceptorsEmail;
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,10 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity {
         setUpButtons();
     }
 
+    /**
+     *
+     */
+
     public void setUpButtons()
     {
         subject.setText(theSubject);
@@ -76,6 +81,10 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity {
         lessonPlan.setText("Lesson Plan: " + theLessonPlan);
     }
 
+    /**
+     *
+     * @param v
+     */
 
     public void backAcceptInfo(View v)
     {

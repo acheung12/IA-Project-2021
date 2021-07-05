@@ -29,9 +29,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ *
+ */
 
-public class OpenJobsInfoActivity extends AppCompatActivity {
-
+public class OpenJobsInfoActivity extends AppCompatActivity
+{
     private FirebaseAuth auth;
     private FirebaseUser user;
     private FirebaseFirestore firestore;
@@ -56,7 +59,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_jobs_info);
 
@@ -86,7 +90,9 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         setUpButtons();
     }
 
-
+    /**
+     *
+     */
 
     public void setUpButtons()
     {
@@ -97,12 +103,18 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         lessonPlan.setText("Lesson Plan: " + theLessonPlan);
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void acceptOpenJob(View v)
     {
         firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
                         if (task.isSuccessful())
                         {
                             for (DocumentSnapshot document : task.getResult().getDocuments())
@@ -118,7 +130,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                    {
                         if (task.isSuccessful())
                         {
                             DocumentSnapshot ds = task.getResult();
@@ -155,6 +168,11 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void declineOpenJob(View v)
     {
         firestore.collection("Users").document(user.getUid()).get().
@@ -185,6 +203,10 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     *
+     */
+
     public void sendingNotifications()
     {
         String title = "Accepted Open Job";
@@ -209,6 +231,11 @@ public class OpenJobsInfoActivity extends AppCompatActivity {
 
         notificationManager.notify(id, notification);
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void backOpenInfo(View v)
     {
