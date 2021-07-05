@@ -9,6 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.R;
 
+/**
+ * A class controlling the recycler view which shows all the AcceptedJobs, given that it is the
+ * current users accepted job and the following job has not passed the current date and time.
+ */
+
 public class AcceptedJobsViewHolder extends RecyclerView.ViewHolder
 {
     protected TextView subjectText;

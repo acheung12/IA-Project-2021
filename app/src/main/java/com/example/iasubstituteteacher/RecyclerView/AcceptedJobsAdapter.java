@@ -10,12 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
-import com.example.iasubstituteteacher.Jobs.RequestedJobs;
 import com.example.iasubstituteteacher.JobsThing.AcceptedJobsInfoActivity;
-import com.example.iasubstituteteacher.JobsThing.OpenJobsInfoActivity;
 import com.example.iasubstituteteacher.R;
 
 import java.util.ArrayList;
+
+/**
+ * A class regarding the Adapter, which is necessary in the function of the recycler view.
+ * Specifically, for the AcceptedJobs recycler view.
+ */
 
 public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHolder>{
 

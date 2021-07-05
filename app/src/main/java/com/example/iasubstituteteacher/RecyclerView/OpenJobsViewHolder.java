@@ -9,9 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.R;
 
+/**
+ * A class controlling the recycler view which shows all the OpenJobs, given that the open job is
+ * still active and has not passed the current date and time.
+ */
+
 public class OpenJobsViewHolder extends RecyclerView.ViewHolder
 {
-
     protected TextView subjectText;
     protected TextView dateText;
     protected TextView timeText;
@@ -42,5 +46,4 @@ public class OpenJobsViewHolder extends RecyclerView.ViewHolder
     public ConstraintLayout getOpenJobLayout() {
             return openJobLayout;
     }
-
 }

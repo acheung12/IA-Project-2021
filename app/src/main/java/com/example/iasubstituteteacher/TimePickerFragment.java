@@ -11,11 +11,16 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
-public class TimePickerFragment extends DialogFragment {
+/**
+ *
+ */
 
+public class TimePickerFragment extends DialogFragment
+{
     private static final String KEY_TIMEPICKER_TAG = "KEY_TIMEPICKER_TAG";
 
-    public static TimePickerFragment instance(String timePickerTag){
+    public static TimePickerFragment instance(String timePickerTag)
+    {
         TimePickerFragment fragment = new TimePickerFragment();
         Bundle b = new Bundle();
         b.putString(KEY_TIMEPICKER_TAG, timePickerTag);
@@ -25,8 +30,8 @@ public class TimePickerFragment extends DialogFragment {
 
     @NonNull
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState)
+    {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);

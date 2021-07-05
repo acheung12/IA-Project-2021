@@ -15,6 +15,11 @@ import com.example.iasubstituteteacher.R;
 
 import java.util.ArrayList;
 
+/**
+ * A class regarding the Adapter, which is necessary in the function of the recycler view.
+ * Specifically, for the RequestedJobs recycler view.
+ */
+
 public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsViewHolder>
 {
     ArrayList<RequestedJobs> mData;

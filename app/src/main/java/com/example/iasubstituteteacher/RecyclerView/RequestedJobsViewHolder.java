@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.R;
 
+/**
+ * A class controlling the recycler view which shows all the RequestedJobs.
+ */
+
 public class RequestedJobsViewHolder extends RecyclerView.ViewHolder
 {
     protected TextView subjectText;
