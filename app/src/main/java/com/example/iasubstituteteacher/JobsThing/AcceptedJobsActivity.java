@@ -28,6 +28,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+/**
+ *
+ */
+
 public class AcceptedJobsActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -52,6 +56,10 @@ public class AcceptedJobsActivity extends AppCompatActivity {
 
         getAndPopulateData();
     }
+
+    /**
+     *
+     */
 
     public void getAndPopulateData()
     {
@@ -103,7 +111,8 @@ public class AcceptedJobsActivity extends AppCompatActivity {
                                                     acceptedJobsList.add(theAcceptedJobs);
                                                 }
                                                 theDate[0] = theAcceptedJobs.getDate();
-                                                String[] splittingDay = theDate[0].split("/");
+                                                String[] splittingDay = theDate[0].
+                                                        split("/");
 
                                                 String openDay = splittingDay[0];
                                                 String openMonth = splittingDay[1];
@@ -113,62 +122,91 @@ public class AcceptedJobsActivity extends AppCompatActivity {
 
                                                 String[] split = theTime[0].split(" - ");
                                                 String[] timeSplit = split[0].split(":");
-                                                String[] afterSplit = timeSplit[1].split(" ");
+                                                String[] afterSplit = timeSplit[1].
+                                                        split(" ");
 
                                                 String openHour = timeSplit[0];
                                                 String openMinute = afterSplit[0];
                                                 String openAMPM = afterSplit[1];
 
-                                                if (Integer.parseInt(openYear) == Integer.parseInt(currentYear))
+                                                if (Integer.parseInt(openYear) == Integer.
+                                                    parseInt(currentYear))
                                                 {
-                                                    if (Integer.parseInt(openMonth) == Integer.parseInt(currentMonth))
+                                                    if (Integer.parseInt(openMonth) == Integer.
+                                                        parseInt(currentMonth))
                                                     {
-                                                        if (Integer.parseInt(openDay) == Integer.parseInt(currentDay))
+                                                        if (Integer.parseInt(openDay) == Integer.
+                                                            parseInt(currentDay))
                                                         {
                                                             if (openAMPM.equals(currentAmPm))
                                                             {
-                                                                if (Integer.parseInt(openHour) == Integer.parseInt(currentHour))
+                                                                if (Integer.parseInt(openHour) ==
+                                                                    Integer.parseInt(currentHour))
                                                                 {
-                                                                    if (Integer.parseInt(openMinute) <= Integer.parseInt(currentMinute))
+                                                                    if (Integer.parseInt(openMinute)
+                                                                        <= Integer.parseInt
+                                                                            (currentMinute))
                                                                     {
-                                                                        acceptedJobsList.remove(theAcceptedJobs);
-                                                                        firestore.collection("Jobs/Jobs/Accepted Jobs").document(
-                                                                                theAcceptedJobs.getJobsId()).delete();
+                                                                        acceptedJobsList.remove
+                                                                            (theAcceptedJobs);
+                                                                            firestore.collection(
+                                                                            "Jobs/" +
+                                                                            "Jobs/Accepted Jobs").
+                                                                            document(theAcceptedJobs
+                                                                            .getJobsId()).delete();
                                                                     }
                                                                 }
-                                                                else if (Integer.parseInt(openHour) < Integer.parseInt(currentHour))
+                                                                else if (Integer.parseInt(openHour)
+                                                                    < Integer.parseInt(currentHour))
                                                                 {
-                                                                    acceptedJobsList.remove(theAcceptedJobs);
-                                                                    firestore.collection("Jobs/Jobs/Accepted Jobs").document(
-                                                                            theAcceptedJobs.getJobsId()).delete();
+                                                                    acceptedJobsList.remove
+                                                                        (theAcceptedJobs);
+                                                                    firestore.collection(
+                                                                        "Jobs/Jobs/" +
+                                                                        "Accepted Jobs").document(
+                                                                        theAcceptedJobs.getJobsId())
+                                                                        .delete();
                                                                 }
                                                             }
-                                                            else if (openAMPM.equals("AM") && currentAmPm.equals("PM"))
+                                                            else if (openAMPM.equals("AM") &&
+                                                                currentAmPm.equals("PM"))
                                                             {
-                                                                acceptedJobsList.remove(theAcceptedJobs);
-                                                                firestore.collection("Jobs/Jobs/Accepted Jobs").document(
-                                                                        theAcceptedJobs.getJobsId()).delete();
+                                                                acceptedJobsList.remove
+                                                                    (theAcceptedJobs);
+                                                                firestore.collection(
+                                                                    "Jobs/Jobs/" +
+                                                                    "Accepted Jobs").document
+                                                                    (theAcceptedJobs.getJobsId()).
+                                                                    delete();
                                                             }
                                                         }
-                                                        else if (Integer.parseInt(openDay) < Integer.parseInt(currentDay))
+                                                        else if (Integer.parseInt(openDay) <
+                                                            Integer.parseInt(currentDay))
                                                         {
-                                                            acceptedJobsList.remove(theAcceptedJobs);
-                                                            firestore.collection("Jobs/Jobs/Accepted Jobs").document(
-                                                                    theAcceptedJobs.getJobsId()).delete();
+                                                            acceptedJobsList.remove
+                                                                (theAcceptedJobs);
+                                                            firestore.collection(
+                                                                "Jobs/Jobs/Accepted" +
+                                                                " Jobs").document(theAcceptedJobs.
+                                                                getJobsId()).delete();
                                                         }
                                                     }
-                                                    else if (Integer.parseInt(openMonth) < Integer.parseInt(currentMonth))
+                                                    else if (Integer.parseInt(openMonth) <
+                                                        Integer.parseInt(currentMonth))
                                                     {
                                                         acceptedJobsList.remove(theAcceptedJobs);
-                                                        firestore.collection("Jobs/Jobs/Accepted Jobs").document(
-                                                                theAcceptedJobs.getJobsId()).delete();
+                                                        firestore.collection("Jobs/" +
+                                                            "Jobs/Accepted Jobs").document(
+                                                            theAcceptedJobs.getJobsId()).delete();
                                                     }
                                                 }
-                                                else if (Integer.parseInt(openYear) < Integer.parseInt(currentYear))
+                                                else if (Integer.parseInt(openYear) <
+                                                    Integer.parseInt(currentYear))
                                                 {
                                                     acceptedJobsList.remove(theAcceptedJobs);
-                                                    firestore.collection("Jobs/Jobs/Accepted Jobs").document(
-                                                            theAcceptedJobs.getJobsId()).delete();
+                                                    firestore.collection("Jobs/Jobs/" +
+                                                        "Accepted Jobs").document(theAcceptedJobs.
+                                                        getJobsId()).delete();
                                                 }
                                             }
                                         }
@@ -183,6 +221,13 @@ public class AcceptedJobsActivity extends AppCompatActivity {
             });
     }
 
+    /**
+     *
+     * @param myList
+     * @param <AcceptedJobs>
+     * @return
+     */
+
     public static <AcceptedJobs> ArrayList<AcceptedJobs> noRepeats(ArrayList<AcceptedJobs> myList)
     {
         ArrayList <AcceptedJobs> noRepeatsArrayList = new ArrayList<AcceptedJobs>();
@@ -195,6 +240,10 @@ public class AcceptedJobsActivity extends AppCompatActivity {
         }
         return noRepeatsArrayList;
     }
+
+    /**
+     *
+     */
 
     public void dateAscend()
     {
@@ -251,7 +300,8 @@ public class AcceptedJobsActivity extends AppCompatActivity {
                             {
                                 if (Integer.parseInt(openHour2) == Integer.parseInt(openHour))
                                 {
-                                    if (Integer.parseInt(openMinute2) > Integer.parseInt(openMinute))
+                                    if (Integer.parseInt(openMinute2) > Integer.parseInt
+                                        (openMinute))
                                     {
                                         Collections.swap(acceptedJobsList, i, j);
                                     }
@@ -284,6 +334,11 @@ public class AcceptedJobsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param a
+     */
+
     public void helperMethod(ArrayList<AcceptedJobs> a)
     {
         acceptedJobsList = a;
@@ -291,6 +346,11 @@ public class AcceptedJobsActivity extends AppCompatActivity {
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void backAcceptActivity(View v)
     {

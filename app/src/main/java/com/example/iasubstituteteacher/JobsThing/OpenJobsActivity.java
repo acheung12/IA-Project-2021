@@ -28,6 +28,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+/**
+ *
+ */
+
 public class OpenJobsActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -52,6 +56,10 @@ public class OpenJobsActivity extends AppCompatActivity {
 
         getAndPopulateData();
     }
+
+    /**
+     *
+     */
 
     public void getAndPopulateData()
     {
@@ -126,56 +134,78 @@ public class OpenJobsActivity extends AppCompatActivity {
                                             String openMinute = afterSplit[0];
                                             String openAMPM = afterSplit[1];
 
-                                            if (Integer.parseInt(openYear) == Integer.parseInt(currentYear))
+                                            if (Integer.parseInt(openYear) == Integer.parseInt
+                                                (currentYear))
                                             {
-                                                if (Integer.parseInt(openMonth) == Integer.parseInt(currentMonth))
+                                                if (Integer.parseInt(openMonth) == Integer.parseInt
+                                                    (currentMonth))
                                                 {
-                                                    if (Integer.parseInt(openDay) == Integer.parseInt(currentDay))
+                                                    if (Integer.parseInt(openDay) == Integer.
+                                                        parseInt(currentDay))
                                                     {
                                                         if (openAMPM.equals(currentAmPm))
                                                         {
-                                                            if (Integer.parseInt(openHour) == Integer.parseInt(currentHour))
+                                                            if (Integer.parseInt(openHour) ==
+                                                                Integer.parseInt(currentHour))
                                                             {
-                                                                if (Integer.parseInt(openMinute) <= Integer.parseInt(currentMinute))
+                                                                if (Integer.parseInt(openMinute) <=
+                                                                    Integer.parseInt(currentMinute))
                                                                 {
-                                                                    openJobsList.remove(theOpenJobs);
-                                                                    firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                                                            theOpenJobs.getJobsId()).delete();
+                                                                    openJobsList.remove(
+                                                                        theOpenJobs);
+                                                                    firestore.collection(
+                                                                        "Jobs/Jobs/" +
+                                                                        "Open Jobs").document(
+                                                                        theOpenJobs.getJobsId())
+                                                                        .delete();
                                                                 }
                                                             }
-                                                            else if (Integer.parseInt(openHour) < Integer.parseInt(currentHour))
+                                                            else if (Integer.parseInt(openHour) <
+                                                                Integer.parseInt(currentHour))
                                                             {
                                                                 openJobsList.remove(theOpenJobs);
-                                                                firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                                                        theOpenJobs.getJobsId()).delete();
+                                                                firestore.collection(
+                                                                    "Jobs/Jobs/" +
+                                                                    "Open Jobs").document(
+                                                                    theOpenJobs.getJobsId())
+                                                                    .delete();
                                                             }
                                                         }
-                                                        else if (openAMPM.equals("AM") && currentAmPm.equals("PM"))
+                                                        else if (openAMPM.equals("AM") &&
+                                                            currentAmPm.equals("PM"))
                                                         {
                                                             openJobsList.remove(theOpenJobs);
-                                                            firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                                                    theOpenJobs.getJobsId()).delete();
+                                                            firestore.collection(
+                                                                "Jobs/Jobs/Open Jobs")
+                                                                .document(theOpenJobs.getJobsId())
+                                                                .delete();
                                                         }
                                                     }
-                                                    else if (Integer.parseInt(openDay) < Integer.parseInt(currentDay))
+                                                    else if (Integer.parseInt(openDay) < Integer
+                                                        .parseInt(currentDay))
                                                     {
                                                         openJobsList.remove(theOpenJobs);
-                                                        firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                                                theOpenJobs.getJobsId()).delete();
+                                                        firestore.collection("Jobs/" +
+                                                            "Jobs/Open Jobs").document(theOpenJobs
+                                                            .getJobsId()).delete();
                                                     }
                                                 }
-                                                else if (Integer.parseInt(openMonth) < Integer.parseInt(currentMonth))
+                                                else if (Integer.parseInt(openMonth) < Integer
+                                                    .parseInt(currentMonth))
                                                 {
                                                     openJobsList.remove(theOpenJobs);
-                                                    firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                                            theOpenJobs.getJobsId()).delete();
+                                                    firestore.collection("Jobs/Jobs/" +
+                                                        "Open Jobs").document(theOpenJobs
+                                                        .getJobsId()).delete();
                                                 }
                                             }
-                                            else if (Integer.parseInt(openYear) < Integer.parseInt(currentYear))
+                                            else if (Integer.parseInt(openYear) < Integer.parseInt
+                                                (currentYear))
                                             {
                                                 openJobsList.remove(theOpenJobs);
-                                                firestore.collection("Jobs/Jobs/Open Jobs").document(
-                                                        theOpenJobs.getJobsId()).delete();
+                                                firestore.collection("Jobs/Jobs/" +
+                                                "Open Jobs").document(theOpenJobs.getJobsId())
+                                                .delete();
                                             }
                                         }
                                         dateAscend();
@@ -188,6 +218,11 @@ public class OpenJobsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     * @param o
+     */
+
     public void helperMethod(ArrayList<OpenJobs> o)
     {
         openJobsList = o;
@@ -195,6 +230,10 @@ public class OpenJobsActivity extends AppCompatActivity {
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    /**
+     *
+     */
 
     public void dateAscend()
     {
@@ -285,11 +324,21 @@ public class OpenJobsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void dateArrangementAscending(View v)
     {
         dateAscend();
         helperMethod(openJobsList);
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void dateArrangementDescending(View v)
     {
@@ -346,7 +395,8 @@ public class OpenJobsActivity extends AppCompatActivity {
                             {
                                 if (Integer.parseInt(openHour) == Integer.parseInt(openHour2))
                                 {
-                                    if (Integer.parseInt(openMinute) > Integer.parseInt(openMinute2))
+                                    if (Integer.parseInt(openMinute) > Integer.parseInt
+                                        (openMinute2))
                                     {
                                         Collections.swap(openJobsList, i, j);
                                     }
@@ -380,6 +430,11 @@ public class OpenJobsActivity extends AppCompatActivity {
         helperMethod(openJobsList);
     }
 
+    /**
+     *
+     * @param v
+     */
+
     public void refreshOpenActivity(View v)
     {
         openJobsList.clear();
@@ -388,6 +443,11 @@ public class OpenJobsActivity extends AppCompatActivity {
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void backOpenActivity(View v)
     {

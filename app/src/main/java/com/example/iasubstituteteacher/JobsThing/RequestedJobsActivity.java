@@ -27,6 +27,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+/**
+ *
+ */
+
 public class RequestedJobsActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -51,6 +55,10 @@ public class RequestedJobsActivity extends AppCompatActivity {
 
         getAndPopulateData();
     }
+
+    /**
+     *
+     */
 
     public void getAndPopulateData()
     {
@@ -107,54 +115,67 @@ public class RequestedJobsActivity extends AppCompatActivity {
 
                                 if (Integer.parseInt(openYear) == Integer.parseInt(currentYear))
                                 {
-                                    if (Integer.parseInt(openMonth) == Integer.parseInt(currentMonth))
+                                    if (Integer.parseInt(openMonth) == Integer.parseInt
+                                        (currentMonth))
                                     {
-                                        if (Integer.parseInt(openDay) == Integer.parseInt(currentDay))
+                                        if (Integer.parseInt(openDay) == Integer.parseInt
+                                            (currentDay))
                                         {
                                             if (openAMPM.equals(currentAmPm))
                                             {
-                                                if (Integer.parseInt(openHour) == Integer.parseInt(currentHour))
+                                                if (Integer.parseInt(openHour) == Integer.parseInt
+                                                    (currentHour))
                                                 {
-                                                    if (Integer.parseInt(openMinute) <= Integer.parseInt(currentMinute))
+                                                    if (Integer.parseInt(openMinute) <= Integer
+                                                        .parseInt(currentMinute))
                                                     {
                                                         requestedJobsList.remove(theRequestedJobs);
-                                                        firestore.collection("Jobs/Jobs/Requested Jobs").document(
-                                                                theRequestedJobs.getJobsId()).delete();
+                                                        firestore.collection("Jobs/" +
+                                                            "Jobs/Requested Jobs").document
+                                                            (theRequestedJobs.getJobsId())
+                                                            .delete();
                                                     }
                                                 }
-                                                else if (Integer.parseInt(openHour) < Integer.parseInt(currentHour))
+                                                else if (Integer.parseInt(openHour) < Integer
+                                                    .parseInt(currentHour))
                                                 {
                                                     requestedJobsList.remove(theRequestedJobs);
-                                                    firestore.collection("Jobs/Jobs/Requested Jobs").document(
-                                                            theRequestedJobs.getJobsId()).delete();
+                                                    firestore.collection("Jobs/Jobs/" +
+                                                        "Requested Jobs").document(theRequestedJobs
+                                                        .getJobsId()).delete();
                                                 }
                                             }
-                                            else if (openAMPM.equals("AM") && currentAmPm.equals("PM"))
+                                            else if (openAMPM.equals("AM") && currentAmPm.equals
+                                                ("PM"))
                                             {
                                                 requestedJobsList.remove(theRequestedJobs);
-                                                firestore.collection("Jobs/Jobs/Requested Jobs").document(
-                                                        theRequestedJobs.getJobsId()).delete();
+                                                firestore.collection("Jobs/Jobs/" +
+                                                "Requested Jobs").document(theRequestedJobs
+                                                .getJobsId()).delete();
                                             }
                                         }
-                                        else if (Integer.parseInt(openDay) < Integer.parseInt(currentDay))
+                                        else if (Integer.parseInt(openDay) < Integer.parseInt
+                                            (currentDay))
                                         {
                                             requestedJobsList.remove(theRequestedJobs);
-                                            firestore.collection("Jobs/Jobs/Requested Jobs").document(
-                                                    theRequestedJobs.getJobsId()).delete();
+                                            firestore.collection("Jobs/Jobs/" +
+                                                "Requested Jobs").document(theRequestedJobs
+                                                .getJobsId()).delete();
                                         }
                                     }
-                                    else if (Integer.parseInt(openMonth) < Integer.parseInt(currentMonth))
+                                    else if (Integer.parseInt(openMonth) < Integer.parseInt
+                                        (currentMonth))
                                     {
                                         requestedJobsList.remove(theRequestedJobs);
-                                        firestore.collection("Jobs/Jobs/Requested Jobs").document(
-                                                theRequestedJobs.getJobsId()).delete();
+                                        firestore.collection("Jobs/Jobs/Requested Jobs"
+                                            ).document(theRequestedJobs.getJobsId()).delete();
                                     }
                                 }
                                 else if (Integer.parseInt(openYear) < Integer.parseInt(currentYear))
                                 {
                                     requestedJobsList.remove(theRequestedJobs);
-                                    firestore.collection("Jobs/Jobs/Requested Jobs").document(
-                                            theRequestedJobs.getJobsId()).delete();
+                                    firestore.collection("Jobs/Jobs/Requested Jobs")
+                                        .document(theRequestedJobs.getJobsId()).delete();
                                 }
                             }
                             dateAscend();
@@ -163,6 +184,10 @@ public class RequestedJobsActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    /**
+     *
+     */
 
     public void dateAscend()
     {
@@ -219,7 +244,8 @@ public class RequestedJobsActivity extends AppCompatActivity {
                             {
                                 if (Integer.parseInt(openHour2) == Integer.parseInt(openHour))
                                 {
-                                    if (Integer.parseInt(openMinute2) > Integer.parseInt(openMinute))
+                                    if (Integer.parseInt(openMinute2) > Integer.parseInt
+                                        (openMinute))
                                     {
                                         Collections.swap(requestedJobsList, i, j);
                                     }
@@ -252,6 +278,11 @@ public class RequestedJobsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @param r
+     */
+
     public void helperMethod(ArrayList<RequestedJobs> r)
     {
         requestedJobsList = r;
@@ -259,6 +290,11 @@ public class RequestedJobsActivity extends AppCompatActivity {
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void refreshRequestedActivity(View v)
     {
@@ -269,6 +305,11 @@ public class RequestedJobsActivity extends AppCompatActivity {
         recView.setAdapter(myAdapter);
         recView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    /**
+     *
+     * @param v
+     */
 
     public void backRequestActivity(View v)
     {
