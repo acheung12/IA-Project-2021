@@ -20,7 +20,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 /**
- *
+ * RequestedJobsInfoActivity displays all the necessary jobs information to the current user.
+ * Letting the user view their requested job.
  */
 
 public class RequestedJobsInfoActivity extends AppCompatActivity
@@ -69,14 +70,14 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
         theUserEmail = getIntent().getStringExtra("requestUsersEmail");
         theUserUid = getIntent().getStringExtra("requestUsersID");
         theJobsId = getIntent().getStringExtra("requestJobsID");
-        setUpButtons();
+        setUpText();
     }
 
     /**
-     *
+     * This method sets up the information seen on the screen.
      */
 
-    public void setUpButtons()
+    public void setUpText()
     {
         subject.setText(theSubject);
         date.setText("Date: " + theDate);
@@ -86,8 +87,10 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method creates a new OpenJob when pressed whilst creating an intent to
+     * RequestedJobsEmail along with the current information in this activity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "ACCEPT" works in accordance to this method.
      */
 
     public void acceptRequest(View v)
@@ -131,8 +134,10 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method sets the current RequestedJob's Choice to true whilst creating an intent to
+     * RequestedJobsEmail along with the current information in this activity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "DECLINE" works in accordance to this method.
      */
 
     public void declineRequest(View v)
@@ -170,8 +175,9 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to RequestedJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backRequestInfo(View v)

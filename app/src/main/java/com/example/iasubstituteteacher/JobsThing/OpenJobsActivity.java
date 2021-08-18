@@ -29,7 +29,8 @@ import java.util.Collections;
 import java.util.Date;
 
 /**
- *
+ * OpenJobsActivity is used to display all the OpenJobs from the user to the recycler view
+ * as long as the date has not passed.
  */
 
 public class OpenJobsActivity extends AppCompatActivity
@@ -58,7 +59,9 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method retrieves all the OpenJobs in the data and turns it to a recycler view with
+     * the help of the helperMethod below. Only showing the OpenJobs that have not passed the
+     * current date and time.
      */
 
     public void getAndPopulateData()
@@ -219,8 +222,9 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param o
+     * This method creates the recycler view, with the help of the OpenJobsAdapter.
+     * @param o This represents an ArrayList OpenJobs, where an ArrayList of OpenJobs
+     *          will be put here when calling it in other methods to set up the recycler view.
      */
 
     public void helperMethod(ArrayList<OpenJobs> o)
@@ -232,7 +236,7 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method sorts the recycler view from the most recent job to the furthest.
      */
 
     public void dateAscend()
@@ -325,8 +329,9 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method calls the dateAscend() method.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "ASCEND" works in accordance to this method.
      */
 
     public void dateArrangementAscending(View v)
@@ -336,8 +341,9 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method sorts the recycler view from the furthest job to the most recent.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "DESCEND" works in accordance to this method.
      */
 
     public void dateArrangementDescending(View v)
@@ -431,8 +437,9 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method refreshes the UI to show the latest information on the server.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "REFRESH" works in accordance to this method.
      */
 
     public void refreshOpenActivity(View v)
@@ -445,8 +452,9 @@ public class OpenJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to SelectionActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backOpenActivity(View v)

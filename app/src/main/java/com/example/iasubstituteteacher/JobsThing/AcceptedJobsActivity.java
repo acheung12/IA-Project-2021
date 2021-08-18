@@ -29,7 +29,8 @@ import java.util.Collections;
 import java.util.Date;
 
 /**
- *
+ * AcceptedJobsActivity is used to display all the AcceptedJobs from the user to the recycler view
+ * as long as the date has not passed.
  */
 
 public class AcceptedJobsActivity extends AppCompatActivity
@@ -42,7 +43,8 @@ public class AcceptedJobsActivity extends AppCompatActivity
     private ArrayList<AcceptedJobs> acceptedJobsList;
     private RecyclerView recView;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accepted_jobs);
 
@@ -57,7 +59,9 @@ public class AcceptedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method retrieves all the AcceptedJobs in the data and turns it to a recycler view with
+     * the help of the helperMethod below. Only showing the AcceptedJobs that have not passed the
+     * current date and time.
      */
 
     public void getAndPopulateData()
@@ -81,18 +85,22 @@ public class AcceptedJobsActivity extends AppCompatActivity
         final String[] theTime = {""};
 
         firestore.collection("Users").document(user.getUid()).get().
-            addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+            {
                 @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                {
                     if (task.isSuccessful())
                     {
                         DocumentSnapshot ds = task.getResult();
                         User theUser = ds.toObject(User.class);
 
                         firestore.collection("Jobs/Jobs/Accepted Jobs").get().
-                            addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                            {
                                 @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                public void onComplete(@NonNull Task<QuerySnapshot> task)
+                                {
                                     if (task.isSuccessful())
                                     {
                                         for (int i = 0; i < theUser.getAcceptedJobs().size();
@@ -241,7 +249,7 @@ public class AcceptedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method sorts the recycler view from the most recent job to the furthest.
      */
 
     public void dateAscend()
@@ -334,8 +342,9 @@ public class AcceptedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param a
+     * This method creates the recycler view, with the help of the AcceptedJobsAdapter.
+     * @param a This represents an ArrayList of AcceptedJobs, where an ArrayList of AcceptedJobs
+     *          will be put here when calling it in other methods to set up the recycler view.
      */
 
     public void helperMethod(ArrayList<AcceptedJobs> a)
@@ -347,8 +356,9 @@ public class AcceptedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to SelectionActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backAcceptActivity(View v)

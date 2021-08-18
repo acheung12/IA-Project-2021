@@ -28,7 +28,8 @@ import java.util.Collections;
 import java.util.Date;
 
 /**
- *
+ * RequestedJobsActivity is used to display all the RequestedJobs from the user to the recycler view
+ * as long as the date has not passed.
  */
 
 public class RequestedJobsActivity extends AppCompatActivity
@@ -58,7 +59,9 @@ public class RequestedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method retrieves all the RequestedJobs in the data and turns it to a recycler view with
+     * the help of the helperMethod below. Only showing the RequestedJobs that have not passed the
+     * current date and time.
      */
 
     public void getAndPopulateData()
@@ -187,7 +190,7 @@ public class RequestedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method sorts the recycler view from the most recent job to the furthest.
      */
 
     public void dateAscend()
@@ -280,8 +283,9 @@ public class RequestedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param r
+     * This method creates the recycler view, with the help of the RequestedJobsAdapter.
+     * @param r This represents an ArrayList of RequestedJobs, where an ArrayList of RequestedJobs
+     *          will be put here when calling it in other methods to set up the recycler view.
      */
 
     public void helperMethod(ArrayList<RequestedJobs> r)
@@ -293,8 +297,9 @@ public class RequestedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method refreshes the UI to show the latest information on the server.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "REFRESH" works in accordance to this method.
      */
 
     public void refreshRequestedActivity(View v)
@@ -308,8 +313,9 @@ public class RequestedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to SelectionActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backRequestActivity(View v)

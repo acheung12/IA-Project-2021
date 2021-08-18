@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment;
 import java.util.Calendar;
 
 /**
- * TimePickerFragment is an activity that creates the DialogFragment to select the time.
+ * TimePickerFragment creates the Time Dialog and the style for it.
  */
 
 public class TimePickerFragment extends DialogFragment

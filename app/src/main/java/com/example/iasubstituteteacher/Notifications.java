@@ -6,7 +6,7 @@ import android.app.NotificationManager;
 import android.os.Build;
 
 /**
- * Notifications is an Activity that is in charge of the apps notifications channel creation
+ * Notifications is in charge of the apps notifications channel creation.
  */
 
 public class Notifications extends Application

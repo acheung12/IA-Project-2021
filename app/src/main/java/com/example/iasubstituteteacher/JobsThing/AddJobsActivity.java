@@ -31,7 +31,8 @@ import java.util.Calendar;
 import java.util.UUID;
 
 /**
- *
+ * AddJobsActivity adds a new Job to the recycler view based on the information that the user types
+ * in. Adding the information to the firebase database in order for future use.
  */
 
 public class AddJobsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener
@@ -103,8 +104,11 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
-     * @return
+     * This method checks to see if the information the user inputted is valid or not and has the
+     * right data type.
+     * @return This executes the code till it reaches the point return where once it is reached in
+     *         a method, the program returns to the code that invoked it. Meaning return ends the
+     *        execution of a function
      */
 
     public boolean validInfo()
@@ -156,7 +160,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
+     * This method creates a new DatePickerDialog for the user allowing the user to pick the year,
+     * month, day.
      */
 
     private void showDatePickerDialog()
@@ -169,7 +174,9 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
+     * This method adds the information inputted from the user to Jobs/Jobs/Requested Jobs in the
+     * firestore database if the method validInfo() returns true.Whilst also creating an intent to
+     * move the user to SelectionActivity.
      */
 
     public void teacher()
@@ -210,12 +217,15 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
+     * This method adds the information inputted from the user to Jobs/Jobs/Open Jobs in the
+     * firestore database if the method validInfo() returns true. Whilst also creating an intent to
+     * move the user to OpenJobsActivity.
      */
 
     public void admin()
     {
-        if (validInfo()) {
+        if (validInfo())
+        {
             String subjectString = subject.getText().toString();
             String dateString = date.getText().toString();
             String startTimeString = startTime.getText().toString();
@@ -248,8 +258,10 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
-     * @param v
+     * This method calls either the teacher() or admin() method depending on whether the current
+     * user is an "Admin" or a "Teacher".
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "ADD JOB" works in accordance to this method.
      */
 
     public void addJobs(View v)
@@ -281,8 +293,9 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to SelectionActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backAddJob(View v)

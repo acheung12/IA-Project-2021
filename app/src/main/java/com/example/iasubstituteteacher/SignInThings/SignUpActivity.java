@@ -182,7 +182,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         else
         {
             Toast.makeText(SignUpActivity.this, "Please check that your email is " +
-                            "right", Toast.LENGTH_SHORT).show();
+                            "righThis represents an ArrayList of Vehicles, where an ArrayList of Vehicles will be put\n" +
+                    "     *          here when calling it in other methods to set up the recycler view.het", Toast.LENGTH_SHORT).show();
         }
     }
 

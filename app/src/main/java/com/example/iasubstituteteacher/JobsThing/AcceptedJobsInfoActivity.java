@@ -13,7 +13,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
- *
+ * AcceptedJobsInfoActivity displays all the necessary jobs information to the current user. Letting
+ * the user view their accepted job.
  */
 
 public class AcceptedJobsInfoActivity extends AppCompatActivity
@@ -65,14 +66,14 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity
         theJobsId = getIntent().getStringExtra("acceptJobsID");
         theAcceptorsEmail = getIntent().getStringExtra("acceptAcceptorsEmail");
 
-        setUpButtons();
+        setUpText();
     }
 
     /**
-     *
+     * This method sets up the information seen on the screen.
      */
 
-    public void setUpButtons()
+    public void setUpText()
     {
         subject.setText(theSubject);
         date.setText("Date: " + theDate);
@@ -82,8 +83,9 @@ public class AcceptedJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to AcceptedJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backAcceptInfo(View v)

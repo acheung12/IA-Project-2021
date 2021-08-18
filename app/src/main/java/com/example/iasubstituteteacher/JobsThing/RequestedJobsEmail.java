@@ -13,7 +13,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
- *
+ * RequestedJobsEmail is a screen to let the Admin send an Email to the user who created the job
+ * letting the user know whether their RequestedJob has been accepted or rejected.
  */
 
 public class RequestedJobsEmail extends AppCompatActivity
@@ -68,8 +69,9 @@ public class RequestedJobsEmail extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method creates an intent to allow the user to choose an email client they would like,
+     * whilst decoding the information written on the RequestedJobsEmail activity.
+     * @param v this is what the user sees when the android studio is run and the app appears.
      */
 
     public void sendingAnEmail(View v)
@@ -90,8 +92,9 @@ public class RequestedJobsEmail extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to RequestedJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backToRequest(View v)
@@ -101,7 +104,8 @@ public class RequestedJobsEmail extends AppCompatActivity
     }
 
     /**
-     *
+     * This method automatically sets the information of the email with the Requested Job chosen
+     * automatically.
      */
 
     public void settingInformation()

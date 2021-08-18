@@ -30,7 +30,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * OpenJobsInfoActivity displays all the necessary jobs information to the current user. Letting
+ * the user view their open job.
  */
 
 public class OpenJobsInfoActivity extends AppCompatActivity
@@ -87,14 +88,14 @@ public class OpenJobsInfoActivity extends AppCompatActivity
         acceptButton = findViewById(R.id.openJobInfoAcceptButton);
         notificationManager = NotificationManagerCompat.from(this);
 
-        setUpButtons();
+        setUpText();
     }
 
     /**
-     *
+     * This method sets up the information seen on the screen.
      */
 
-    public void setUpButtons()
+    public void setUpText()
     {
         subject.setText(theSubject);
         date.setText("Date: " + theDate);
@@ -104,8 +105,13 @@ public class OpenJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method transfers the current OpenJob to the current user's AcceptedJobs, sending a
+     * notification and toast message that the job has successfully been accepted. Also, adding the
+     * current OpenJob to the current user's AcceptedJobs list, whilst creating an intent to
+     * OpenJobsActivity.
+     * intent to OpenJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "ACCEPT" works in accordance to this method.
      */
 
     public void acceptOpenJob(View v)
@@ -169,8 +175,10 @@ public class OpenJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method adds the current OpenJob to the users declinedJobs creating an intent to
+     * OpenJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "DECLINE" works in accordance to this method.
      */
 
     public void declineOpenJob(View v)
@@ -204,7 +212,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
+     * This method sends a notification to the user with the following information regarding the
+     * accepted job.
      */
 
     public void sendingNotifications()
@@ -233,8 +242,9 @@ public class OpenJobsInfoActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param v
+     * This method is an intent that is created to move the user to OpenJobsActivity.
+     * @param v this is what the user sees when the android studio is run and the app appears. In
+     *          this case the text "BACK" works in accordance to this method.
      */
 
     public void backOpenInfo(View v)
