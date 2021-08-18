@@ -43,7 +43,6 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     private FirebaseUser user;
 
     private String selected;
-    private String usersUsername;
 
     private EditText subject;
     private EditText date;
@@ -300,7 +299,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
      * @param dayOfMonth
      */
 
-    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth)
+    {
         month++;
         String dateSet = dayOfMonth + "/" + month + "/" + year;
         date.setText(dateSet);

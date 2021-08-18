@@ -5,20 +5,18 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
 /**
- *
+ * TimePickerFragment is an activity that creates the DialogFragment to select the time.
  */
 
 public class TimePickerFragment extends DialogFragment
 {
     private static final String KEY_TIMEPICKER_TAG = "KEY_TIMEPICKER_TAG";
-
     public static TimePickerFragment instance(String timePickerTag)
     {
         TimePickerFragment fragment = new TimePickerFragment();
@@ -28,8 +26,6 @@ public class TimePickerFragment extends DialogFragment
         return fragment;
     }
 
-    @NonNull
-    @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState)
     {
         Calendar c = Calendar.getInstance();
