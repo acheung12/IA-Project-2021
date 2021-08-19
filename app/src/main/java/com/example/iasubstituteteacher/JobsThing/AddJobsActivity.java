@@ -78,13 +78,16 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         date.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 showDatePickerDialog();
             }
         });
-        startTime.setOnClickListener(new View.OnClickListener() {
+        startTime.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 DialogFragment initialTimePicker = TimePickerFragment.instance(TIME_PICKER);
                 initialTimePicker.show(getSupportFragmentManager(), "initial time picker");
                 tag[0] = initialTimePicker.getTag();
@@ -161,7 +164,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
 
     /**
      * This method creates a new DatePickerDialog for the user allowing the user to pick the year,
-     * month, day.
+     * month, and day.
      */
 
     private void showDatePickerDialog()
