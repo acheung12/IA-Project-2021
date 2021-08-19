@@ -38,7 +38,6 @@ public class RequestedJobsActivity extends AppCompatActivity
     private FirebaseFirestore firestore;
     private FirebaseUser user;
 
-
     private ArrayList<RequestedJobs> requestedJobsList;
     private RecyclerView recView;
 
@@ -85,9 +84,11 @@ public class RequestedJobsActivity extends AppCompatActivity
         final String[] theTime = {""};
 
         firestore.collection("Jobs/Jobs/Requested Jobs").get().
-                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
                         if (task.isSuccessful())
                         {
                             for (DocumentSnapshot document : task.getResult().getDocuments())

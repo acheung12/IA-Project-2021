@@ -23,11 +23,13 @@ public class RequestedJobs extends Jobs
 
     }
 
-    public boolean isChoice() {
+    public boolean isChoice()
+    {
         return choice;
     }
 
-    public void setChoice(boolean choice) {
+    public void setChoice(boolean choice)
+    {
         this.choice = choice;
     }
 }

@@ -117,7 +117,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity
     public void acceptOpenJob(View v)
     {
         firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
-                new OnCompleteListener<QuerySnapshot>() {
+                new OnCompleteListener<QuerySnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {
@@ -134,7 +135,8 @@ public class OpenJobsInfoActivity extends AppCompatActivity
                 });
 
         firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task)
                     {
@@ -184,9 +186,11 @@ public class OpenJobsInfoActivity extends AppCompatActivity
     public void declineOpenJob(View v)
     {
         firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                {
                   @Override
-                  public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                  public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                  {
                       if (task.isSuccessful())
                       {
                           DocumentSnapshot ds = task.getResult();

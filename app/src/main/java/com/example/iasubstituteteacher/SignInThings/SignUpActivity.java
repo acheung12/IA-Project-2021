@@ -92,12 +92,16 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 rightEmail.equals("gmail.com") || rightEmail.equals("hotmail.com") ||
                 rightEmail.equals("alumni.cis.edu.hk"))
         {
-            if (emailString.contains("@") && !selected.equals("Admin")) {
+            if (emailString.contains("@") && !selected.equals("Admin"))
+            {
                 mAuth.createUserWithEmailAndPassword(emailString, passwordString).
-                        addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+                        {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful() && !usernameString.equals("")) {
+                        public void onComplete(@NonNull Task<AuthResult> task)
+                        {
+                            if (task.isSuccessful() && !usernameString.equals(""))
+                            {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 updateUI(user);
 
@@ -136,8 +140,10 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                             addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                             {
                                 @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful() && !usernameString.equals("")) {
+                                public void onComplete(@NonNull Task<AuthResult> task)
+                                {
+                                    if (task.isSuccessful() && !usernameString.equals(""))
+                                    {
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         updateUI(user);
 
@@ -182,8 +188,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         else
         {
             Toast.makeText(SignUpActivity.this, "Please check that your email is " +
-                            "righThis represents an ArrayList of Vehicles, where an ArrayList of Vehicles will be put\n" +
-                    "     *          here when calling it in other methods to set up the recycler view.het", Toast.LENGTH_SHORT).show();
+                            "right", Toast.LENGTH_SHORT).show();
         }
     }
 

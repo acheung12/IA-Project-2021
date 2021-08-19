@@ -22,8 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * app. This is to allow existing users to sign into their account.
  */
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
 
@@ -57,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
         String passwordString = passwordField.getText().toString();
 
         mAuth.signInWithEmailAndPassword(emailString, passwordString)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+                {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
                         if (task.isSuccessful())
                         {
                             Toast.makeText(MainActivity.this, "Successfully logged in",

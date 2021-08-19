@@ -44,7 +44,8 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AcceptedJobsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AcceptedJobsViewHolder holder, int position)
+    {
         boolean Active = mData.get(position).isActive();
         final String stringActive = Boolean.toString(Active);
 
@@ -52,9 +53,11 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
         holder.dateText.setText("Date: " + mData.get(position).getDate());
         holder.timeText.setText("Time: " + mData.get(position).getTime());
 
-        holder.getAcceptedJobLayout().setOnClickListener(new View.OnClickListener() {
+        holder.getAcceptedJobLayout().setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
 
                 Intent intent = new Intent(context, AcceptedJobsInfoActivity.class);
                 intent.putExtra("acceptSubject", mData.get(position).getSubject());
@@ -66,7 +69,8 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
                 intent.putExtra("acceptLessonPlan", mData.get(position).getLessonPlan());
                 intent.putExtra("acceptUsersEmail", mData.get(position).getUsersEmail());
                 intent.putExtra("acceptUsersID", mData.get(position).getUserId());
-                intent.putExtra("acceptAcceptorsEmail", mData.get(position).getAcceptorsEmail());
+                intent.putExtra("acceptAcceptorsEmail", mData.get(position).
+                        getAcceptorsEmail());
 
                 context.startActivity(intent);
             }
@@ -74,7 +78,8 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return mData.size();
     }
 }

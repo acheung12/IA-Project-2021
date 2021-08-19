@@ -57,8 +57,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     public static final String TIME_PICKER = "initial time picker";
     public static final String TIME_PICKER_2 = "end time picker";
 
-
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_jobs);
 
@@ -73,7 +73,6 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         endTime = findViewById(R.id.addJobsTime2);
         location = findViewById(R.id.addJobsLocation);
         lessonPlan = findViewById(R.id.addJobsLessonPlan);
-
 
         date.setOnClickListener(new View.OnClickListener()
         {
@@ -270,7 +269,8 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     public void addJobs(View v)
     {
         firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task)
                     {

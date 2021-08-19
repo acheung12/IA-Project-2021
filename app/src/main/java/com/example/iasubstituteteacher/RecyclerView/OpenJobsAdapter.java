@@ -33,7 +33,8 @@ public class OpenJobsAdapter extends RecyclerView.Adapter<OpenJobsViewHolder>
 
     @NonNull
     @Override
-    public OpenJobsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public OpenJobsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.open_jobs_row_view,
                 parent, false);
 
@@ -43,7 +44,8 @@ public class OpenJobsAdapter extends RecyclerView.Adapter<OpenJobsViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OpenJobsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull OpenJobsViewHolder holder, int position)
+    {
 
         boolean Active = mData.get(position).isActive();
         final String stringActive = Boolean.toString(Active);
@@ -52,9 +54,11 @@ public class OpenJobsAdapter extends RecyclerView.Adapter<OpenJobsViewHolder>
         holder.dateText.setText("Date: " + mData.get(position).getDate());
         holder.timeText.setText("Time: "+ mData.get(position).getTime());
 
-        holder.getOpenJobLayout().setOnClickListener(new View.OnClickListener() {
+        holder.getOpenJobLayout().setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
 
                 Intent intent = new Intent(context, OpenJobsInfoActivity.class);
                 intent.putExtra("openSubject", mData.get(position).getSubject());
@@ -73,7 +77,8 @@ public class OpenJobsAdapter extends RecyclerView.Adapter<OpenJobsViewHolder>
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return mData.size();
     }
 }

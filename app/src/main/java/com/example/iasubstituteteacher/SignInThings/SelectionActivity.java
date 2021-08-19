@@ -68,7 +68,8 @@ public class SelectionActivity extends AppCompatActivity
         FirebaseUser user = mAuth.getCurrentUser();
 
         firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task)
                     {
@@ -116,7 +117,8 @@ public class SelectionActivity extends AppCompatActivity
         FirebaseUser user = mAuth.getCurrentUser();
 
         firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task)
                     {

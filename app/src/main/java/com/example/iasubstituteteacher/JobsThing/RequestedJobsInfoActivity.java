@@ -96,7 +96,8 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
     public void acceptRequest(View v)
     {
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
-                new OnCompleteListener<QuerySnapshot>() {
+                new OnCompleteListener<QuerySnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {
@@ -143,7 +144,8 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
     public void declineRequest(View v)
     {
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
-                new OnCompleteListener<QuerySnapshot>() {
+                new OnCompleteListener<QuerySnapshot>()
+                {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {

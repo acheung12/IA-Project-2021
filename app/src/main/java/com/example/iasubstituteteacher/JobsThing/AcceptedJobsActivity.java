@@ -39,7 +39,6 @@ public class AcceptedJobsActivity extends AppCompatActivity
     private FirebaseFirestore firestore;
     private FirebaseUser user;
 
-
     private ArrayList<AcceptedJobs> acceptedJobsList;
     private RecyclerView recView;
 

@@ -16,7 +16,6 @@ public class Jobs
     String userId;
     String usersEmail;
 
-
     public Jobs(String jobsId, String subject, String date, String time, String location,
                 boolean active, String lessonPlan, String userId, String usersEmail) {
         this.jobsId = jobsId;
@@ -35,75 +34,93 @@ public class Jobs
 
     }
 
-    public String getJobsId() {
+    public String getJobsId()
+    {
         return jobsId;
     }
 
-    public void setJobsId(String jobsId) {
+    public void setJobsId(String jobsId)
+    {
         this.jobsId = jobsId;
     }
 
-    public String getSubject() {
+    public String getSubject()
+    {
         return subject;
     }
 
-    public void setSubject(String subject) {
+    public void setSubject(String subject)
+    {
         this.subject = subject;
     }
 
-    public String getDate() {
+    public String getDate()
+    {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         this.date = date;
     }
 
-    public String getTime() {
+    public String getTime()
+    {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(String time)
+    {
         this.time = time;
     }
 
-    public String getLocation() {
+    public String getLocation()
+    {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(String location)
+    {
         this.location = location;
     }
 
-    public boolean isActive() {
+    public boolean isActive()
+    {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(boolean active)
+    {
         this.active = active;
     }
 
-    public String getLessonPlan() {
+    public String getLessonPlan()
+    {
         return lessonPlan;
     }
 
-    public void setLessonPlan(String lessonPlan) {
+    public void setLessonPlan(String lessonPlan)
+    {
         this.lessonPlan = lessonPlan;
     }
 
-    public String getUserId() {
+    public String getUserId()
+    {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(String userId)
+    {
         this.userId = userId;
     }
 
-    public String getUsersEmail() {
+    public String getUsersEmail()
+    {
         return usersEmail;
     }
 
-    public void setUsersEmail(String usersEmail) {
+    public void setUsersEmail(String usersEmail)
+    {
         this.usersEmail = usersEmail;
     }
 }

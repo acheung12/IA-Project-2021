@@ -85,18 +85,22 @@ public class OpenJobsActivity extends AppCompatActivity
         final String[] theTime = {""};
 
         firestore.collection("Users").document(user.getUid()).get().
-                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
+                {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                    {
                         if (task.isSuccessful())
                         {
                             DocumentSnapshot ds = task.getResult();
                             User theUser = ds.toObject(User.class);
 
                             firestore.collection("Jobs/Jobs/Open Jobs").get().
-                                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                                {
                                 @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                public void onComplete(@NonNull Task<QuerySnapshot> task)
+                                {
                                     if (task.isSuccessful())
                                     {
                                         for (DocumentSnapshot document : task.getResult().

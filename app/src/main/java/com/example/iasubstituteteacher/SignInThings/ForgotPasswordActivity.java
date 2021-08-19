@@ -21,8 +21,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * they forgot their password.
  */
 
-public class ForgotPasswordActivity extends AppCompatActivity {
-
+public class ForgotPasswordActivity extends AppCompatActivity
+{
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
 
@@ -55,9 +55,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         try
         {
             mAuth.sendPasswordResetEmail(emailString).addOnCompleteListener(this, new
-                    OnCompleteListener<Void>() {
+                    OnCompleteListener<Void>()
+                    {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
                             if (task.isSuccessful())
                             {
                                 updateUI(user);
