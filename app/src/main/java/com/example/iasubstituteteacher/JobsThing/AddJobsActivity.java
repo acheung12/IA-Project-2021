@@ -305,11 +305,12 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
-     * @param datePicker
-     * @param year
-     * @param month
-     * @param dayOfMonth
+     * This method retrieves the selected year, month, and day of month selected to set the text on
+     * screen once the user finishes selecting the information.
+     * @param datePicker this is a date picker allowing the user to select a date from a calendar.
+     * @param year this is of type int used to receive the year
+     * @param month this is of type int used to receive the month
+     * @param dayOfMonth this is of type int used to receive the day of the month
      */
 
     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth)
@@ -320,10 +321,12 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
     }
 
     /**
-     *
-     * @param timePicker
-     * @param hourOfDay
-     * @param minute
+     * This method retrieves the selected hour of the day and minute the user has selected whilst
+     * making it a 12 hour clock instead of 24 to set the text on screen once the user finishes
+     * selecting the information.
+     * @param timePicker this is a time picker allowing the user to select a certain time
+     * @param hourOfDay this is of type int used to receive the hour of the day
+     * @param minute this is of type int used to receive the minute
      */
 
     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute)

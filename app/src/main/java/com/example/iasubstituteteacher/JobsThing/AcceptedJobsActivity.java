@@ -229,10 +229,14 @@ public class AcceptedJobsActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param myList
-     * @param <AcceptedJobs>
-     * @return
+     * This method accepts an ArrayList of any type to make sure that there is no repeated ArrayList
+     * presented in the recycler view.
+     * @param myList this represents an ArrayList of any type, where an ArrayList will be put here
+     *               when calling it in other methods to change the inputted ArrayList.
+     * @param <AcceptedJobs> is a variable that accepts any type of ArrayList.
+     * @return This executes the code till it reaches the point return where once it is reached in
+     *         a method, the program returns to the code that invoked it. Meaning return ends the
+     *         execution of a function.
      */
 
     public static <AcceptedJobs> ArrayList<AcceptedJobs> noRepeats(ArrayList<AcceptedJobs> myList)
@@ -343,7 +347,7 @@ public class AcceptedJobsActivity extends AppCompatActivity
 
     /**
      * This method creates the recycler view, with the help of the AcceptedJobsAdapter.
-     * @param a This represents an ArrayList of AcceptedJobs, where an ArrayList of AcceptedJobs
+     * @param a this represents an ArrayList of AcceptedJobs, where an ArrayList of AcceptedJobs
      *          will be put here when calling it in other methods to set up the recycler view.
      */
 
