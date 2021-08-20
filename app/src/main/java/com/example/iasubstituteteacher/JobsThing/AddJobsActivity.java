@@ -38,7 +38,6 @@ import java.util.UUID;
 public class AddJobsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener
         , DatePickerDialog.OnDateSetListener
 {
-
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private FirebaseUser user;
