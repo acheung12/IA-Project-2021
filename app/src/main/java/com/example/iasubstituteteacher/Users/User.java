@@ -16,7 +16,8 @@ public class User
     ArrayList<String> declinedJobs;
 
     public User(String uid, String username, String email, String userType, ArrayList<String>
-            acceptedJobs, ArrayList<String> declinedJobs) {
+            acceptedJobs, ArrayList<String> declinedJobs)
+    {
         this.uid = uid;
         this.username = username;
         this.email = email;

@@ -10,8 +10,8 @@ public class RequestedJobs extends Jobs
     boolean choice;
 
     public RequestedJobs(String jobsId, String subject, String date, String time, String location,
-                    boolean active, String lessonPlan, String userId, String usersEmail,
-                         boolean choice)
+                        boolean active, String lessonPlan, String userId, String usersEmail,
+                        boolean choice)
     {
         super(jobsId, subject, date, time, location, active, lessonPlan, userId, usersEmail);
 

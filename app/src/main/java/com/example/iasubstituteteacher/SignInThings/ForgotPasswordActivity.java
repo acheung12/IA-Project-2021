@@ -28,7 +28,6 @@ public class ForgotPasswordActivity extends AppCompatActivity
 
     private EditText emailField;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -82,7 +81,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
     }
 
     /**
-     * This method is used to check whether the current users information is valid or not (null),
+     * This method is used to check whether the current user's information is valid or not (null),
      * and it creates an intent to move to MainActivity if the information is valid.
      * @param currentUser this param is used to get the current user that is using the app.
      */

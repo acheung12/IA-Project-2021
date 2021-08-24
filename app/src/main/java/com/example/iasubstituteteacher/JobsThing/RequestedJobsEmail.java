@@ -39,7 +39,6 @@ public class RequestedJobsEmail extends AppCompatActivity
     private String theChoice;
     private String theUserUsername;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -145,7 +144,6 @@ public class RequestedJobsEmail extends AppCompatActivity
         editTextSubject.setText(subject);
         editTextMessage.setText(message);
 
-        firestore.collection("Jobs/Jobs/Requested Jobs").
-                document(theJobsId).delete();
+        firestore.collection("Jobs/Jobs/Requested Jobs").document(theJobsId).delete();
     }
 }
