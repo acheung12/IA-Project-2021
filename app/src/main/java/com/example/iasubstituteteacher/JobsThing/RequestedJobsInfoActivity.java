@@ -127,7 +127,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
         intent.putExtra("requestDate", theDate);
         intent.putExtra("requestTime", theTime);
         intent.putExtra("requestLocation", theLocation);
-        intent.putExtra("requestActive", theActive);
+        intent.putExtra("requestActive", "true");
         intent.putExtra("requestLessonPlan", theLessonPlan);
         intent.putExtra("requestUsersEmail", theUserEmail);
         intent.putExtra("requestUsersID", theUserUid);
@@ -169,7 +169,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
         intent.putExtra("requestDate", theDate);
         intent.putExtra("requestTime", theTime);
         intent.putExtra("requestLocation", theLocation);
-        intent.putExtra("requestActive", theActive);
+        intent.putExtra("requestActive", "false");
         intent.putExtra("requestLessonPlan", theLessonPlan);
         intent.putExtra("requestUsersEmail", theUserEmail);
         intent.putExtra("requestUsersID", theUserUid);

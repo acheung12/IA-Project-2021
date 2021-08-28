@@ -112,12 +112,11 @@ public class RequestedJobsEmail extends AppCompatActivity
         String to = theUserEmail;
         String subject = "Requested Job";
         String message = "";
-
         if (theActive.equals("true"))
         {
             message = "Hey User,\n\n" +
-                    "Great news your following requested job has been accepted. Below is the " +
-                    "substitute job you requested: \n" +
+                    "Great news your following requested job has been accepted. Below is the" +
+                    " substitute job you requested: \n" +
                     "   Subject: " + theSubject + "\n" +
                     "   Date: " + theDate + "\n" +
                     "   Time: " + theTime + "\n" +
@@ -129,8 +128,8 @@ public class RequestedJobsEmail extends AppCompatActivity
         else if (theActive.equals("false"))
         {
             message = "Hey User,\n" +
-                    "Unfortunately your following requested job has been declined: Below is the " +
-                    "substitute job you requested: \n" +
+                    "Unfortunately your following requested job has been declined. Below is the" +
+                    " substitute job you requested: \n" +
                     "   Subject: " + theSubject + "\n" +
                     "   Date: " + theDate + "\n" +
                     "   Time: " + theTime + "\n" +
