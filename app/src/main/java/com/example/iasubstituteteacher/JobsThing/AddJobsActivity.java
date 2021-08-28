@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -75,7 +74,6 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
 
         date.setOnClickListener(new View.OnClickListener()
         {
-            @Override
             public void onClick(View view)
             {
                 showDatePickerDialog();
@@ -83,7 +81,6 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         });
         startTime.setOnClickListener(new View.OnClickListener()
         {
-            @Override
             public void onClick(View view)
             {
                 DialogFragment initialTimePicker = TimePickerFragment.instance(TIME_PICKER);
@@ -94,7 +91,6 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
 
         endTime.setOnClickListener(new View.OnClickListener()
         {
-            @Override
             public void onClick(View view)
             {
                 DialogFragment endTimePicker = TimePickerFragment.instance(TIME_PICKER_2);
@@ -270,8 +266,7 @@ public class AddJobsActivity extends AppCompatActivity implements TimePickerDial
         firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
                 {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                    public void onComplete(Task<DocumentSnapshot> task)
                     {
                         if (task.isSuccessful())
                         {

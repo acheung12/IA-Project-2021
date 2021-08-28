@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,7 +40,6 @@ public class RequestedJobsActivity extends AppCompatActivity
     private ArrayList<RequestedJobs> requestedJobsList;
     private RecyclerView recView;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -86,8 +84,7 @@ public class RequestedJobsActivity extends AppCompatActivity
         firestore.collection("Jobs/Jobs/Requested Jobs").get().
                 addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
                 {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    public void onComplete(Task<QuerySnapshot> task)
                     {
                         if (task.isSuccessful())
                         {

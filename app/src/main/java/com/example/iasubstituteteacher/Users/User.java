@@ -31,51 +31,63 @@ public class User
 
     }
 
-    public String getUid() {
+    public String getUid()
+    {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(String uid)
+    {
         this.uid = uid;
     }
 
-    public String getUsername() {
+    public String getUsername()
+    {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(String username)
+    {
         this.username = username;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getUserType() {
+    public String getUserType()
+    {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(String userType)
+    {
         this.userType = userType;
     }
 
-    public ArrayList<String> getAcceptedJobs() {
+    public ArrayList<String> getAcceptedJobs()
+    {
         return acceptedJobs;
     }
 
-    public void setAcceptedJobs(ArrayList<String> acceptedJobs) {
+    public void setAcceptedJobs(ArrayList<String> acceptedJobs)
+    {
         this.acceptedJobs = acceptedJobs;
     }
 
-    public ArrayList<String> getDeclinedJobs() {
+    public ArrayList<String> getDeclinedJobs()
+    {
         return declinedJobs;
     }
 
-    public void setDeclinedJobs(ArrayList<String> declinedJobs) {
+    public void setDeclinedJobs(ArrayList<String> declinedJobs)
+    {
         this.declinedJobs = declinedJobs;
     }
 }

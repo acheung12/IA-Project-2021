@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity
     private EditText emailField;
     private EditText passwordField;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);

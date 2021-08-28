@@ -17,7 +17,8 @@ public class Jobs
     String usersEmail;
 
     public Jobs(String jobsId, String subject, String date, String time, String location,
-                boolean active, String lessonPlan, String userId, String usersEmail) {
+                boolean active, String lessonPlan, String userId, String usersEmail)
+    {
         this.jobsId = jobsId;
         this.subject = subject;
         this.date = date;

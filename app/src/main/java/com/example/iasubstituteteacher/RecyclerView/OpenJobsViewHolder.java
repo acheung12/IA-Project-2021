@@ -3,7 +3,6 @@ package com.example.iasubstituteteacher.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +20,7 @@ public class OpenJobsViewHolder extends RecyclerView.ViewHolder
     protected TextView timeText;
     protected ConstraintLayout openJobLayout;
 
-    public OpenJobsViewHolder(@NonNull View itemView)
+    public OpenJobsViewHolder(View itemView)
     {
         super(itemView);
 

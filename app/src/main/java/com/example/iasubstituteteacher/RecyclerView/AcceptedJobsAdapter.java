@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.Jobs.AcceptedJobs;
@@ -31,9 +30,7 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
         this.context = context;
     }
 
-    @NonNull
-    @Override
-    public AcceptedJobsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public AcceptedJobsViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.
                 accepted_jobs_row_view, parent, false);
@@ -43,8 +40,7 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
         return holder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull AcceptedJobsViewHolder holder, int position)
+    public void onBindViewHolder(AcceptedJobsViewHolder holder, int position)
     {
         boolean Active = mData.get(position).isActive();
         final String stringActive = Boolean.toString(Active);
@@ -55,7 +51,6 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
 
         holder.getAcceptedJobLayout().setOnClickListener(new View.OnClickListener()
         {
-            @Override
             public void onClick(View view)
             {
 
@@ -77,7 +72,6 @@ public class AcceptedJobsAdapter extends RecyclerView.Adapter<AcceptedJobsViewHo
         });
     }
 
-    @Override
     public int getItemCount()
     {
         return mData.size();

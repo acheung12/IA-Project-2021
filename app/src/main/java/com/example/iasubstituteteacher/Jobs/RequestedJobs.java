@@ -14,7 +14,6 @@ public class RequestedJobs extends Jobs
                         boolean choice)
     {
         super(jobsId, subject, date, time, location, active, lessonPlan, userId, usersEmail);
-
         this.choice = choice;
     }
 

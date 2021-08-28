@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iasubstituteteacher.R;
@@ -56,8 +55,7 @@ public class ForgotPasswordActivity extends AppCompatActivity
             mAuth.sendPasswordResetEmail(emailString).addOnCompleteListener(this, new
                     OnCompleteListener<Void>()
                     {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task)
+                        public void onComplete(Task<Void> task)
                         {
                             if (task.isSuccessful())
                             {

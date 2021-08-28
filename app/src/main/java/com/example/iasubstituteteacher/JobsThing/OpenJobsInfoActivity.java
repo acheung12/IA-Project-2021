@@ -59,7 +59,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity
 
     private NotificationManagerCompat notificationManager;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -119,7 +118,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity
         firestore.collection("Jobs/Jobs/Open Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>()
                 {
-                    @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task)
                     {
                         if (task.isSuccessful())
@@ -137,7 +135,6 @@ public class OpenJobsInfoActivity extends AppCompatActivity
         firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
                 {
-                    @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task)
                     {
                         if (task.isSuccessful())
@@ -188,8 +185,7 @@ public class OpenJobsInfoActivity extends AppCompatActivity
         firestore.collection("Users").document(user.getUid()).get().
                 addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
                 {
-                  @Override
-                  public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                  public void onComplete(Task<DocumentSnapshot> task)
                   {
                       if (task.isSuccessful())
                       {

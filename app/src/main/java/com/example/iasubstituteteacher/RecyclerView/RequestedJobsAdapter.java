@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iasubstituteteacher.Jobs.RequestedJobs;
@@ -31,9 +30,7 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
         this.context = context;
     }
 
-    @NonNull
-    @Override
-    public RequestedJobsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public RequestedJobsViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
 
         View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.
@@ -44,8 +41,7 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
         return holder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RequestedJobsViewHolder holder, int position)
+    public void onBindViewHolder(RequestedJobsViewHolder holder, int position)
     {
 
         boolean Active = mData.get(position).isActive();
@@ -60,7 +56,6 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
 
         holder.getRequestedJobLayout().setOnClickListener(new View.OnClickListener()
         {
-            @Override
             public void onClick(View view)
             {
                 Intent intent = new Intent(context, RequestedJobsInfoActivity.class);
@@ -80,7 +75,6 @@ public class RequestedJobsAdapter extends RecyclerView.Adapter<RequestedJobsView
         });
     }
 
-    @Override
     public int getItemCount()
     {
         return mData.size();

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iasubstituteteacher.Jobs.OpenJobs;
@@ -98,8 +97,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>()
                 {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    public void onComplete(Task<QuerySnapshot> task)
                     {
                         if (task.isSuccessful())
                         {
@@ -146,8 +144,7 @@ public class RequestedJobsInfoActivity extends AppCompatActivity
         firestore.collection("Jobs/Jobs/Requested Jobs").get().addOnCompleteListener(
                 new OnCompleteListener<QuerySnapshot>()
                 {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    public void onComplete(Task<QuerySnapshot> task)
                     {
                         if (task.isSuccessful())
                         {

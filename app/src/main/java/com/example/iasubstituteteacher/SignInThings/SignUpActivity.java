@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iasubstituteteacher.R;
@@ -40,7 +39,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     private EditText username;
     private EditText adminCode;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -98,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                         addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                         {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task)
+                        public void onComplete(Task<AuthResult> task)
                         {
                             if (task.isSuccessful() && !usernameString.equals(""))
                             {
@@ -140,7 +138,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                             addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                             {
                                 @Override
-                                public void onComplete(@NonNull Task<AuthResult> task)
+                                public void onComplete(Task<AuthResult> task)
                                 {
                                     if (task.isSuccessful() && !usernameString.equals(""))
                                     {
@@ -219,7 +217,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
-    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l)
     {
         String text = parent.getItemAtPosition(position).toString();
@@ -227,7 +224,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         selected = text;
     }
 
-    @Override
     public void onNothingSelected(AdapterView<?> adapterView)
     {
         selected = null;
