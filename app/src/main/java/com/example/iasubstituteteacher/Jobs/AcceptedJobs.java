@@ -7,7 +7,7 @@ package com.example.iasubstituteteacher.Jobs;
 
 public class AcceptedJobs extends Jobs
 {
-    String acceptorsEmail;
+    private String acceptorsEmail;
 
     public AcceptedJobs(String jobsId, String subject, String date, String time, String location,
                         boolean active, String lessonPlan, String userId, String usersEmail,

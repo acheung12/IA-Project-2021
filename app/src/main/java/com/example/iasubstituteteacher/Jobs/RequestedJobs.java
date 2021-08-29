@@ -7,7 +7,7 @@ package com.example.iasubstituteteacher.Jobs;
 
 public class RequestedJobs extends Jobs
 {
-    boolean choice;
+    private boolean choice;
 
     public RequestedJobs(String jobsId, String subject, String date, String time, String location,
                         boolean active, String lessonPlan, String userId, String usersEmail,

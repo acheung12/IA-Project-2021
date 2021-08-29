@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class User
 {
-    String uid;
-    String username;
-    String email;
-    String userType;
-    ArrayList<String> acceptedJobs;
-    ArrayList<String> declinedJobs;
+    private String uid;
+    private String username;
+    private String email;
+    private String userType;
+    private ArrayList<String> acceptedJobs;
+    private ArrayList<String> declinedJobs;
 
     public User(String uid, String username, String email, String userType, ArrayList<String>
             acceptedJobs, ArrayList<String> declinedJobs)

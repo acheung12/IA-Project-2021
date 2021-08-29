@@ -6,15 +6,15 @@ package com.example.iasubstituteteacher.Jobs;
 
 public class Jobs
 {
-    String jobsId;
-    String subject;
-    String date;
-    String time;
-    String location;
-    boolean active;
-    String lessonPlan;
-    String userId;
-    String usersEmail;
+    private String jobsId;
+    private String subject;
+    private String date;
+    private String time;
+    private String location;
+    private boolean active;
+    private String lessonPlan;
+    private String userId;
+    private String usersEmail;
 
     public Jobs(String jobsId, String subject, String date, String time, String location,
                 boolean active, String lessonPlan, String userId, String usersEmail)
